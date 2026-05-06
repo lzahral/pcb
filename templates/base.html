@@ -1,404 +1,926 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="fa" dir='rtl'>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% comment %} <meta
-      name="description"
-      content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities."
-    />
-    <meta
-      name="keywords"
-      content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app"
-    /> {% endcomment %}
-    <meta name="author" content="BLACKBOX" />
-    <link type="text/css" rel="stylesheet"  href="{% static 'assets/dist/jalalidatepicker.min.css' %}" />
-    <link rel="apple-touch-icon" sizes="180x180"
-          href="{% static 'assets/favicon/apple-touch-icon.png' %}">
-
-    <link rel="icon" type="image/png" sizes="32x32"
-          href="{% static 'assets/favicon/favicon-32x32.png' %}">
-
-    <link rel="icon" type="image/png" sizes="16x16"
-          href="{% static 'assets/favicon/favicon-16x16.png' %}">
-
-    <link rel="manifest"
-          href="{% static 'assets/favicon/site.webmanifest' %}">
-
-    <link rel="icon" href="{% static 'assets/favicon/favicon.ico' %}">
+<html lang="fa" dir="rtl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cuba landing is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with
+        unlimited possibilities.">
+    <meta name="keywords" content="landing template, Cuba landing template,responsive landing
+        template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon">
+    <title>Cuba - Landing Template</title>
     <!-- Google font-->
-    {% comment %} <link
-      href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
-      rel="stylesheet"
-    /> {% endcomment %}
-    <!-- Font Awesome-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/fontawesome.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/font/stylesheet.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/flatpickr/flatpickr.min.css' %}"
-    />
-        <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/select/bootstrap-select.min.css' %}"
-    />
-    <!-- ico-font-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/icofont.css' %}"
-    />
-        <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/jquery.dataTables.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/select.bootstrap5.css' %}"
-    />
-    <!-- Themify icon-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/themify.css' %}"
-    />
-    <!-- Flag icon-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/flag-icon.css' %}"
-    />
-    <!-- Feather icon-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/feather-icon.css' %}"
-    />
-    <!-- Plugins css start-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/slick.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/slick-theme.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/scrollbar.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/animate.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/jquery.dataTables.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/select.bootstrap5.css' %}"
-    />
-    <!-- Plugins css Ends-->
-    <!-- Bootstrap css-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/vendors/bootstrap.css' %}"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;display=swap" rel="stylesheet">
+    <!-- Swiper css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper-bundle.min.css' %}">
+
+    <!-- Font awesome css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/fontawesome/all.css' %}">
+
+    <!-- Animate css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/animate.css' %}">
+
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
-    <link
-      id="color"
-      rel="stylesheet"
-      href="{% static 'assets/css/color-1.css' %}"
-      media="screen"
-    />
-    <!-- Responsive css-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'assets/css/responsive.css' %}"
-    />
-    <script defer src="{% static 'assets/css/color-1.js' %}"></script>
-    <script defer src="{% static 'assets/css/color-2.js' %}"></script>
-    <script defer src="{% static 'assets/css/color-3.js' %}"></script>
-    <script defer src="{% static 'assets/css/color-4.js' %}"></script>
-    <script defer src="{% static 'assets/css/color-5.js' %}"></script>
-    <script defer src="{% static 'assets/css/color-6.js' %}"></script>
-    <script defer src="{% static 'assets/css/responsive.js' %}"></script>
-    <script defer src="{% static 'assets/css/style.js' %}"></script>
-    <link href="{% static 'assets/css/color-1.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/color-2.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/color-3.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/color-4.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/color-5.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/color-6.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/style.css' %}">
+</head>
 
-    {% block styles %}{% endblock styles %}
-    
-    <style>
-      .logOut{
-        font-family: K24;
-      }
-      .Popover{
-        font-family: K24 !important;
-      }
-      .popover-body {
-        font-family: K24 !important;
-      }
-      .popover-header { 
-        font-family: K24 !important;
-      }
-
-      .badge{
-        font-family: K24;
-      }
-      .dropdown-menu{
-        font-family: K24 !important;
-      }
-      .dt-select-checkbox {
-          display: none !important;
-      }
-      body{
-        font-family: K24;
-      }
-      p{
-        font-size: 18px;
-      }
-      .btn{
-        font-size: 18px;
-      }
-      .bar{
-        font-size: 18px !important;
-      }
-      div{
-        font-size: 16px !important;
-      }
-      .sidebar-list i {
-          font-size: 20px;
-          margin-right:4px!important;
-      }
-      .notif{
-          font-size: 10px!important;
-      }
-      .cog-click{
-        display: none!important;
-      }
-      .grip-click{
-        display: none!important;
-      }
-      .bar, .c-o-light{
-            cursor: pointer !important;
-
-      }
-        .btn-icon{
-            margin: 0 !important;
-            padding: 10px 12px 7px 12px !important;
-        }
-        .filter-option-inner-inner{
-          color: #333;
-        }
-    </style>
-    <title>
-      BLACKBOX
-    </title>
-  </head>
-  <body onload="startTime()">  
-                    
-    <!-- loader starts-->
+<body class="layout-2">
     <div class="loader-wrapper">
-      <div class="loader-index"><span></span></div>
-      <svg>
-        <defs></defs>
-        <filter id="goo">
-          <fegaussianblur
-            in="SourceGraphic"
-            stddeviation="11"
-            result="blur"
-          ></fegaussianblur>
-          <fecolormatrix
-            in="blur"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-            result="goo"
-          ></fecolormatrix>
-        </filter>
-      </svg>
+        <div class="loader-index"> <span></span></div><svg>
+            <defs></defs>
+            <filter id="goo">
+                <fegaussianblur in="SourceGraphic" stddeviation="11" result="blur"></fegaussianblur>
+                <fecolormatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo">
+                </fecolormatrix>
+            </filter>
+        </svg>
     </div>
-    <!-- loader ends--><!-- tap on top starts-->
-    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
-    <!-- tap on tap ends--><!-- page-wrapper Start-->
-    <div class="page-wrapper compact-wrapper" id="pageWrapper">
-      <!-- Page Header Start-->
+    <div class="tap-top"><i class="fa-solid fa-angles-up"></i></div>
+    <main>
+        <!-- Header start -->
+        <header class="header-absolute">
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="custom-container container">
+                    <a class="navbar-brand m-0" href="index.html">
+                        <img src="{% static 'assets/landing/images/logo/logo.webp' %}" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-      <!-- Page Header Ends     
-      --><!-- Page Body Start-->
-      
-      <div class="page-body-wrapper">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav navigation">
+                            <li class="nav-item dropdown">
 
- 
-        <div class="page-body mx-5 px-5 pt-4">        
-          {% block breadcrumb %}{% endblock %}
-          <div class='py-2 px-3'>
-            {% block content %}{% endblock %}
-          </div>
-          <!-- Container-fluid starts-->
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-12 px-4">
-              </div>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="index.html">sass</a></li>
+                                    <li><a class="dropdown-item" href="index-2.html">app landing</a></li>
+                                    <li><a class="dropdown-item" href="index-3.html">job</a></li>
+                                    <li><a class="dropdown-item" href="index-4.html">nft</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#service">فروشگاه</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about-us">سفارش PCB</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="#features">سفارش خارج/BOM</a>
+                            </li> -->
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="#plan">سفارش استنسیل</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#review">خدمات طراحی</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about-us">درباره ما</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about-us">تماس با ما</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="https://1.envato.market/3GVzd" class="btn btn-primary rounded-pill">ورود / ثبت نام</a>
+                </div>
+            </nav>
+        </header>
+        <!-- Header start -->
+         
+        <!-- Home section start -->
+        <section class="home-style-1 home-style-2">
+            <div class="custom-container container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="home-content">
+                            <h1>تولید انواع مدار چاپی <span>پیشرفته </span>در <b>کمترین زمان</b></h1>
+                            <ul class="card-list">
+                               <li>طراحی بدون محدودیت </li> <br>
+                               <li>تولید زمان‌بندی شده </li> <br>
+                               <li>اقتصادی محاسبه آنلاین هزینه تولید</li> <br>
+                               <li>پشتیبانی کامل از محصولات </li> <br>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-lg-block d-none">
+                        <div class="home-image text-end d-md-block d-none">
+                            <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/home/1.png' %}" alt="mobile">
+                            <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card">
+                            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}"
+                                alt="card">
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- Container-fluid Ends-->
-        </div>
-        <!-- footer start-->
-        <footer class="footer">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-12 footer-copyright text-center">
-                <p class="mb-0" id='no-persian'>
-                  Copyright <span class="year-update"> </span> ©
-                  BLACKBOX
-                </p>
-              </div>
+        </section>
+        <!-- Home section end -->
+
+        <!-- Customer review section start -->
+        <section class="customer-review-style-1">
+            <div class="bg-blur-color"></div>
+            <div class="container">
+                <div class="title-style-4 row g-4">
+                    <div class="col-md-6">
+                        <h2><span class="txt-success"></span> راهکارهای<span class="txt-success"> تخصصی</span> ما
+                        </h2>
+                        <img src="{% static 'assets/landing/images/nft/line.webp' %}" alt="line" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-xl-3 col-md-6 h-100">
+                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                            <img src="{% static 'assets/landing/images/nft/cart/1.webp' %}" alt="wallet" class="img-fluid">
+                            <h5>طراحی سخت افزار</h5>
+                           <ul class="card-list">
+                                <p>طراحی و سفارشی‌سازی</p>
+                                <p>سخت‌افزارهای خاص</p>
+                                <li>Core Board</li>
+                                <li>Carrier Board</li> <br>
+                            </ul>
+                            <p>درایور بردها و ارتباط آن‌ها با سیستم عامل</p>
+                            <a class="d-flex align-items-center" href="#!">
+                                <svg>
+                                    <use href="{% static 'assets/landing/svg/icon_sprite.svg#arrow-right-1'%}"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 h-100">
+                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                            <img src="{% static 'assets/landing/images/nft/cart/2.webp' %}" alt="collection" class="img-fluid">
+                            <h5>مشاوره تخصصی</h5>
+                            <p> مشاوره تخصصی و رایگان: </p>
+                            <ul class="card-list">
+                                <li>طراحی</li>
+                                <li>نمونه‌سازی</li>  
+                                <li>تولید</li> <br>
+                            </ul>
+                            <p>محصولات الکترونیکی و بردهای مبتنی بر سیستم</p> 
+                            <a class="d-flex align-items-center" href="#!">
+                                <svg>
+                                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 h-100">
+                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                            <img src="{% static 'assets/landing/images/nft/cart/3.webp' %}" alt="nft" class="img-fluid">
+                            <h5>پشتیبانی سیستم عامل</h5>
+                            <p>مشاوره و پشتیبانی سیستم عامل‌های مختلف:</p>  
+                            <ul class="card-list">
+                                <li>Linux</li> 
+                                <li>Androind</li>
+                                <li>WinCe</li>
+                            </ul>
+                            <p>توسعه درایورهای مختلف و تغییر ساختار سیستم عامل </p> 
+                            <a class="d-flex align-items-center" href="#!">
+                                <svg>
+                                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 h-100">
+                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                            <img src="{% static 'assets/landing/images/nft/cart/4.webp' %}" alt="sale" class="img-fluid">
+                            <h5>پشتیبانی فنی</h5>
+                            <p>پشتیبانی فنی تمام محصولات ارائه شده توسط ایسیس:</p>
+                            <ul class="card-list">
+                                <li>سخت افزار</li> 
+                                <li>سیستم عامل</li>
+                                <li>بردهای PCB</li>
+                                <li>قطعات</li>
+                                <br>
+                                <br>
+                            </ul>
+                            <a class="d-flex align-items-center" href="#!">
+                                <svg>
+                                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+        <!-- Customer review section end -->
+
+        <!-- Feature section start -->
+        <!-- <section class="feature-style-2" id="features">
+            <div class="container custom-container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-style-1 text-center">
+                            <h5># No 1 Trending Apps</h5>
+                            <h2>Why this App Installed 4000k Customer</h2>
+                            <p>Solving Business Problems Through Modern Software.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-xxl-5 gy-4">
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="feature-wrapper">
+                            <div class="feature-icon-wrap">
+                                <div class="feature-icon primary">
+                                    <svg>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#hand-shake'%}"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Smooth And Easy Employee Onboarding</h3>
+                                <p>Upload your documents, add details and manage a paper-free onboarding process. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="feature-wrapper">
+                            <div class="feature-icon-wrap">
+                                <div class="feature-icon success">
+                                    <svg>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#calendar'%}"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>A Single View For All The On-Going Tasks</h3>
+                                <p>With a central access level and thorough connectivity through a panoramic project
+                                    view, it becomes easy to see </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="feature-wrapper">
+                            <div class="feature-icon-wrap">
+                                <div class="feature-icon warning">
+                                    <svg>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#hand-dollar-sign' %}"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Employee Payroll Management System</h3>
+                                <p>Payroll regulation is one of the most efficient features of HRMS that, gives you an
+                                    accurate way of managing leaves </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                        <div class="feature-wrapper">
+                            <div class="feature-icon-wrap">
+                                <div class="feature-icon info">
+                                    <svg>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#chat' %}"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Easy To Chat Through All The Platforms</h3>
+                                <p>One-click access to swipe from one organization to the other. Make your way through
+                                    different channels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- Feature section end -->
+
+        <!-- About section start -->
+        <!-- <section class="about-style-2" id="about-us">
+            <div class="container custom-container">
+                <div class="row justify-content-lg-between justify-content-center gy-md-5 gy-3">
+                    <div class="col-lg-6">
+                        <div class="title-style-1">
+                            <h5># No 1 Trending Apps</h5>
+                            <h2>Track Your business</h2>
+                        </div>
+                        <div class="about-content">
+                            <p>
+                                Chatting applications for different organizations come with special features like
+                                creation of public/private channels, Mentions, channel search, media & file sharing with
+                                ease, bulk mark as read, self chat (To store your own thoughts), customizable display
+                                modes, etc which is convenient for all the employees to use the application.
+                            </p>
+                            <figure>
+                                <blockquote class="blockquote">
+                                    <p>"A chatting app for an organization is the new modern way of enhancing the
+                                        communication between employees and an all-in-one business software shouldn’t
+                                        lack this feature."</p>
+                                </blockquote>
+                            </figure>
+                            <button type="button" class="btn btn-primary rounded-pill">See More Tracking</button>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-6 col-sm-8 col-10">
+                        <div class="about-image">
+                            <img class="img-fluid" src="{% static 'assets/images/app-landing/about.webp' %}" alt="mobile">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- About section end -->
+
+        <!-- why choose us section start -->
+        <section class="choose-style-2">
+            <div class="container custom-container">
+                <div class="row justify-content-lg-between justify-content-center gy-4">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="choose-image">
+                            <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/choose-us/1.webp' %}" alt="to do app">
+                            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/choose-us/2.webp' %}"
+                                alt="chart card">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-5">
+                        <div class="title-style-1">
+                            <h2>چرا Bordino؟</h2>
+                        </div>
+                        <div class="choose-content">
+                            <ul>
+                                <li>
+                                    <div class="choose-icon primary">
+                                        <svg>
+                                            <use href="{% static 'assets/svg/icon_sprite.svg#dollar' %}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="choose-details">
+                                        <h3>ضمانت گارانتی</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="choose-icon primary">
+                                        <svg>
+                                            <use href="{% static 'assets/svg/icon_sprite.svg#user-right' %}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="choose-details">
+                                        <h3>تحویل سریع</h3>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="choose-icon primary">
+                                        <svg>
+                                            <use href="{% static 'assets/svg/icon_sprite.svg#power' %}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="choose-details">
+                                        <h3>متناسب با نیاز خاص</h3>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand section start -->
+        <section class="brand-style-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+  
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Brand section end -->
+
+        <!-- Track section start -->
+        <!-- <section class="service-style-2 track-style-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-style-1 text-center">
+                            <h5>Track employees</h5>
+                            <h2>Track Your business</h2>
+                            <p>Whether it’s for work, a side project or even the next family vacation, we helps your
+                                team stay organize</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="track-card">
+                            <img class="img-fluid women-image" src="{% static 'assets/images/app-landing/track/2.webp' %}"
+                                alt="women vector">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-6">
+                                    <div class="track-images-wrapper text-center">
+                                        <img class="img-fluid" src="{% static 'assets/images/app-landing/track/3.webp' %}"
+                                            alt="card">
+                                        <img class="img-fluid left-image"
+                                            src="{% static 'assets/images/app-landing/track/4.webp' %}" alt="card">
+                                        <img class="img-fluid right-image"
+                                            src="{% static 'assets/images/app-landing/track/5.webp' %}" alt="card">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- Track section end -->
+
+        <!-- Plan section start -->
+        <!-- <section class="plan-style-2 section-b-space" id="plan">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-style-1 text-center">
+                            <h5>Choose from our affordable 3 packages!</h5>
+                            <h2>Make the wise decision for your business</h2>
+                            <p>Whether it’s for work, a side project or even the next family vacation, we helps your
+                                team stay organize</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-xl-10">
+                        <div class="plan-slider-wrapper">
+                            <div class="swiper plan-slider-2">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="plan-card">
+                                            <div class="plan-content">
+                                                <div class="plan-icon-wrapper">
+                                                    <div class="plan-icon">
+                                                        <svg>
+                                                            <use href="{% static 'assets/svg/icon_sprite.svg#bulb' %}"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <h3 class="mb-1">Silver Package</h3>
+                                                <p>For the basics</p>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>Up to 5 Website</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>50 GB disk space</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
+                                                    </svg>
+                                                    <span>2 Domains access</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
+                                                    </svg>
+                                                    <span>Support on request</span>
+                                                </li>
+                                            </ul>
+                                            <div class="plan-price">
+                                                <div class="d-flex">
+                                                    <h3>$15.</h3>
+                                                    <h6>“/3 Month”</h6>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary rounded-pill">
+                                                    Buy now
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="plan-card">
+                                            <div class="plan-content">
+                                                <div class="plan-icon-wrapper">
+                                                    <div class="plan-icon">
+                                                        <svg>
+                                                            <use href="{% static 'assets/svg/icon_sprite.svg#trending' %}"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <h3 class="mb-1">Golden Package</h3>
+                                                <p>Business</p>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>E- mail address</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>50 GB disk space</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>10 Customize sub pages</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>Unlimited Bandwidth</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
+                                                    </svg>
+                                                    <span>Support on request</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
+                                                    </svg>
+                                                    <span>30GB Uploads</span>
+                                                </li>
+                                            </ul>
+                                            <div class="plan-price">
+                                                <div class="d-flex">
+                                                    <h3>$15.</h3>
+                                                    <h6>“/3 Month”</h6>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary rounded-pill">
+                                                    Buy now
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="plan-card">
+                                            <div class="plan-content">
+                                                <div class="plan-icon-wrapper">
+                                                    <div class="plan-icon">
+                                                        <svg>
+                                                            <use href="{% static 'assets/svg/icon_sprite.svg#plane' %}"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <h3 class="mb-1">Premium Package</h3>
+                                                <p>For the basics</p>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>Up to 5 Website</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>50 GB disk space</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
+                                                    </svg>
+                                                    <span>10 Customize sub pages</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
+                                                    </svg>
+                                                    <span>2 Domains access</span>
+                                                </li>
+                                                <li>
+                                                    <svg>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
+                                                    </svg>
+                                                    <span>Support on request</span>
+                                                </li>
+                                            </ul>
+                                            <div class="plan-price">
+                                                <div class="d-flex">
+                                                    <h3>$15.</h3>
+                                                    <h6>“/3 Month”</h6>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary rounded-pill">
+                                                    Buy now
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- Plan section end -->
+
+        <!-- Review section start -->
+        <!-- <section class="review-style-1 review-style-2 section-b-space review">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-style-1 text-center">
+                            <h5>Customer Feedback</h5>
+                            <h2>What our valuable customer say about us</h2>
+                            <p>We Are Glad To Be A Reason For The Smiles We Put On Our Client's Faces.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="review-slider-wrapper">
+                            <div class="swiper review-slider-2">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="review-box">
+                                            <div class="review-user d-flex align-items-center">
+                                                <div class="review-image">
+                                                    <img src="{% static 'assets/images/user/1.webp' %}" alt="profile">
+                                                </div>
+                                                <div>
+                                                    <h3>Cameron Williamson</h3>
+                                                    <span>Cloud Solutions | CEO</span>
+                                                </div>
+                                            </div>
+                                            <div class="review-content">
+                                                <p>Planning a project requires a number of tasks to assure timely
+                                                    delivery. Project planning is one of the most important features
+                                                    you’ve been looking for to optimize work flow.</p>
+                                            </div>
+                                            <ul class="ratings d-flex">
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="review-box">
+                                            <div class="review-user d-flex align-items-center">
+                                                <div class="review-image">
+                                                    <img src="{% static 'assets/images/user/3.webp' %}" alt="profile">
+                                                </div>
+                                                <div>
+                                                    <h3>Esther Howard</h3>
+                                                    <span class="txt-success">Cuba Technology | Product Designer</span>
+                                                </div>
+                                            </div>
+                                            <div class="review-content">
+                                                <p>Hey, I loved it's great design and using this for my online book
+                                                    selling website [ readtheworld.eu ]. I am thankful to the support
+                                                    team. </p>
+                                            </div>
+                                            <ul class="ratings d-flex">
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="review-box">
+                                            <div class="review-user d-flex align-items-center">
+                                                <div class="review-image">
+                                                    <img src="{% static 'assets/images/user/4.webp' %}" alt="profile">
+                                                </div>
+                                                <div>
+                                                    <h3>Jacob Jones</h3>
+                                                    <span class="txt-success">web technology | CEO</span>
+                                                </div>
+                                            </div>
+                                            <div class="review-content">
+                                                <p>Planning a project requires a number of tasks to assure timely
+                                                    delivery. Project planning is one of the most important features
+                                                    you’ve been looking for to optimize work flow.</p>
+                                            </div>
+                                            <ul class="ratings d-flex">
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star fill-light"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-nav">
+                                    <div class="slidePrev-btn"><i class="fa-solid fa-arrow-left"></i></div>
+                                    <div class="slideNext-btn"><i class="fa-solid fa-arrow-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <!-- Review section end -->
+
+        <!-- Footer section start -->
+        <footer class="footer-style-1">
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row gx-xl-5 gy-md-5 gy-4 gx-4">
+                        <div class="col-xl-4">
+                            <div class="footer-contact">
+                                <a href="index.html">
+                                    <img src="{% static 'assets/landing/images/logo/logo_dark.webp' %}" alt="logo">
+                                </a>
+                                <p>ما با تکیه بر تجربه فنی، تجهیزات دقیق و کنترل کیفیت مرحله‌به‌مرحله، خدمات طراحی و چاپ بردهای 
+                                    PCB را برای پروژه‌های صنعتی، تجاری و تحقیقاتی ارائه می‌دهیم؛ از نمونه‌سازی سریع تا تولید انبوه.</p>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://in.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-md-4 col-6">
+                            <div class="footer-content">
+                                <h3>دسترسی سریع</h3>
+                                <ul class="footer-links">
+                                    <!-- <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>Home </span>
+                                        </a>
+                                    </li> -->
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>درباره ما</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>سفارش PCB</span>
+                                        </a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>Blog Page</span>
+                                        </a>
+                                    </li> -->
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>ورود / ثبت نام</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xl-2 col-md-4 col-6">
+                            <div class="footer-content">
+                                <h3>Community</h3>
+                                <ul class="footer-links">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>Career</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>Leadership</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>Strategy</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>Services</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                            <span>History</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <div class="col-xl-4 col-md-4">
+                            <div class="footer-content">
+                                <h3>راه‌های ارتباطی</h3>
+                                <ul class="footer-location">
+                                    <li>
+                                        <div class="d-flex">
+                                            <div class="footer-icon">
+                                                <svg>
+                                                    <use href="{% static 'assets/svg/icon_sprite.svg#map-pin' %}"></use>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h6>آدرس:</h6>
+                                                <p>ایران، تبریز، بلوار 29 بهمن، دانشگاه تبریز - مرکز رشد</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex">
+                                            <div class="footer-icon">
+                                                <svg>
+                                                    <use href="{% static 'assets/svg/icon_sprite.svg#inbox' %}"></use>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h6>ایمیل:</h6>
+                                                <p>info@bordino.com</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="sub-footer">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <p>کلیه حقوق این وب‌ سایت متعلق به مجموعه بردینو می‌باشد. </p>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <ul class="footer-links sub-footer-links">
+                                <li>
+                                    <a href="#">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Support</a>
+                                </li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
         </footer>
-      </div>
-    </div>
-    </div>
-    <!-- latest jquery-->
-    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-    <!-- Bootstrap js-->
-    <script src="{% static 'assets/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
-    <!-- feather icon js-->
-    <script src="{% static 'assets/js/icons/feather-icon/feather.min.js' %}"></script>
-    <script src="{% static 'assets/js/icons/feather-icon/feather-icon.js' %}"></script>
-    <!-- scrollbar js-->
-    <script src="{% static 'assets/js/scrollbar/simplebar.min.js' %}"></script>
-    <script src="{% static 'assets/js/scrollbar/custom.js' %}"></script>
-    <!-- Sidebar jquery-->
-    <script src="{% static 'assets/js/config.js' %}"></script>
-    <!-- Plugins JS start-->
-    <script src="{% static 'assets/js/sidebar-menu.js' %}"></script>
-    <script src="{% static 'assets/js/sidebar-pin.js' %}"></script>
-    <script src="{% static 'assets/js/clock.js' %}"></script>
-    <script src="{% static 'assets/js/slick/slick.min.js' %}"></script>
-    <script src="{% static 'assets/js/slick/slick.js' %}"></script>
-    <script src="{% static 'assets/js/header-slick.js' %}"></script>
-    <script src="{% static 'assets/js/chart/apex-chart/apex-chart.js' %}"></script>
-    <script src="{% static 'assets/js/chart/apex-chart/stock-prices.js' %}"></script>
-    <script src="{% static 'assets/js/counter/counter-custom.js' %}"></script>
-    <script src="{% static 'assets/js/notify/bootstrap-notify.min.js' %}"></script>
-    <script src="{% static 'assets/js/dashboard/default.js' %}"></script>
-    <script src="{% static 'assets/js/notify/index.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/dataTables.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/dataTables.select.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/select.bootstrap5.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/datatable.custom.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead/handlebars.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead/typeahead.bundle.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead/typeahead.custom.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead-search/handlebars.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead-search/typeahead-custom.js' %}"></script>
-    <script src="{% static 'assets/js/popover-custom.js' %}"></script>
-    <!-- Plugins JS Ends--><!-- Theme js-->
-    <script src="{% static 'assets/js/tooltip-init.js' %}"></script>
+        <!-- Footer section end -->
 
-    <script src="{% static 'assets/js/trash.js' %}"></script>
-    <script src="{% static 'assets/js/letter-box/custom-mail-pagination.js' %}"></script>
-    <script src="{% static 'assets/js/letter-box/custom-usermail.js' %}"></script>
-    <script src="{% static 'assets/js/script.js' %}"></script>
-    <script src="{% static 'assets/js/script1.js' %}"></script>
-    <script src="{% static 'assets/js/theme-customizer/customizer.js' %}"></script>
-    <script src="{% static 'assets/js/select/bootstrap-select.min.js' %}"></script>
-    <script src="{% static 'assets/js/select2/tagify.js' %}"></script>
-    <script src="{% static 'assets/js/select2/tagify.polyfills.min.js' %}"></script>
-    <script src="{% static 'assets/js/select2/intltelinput.min.js' %}"></script>
-    <script src="{% static 'assets/js/select2/telephone-input.js' %}"></script>
-    <script src="{% static 'assets/js/select2/custom-inputsearch.js' %}"></script>
-    <script src="{% static 'assets/js/select2/select3-custom.js' %}"></script>
-    <script src="{% static 'assets/js/flat-pickr/flatpickr.js' %}"></script>
-    <script src="{% static 'assets/js/flat-pickr/custom-flatpickr.js' %}"></script>
-    <script src="{% static 'assets/js/notify/custom-notify.js' %}"></script>
-    <script src="{% static 'assets/js/bs-indeterminate.js' %}"></script>
-    <script>
-      {% if messages %}
-        {% for message in messages %}
-          (function ($) {
-          "use strict";
-          var notify = $.notify('<i class="fa-regular fa-bell"></i>{{message}}.', {
-              type: "theme",
-              allow_dismiss: true,
-              delay: 2000,
-              timer: 300,
-              animate: {
-              enter: "animated fadeInDown",
-              exit: "animated fadeOutUp",
-              },
-          });
+    </main>
 
-          })(jQuery);
-        {% endfor %}
-      {% endif %}
-    </script>
-    {% comment %} <script src="{% static 'assets/js/datatable/datatables/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/dataTables.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/dataTables.select.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/select.bootstrap5.js' %}"></script>
-    <script src="{% static 'assets/js/datatable/datatables/datatable.custom.js' %}"></script> {% endcomment %}
+    <!-- bootstrap js -->
+    <script src="{% static 'assets/landing/js/vendors/bootstrap/dist/js/bootstrap.bundle.min' %}"></script>
 
-<script>
-function toPersianDigits(str) {
-    return str.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
-}
+    <!-- swiper js -->
+    <script src="{% static 'assets/landing/js/vendors/swiper/swiper-bundle.min' %}"></script>
+    <script src="{% static 'assets/landing/js/custom-swiper' %}"></script>
 
-function convertTextNodes(node, ignoreId) {
-    // اگر نود یا یکی از والدهایش id مشخص‌شده را دارد، هیچ کاری نکن
-    if (node.id === ignoreId || (node.closest && node.closest('#' + ignoreId))) {
-        return;
-    }
+    <!-- font awesome js -->
+    <script src="{% static 'assets/landing/js/vendors/fontawesome/all.min' %}"></script>
 
-    if (node.nodeType === 3) {
-        node.nodeValue = toPersianDigits(node.nodeValue);
-    } else {
-        node.childNodes.forEach(child => convertTextNodes(child, ignoreId));
-    }
-}
 
-document.addEventListener("DOMContentLoaded", function() {
-    convertTextNodes(document.body, 'no-persian');
-});
-</script>
-    {% block scripts %}{% endblock scripts %}
+    <script src="{% static 'assets/landing/js/script.js' %}"></script>
 
-  </body>
+</body>
+
 </html>
