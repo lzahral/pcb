@@ -1,0 +1,404 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir='rtl'>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% comment %} <meta
+      name="description"
+      content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities."
+    />
+    <meta
+      name="keywords"
+      content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app"
+    /> {% endcomment %}
+    <meta name="author" content="BLACKBOX" />
+    <link type="text/css" rel="stylesheet"  href="{% static 'assets/dist/jalalidatepicker.min.css' %}" />
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{% static 'assets/favicon/apple-touch-icon.png' %}">
+
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="{% static 'assets/favicon/favicon-32x32.png' %}">
+
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="{% static 'assets/favicon/favicon-16x16.png' %}">
+
+    <link rel="manifest"
+          href="{% static 'assets/favicon/site.webmanifest' %}">
+
+    <link rel="icon" href="{% static 'assets/favicon/favicon.ico' %}">
+    <!-- Google font-->
+    {% comment %} <link
+      href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
+      rel="stylesheet"
+    /> {% endcomment %}
+    <!-- Font Awesome-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/fontawesome.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/font/stylesheet.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/flatpickr/flatpickr.min.css' %}"
+    />
+        <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/select/bootstrap-select.min.css' %}"
+    />
+    <!-- ico-font-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/icofont.css' %}"
+    />
+        <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/jquery.dataTables.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/select.bootstrap5.css' %}"
+    />
+    <!-- Themify icon-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/themify.css' %}"
+    />
+    <!-- Flag icon-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/flag-icon.css' %}"
+    />
+    <!-- Feather icon-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/feather-icon.css' %}"
+    />
+    <!-- Plugins css start-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/slick.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/slick-theme.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/scrollbar.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/animate.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/jquery.dataTables.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/select.bootstrap5.css' %}"
+    />
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/bootstrap.css' %}"
+    />
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+    <link
+      id="color"
+      rel="stylesheet"
+      href="{% static 'assets/css/color-1.css' %}"
+      media="screen"
+    />
+    <!-- Responsive css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/responsive.css' %}"
+    />
+    <script defer src="{% static 'assets/css/color-1.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-2.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-3.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-4.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-5.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-6.js' %}"></script>
+    <script defer src="{% static 'assets/css/responsive.js' %}"></script>
+    <script defer src="{% static 'assets/css/style.js' %}"></script>
+    <link href="{% static 'assets/css/color-1.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-2.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-3.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-4.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-5.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-6.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+    {% block styles %}{% endblock styles %}
+    
+    <style>
+      .logOut{
+        font-family: K24;
+      }
+      .Popover{
+        font-family: K24 !important;
+      }
+      .popover-body {
+        font-family: K24 !important;
+      }
+      .popover-header { 
+        font-family: K24 !important;
+      }
+
+      .badge{
+        font-family: K24;
+      }
+      .dropdown-menu{
+        font-family: K24 !important;
+      }
+      .dt-select-checkbox {
+          display: none !important;
+      }
+      body{
+        font-family: K24;
+      }
+      p{
+        font-size: 18px;
+      }
+      .btn{
+        font-size: 18px;
+      }
+      .bar{
+        font-size: 18px !important;
+      }
+      div{
+        font-size: 16px !important;
+      }
+      .sidebar-list i {
+          font-size: 20px;
+          margin-right:4px!important;
+      }
+      .notif{
+          font-size: 10px!important;
+      }
+      .cog-click{
+        display: none!important;
+      }
+      .grip-click{
+        display: none!important;
+      }
+      .bar, .c-o-light{
+            cursor: pointer !important;
+
+      }
+        .btn-icon{
+            margin: 0 !important;
+            padding: 10px 12px 7px 12px !important;
+        }
+        .filter-option-inner-inner{
+          color: #333;
+        }
+    </style>
+    <title>
+      BLACKBOX
+    </title>
+  </head>
+  <body onload="startTime()">  
+                    
+    <!-- loader starts-->
+    <div class="loader-wrapper">
+      <div class="loader-index"><span></span></div>
+      <svg>
+        <defs></defs>
+        <filter id="goo">
+          <fegaussianblur
+            in="SourceGraphic"
+            stddeviation="11"
+            result="blur"
+          ></fegaussianblur>
+          <fecolormatrix
+            in="blur"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+            result="goo"
+          ></fecolormatrix>
+        </filter>
+      </svg>
+    </div>
+    <!-- loader ends--><!-- tap on top starts-->
+    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+    <!-- tap on tap ends--><!-- page-wrapper Start-->
+    <div class="page-wrapper compact-wrapper" id="pageWrapper">
+      <!-- Page Header Start-->
+
+      <!-- Page Header Ends     
+      --><!-- Page Body Start-->
+      
+      <div class="page-body-wrapper">
+
+ 
+        <div class="page-body mx-5 px-5 pt-4">        
+          {% block breadcrumb %}{% endblock %}
+          <div class='py-2 px-3'>
+            {% block content %}{% endblock %}
+          </div>
+          <!-- Container-fluid starts-->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12 px-4">
+              </div>
+            </div>
+          </div>
+          <!-- Container-fluid Ends-->
+        </div>
+        <!-- footer start-->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12 footer-copyright text-center">
+                <p class="mb-0" id='no-persian'>
+                  Copyright <span class="year-update"> </span> ©
+                  BLACKBOX
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    </div>
+    <!-- latest jquery-->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <!-- Bootstrap js-->
+    <script src="{% static 'assets/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+    <!-- feather icon js-->
+    <script src="{% static 'assets/js/icons/feather-icon/feather.min.js' %}"></script>
+    <script src="{% static 'assets/js/icons/feather-icon/feather-icon.js' %}"></script>
+    <!-- scrollbar js-->
+    <script src="{% static 'assets/js/scrollbar/simplebar.min.js' %}"></script>
+    <script src="{% static 'assets/js/scrollbar/custom.js' %}"></script>
+    <!-- Sidebar jquery-->
+    <script src="{% static 'assets/js/config.js' %}"></script>
+    <!-- Plugins JS start-->
+    <script src="{% static 'assets/js/sidebar-menu.js' %}"></script>
+    <script src="{% static 'assets/js/sidebar-pin.js' %}"></script>
+    <script src="{% static 'assets/js/clock.js' %}"></script>
+    <script src="{% static 'assets/js/slick/slick.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick/slick.js' %}"></script>
+    <script src="{% static 'assets/js/header-slick.js' %}"></script>
+    <script src="{% static 'assets/js/chart/apex-chart/apex-chart.js' %}"></script>
+    <script src="{% static 'assets/js/chart/apex-chart/stock-prices.js' %}"></script>
+    <script src="{% static 'assets/js/counter/counter-custom.js' %}"></script>
+    <script src="{% static 'assets/js/notify/bootstrap-notify.min.js' %}"></script>
+    <script src="{% static 'assets/js/dashboard/default.js' %}"></script>
+    <script src="{% static 'assets/js/notify/index.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/dataTables.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/dataTables.select.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/select.bootstrap5.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/datatable.custom.js' %}"></script>
+    <script src="{% static 'assets/js/typeahead/handlebars.js' %}"></script>
+    <script src="{% static 'assets/js/typeahead/typeahead.bundle.js' %}"></script>
+    <script src="{% static 'assets/js/typeahead/typeahead.custom.js' %}"></script>
+    <script src="{% static 'assets/js/typeahead-search/handlebars.js' %}"></script>
+    <script src="{% static 'assets/js/typeahead-search/typeahead-custom.js' %}"></script>
+    <script src="{% static 'assets/js/popover-custom.js' %}"></script>
+    <!-- Plugins JS Ends--><!-- Theme js-->
+    <script src="{% static 'assets/js/tooltip-init.js' %}"></script>
+
+    <script src="{% static 'assets/js/trash.js' %}"></script>
+    <script src="{% static 'assets/js/letter-box/custom-mail-pagination.js' %}"></script>
+    <script src="{% static 'assets/js/letter-box/custom-usermail.js' %}"></script>
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'assets/js/script1.js' %}"></script>
+    <script src="{% static 'assets/js/theme-customizer/customizer.js' %}"></script>
+    <script src="{% static 'assets/js/select/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/select2/tagify.js' %}"></script>
+    <script src="{% static 'assets/js/select2/tagify.polyfills.min.js' %}"></script>
+    <script src="{% static 'assets/js/select2/intltelinput.min.js' %}"></script>
+    <script src="{% static 'assets/js/select2/telephone-input.js' %}"></script>
+    <script src="{% static 'assets/js/select2/custom-inputsearch.js' %}"></script>
+    <script src="{% static 'assets/js/select2/select3-custom.js' %}"></script>
+    <script src="{% static 'assets/js/flat-pickr/flatpickr.js' %}"></script>
+    <script src="{% static 'assets/js/flat-pickr/custom-flatpickr.js' %}"></script>
+    <script src="{% static 'assets/js/notify/custom-notify.js' %}"></script>
+    <script src="{% static 'assets/js/bs-indeterminate.js' %}"></script>
+    <script>
+      {% if messages %}
+        {% for message in messages %}
+          (function ($) {
+          "use strict";
+          var notify = $.notify('<i class="fa-regular fa-bell"></i>{{message}}.', {
+              type: "theme",
+              allow_dismiss: true,
+              delay: 2000,
+              timer: 300,
+              animate: {
+              enter: "animated fadeInDown",
+              exit: "animated fadeOutUp",
+              },
+          });
+
+          })(jQuery);
+        {% endfor %}
+      {% endif %}
+    </script>
+    {% comment %} <script src="{% static 'assets/js/datatable/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/dataTables.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/dataTables.select.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/select.bootstrap5.js' %}"></script>
+    <script src="{% static 'assets/js/datatable/datatables/datatable.custom.js' %}"></script> {% endcomment %}
+
+<script>
+function toPersianDigits(str) {
+    return str.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+}
+
+function convertTextNodes(node, ignoreId) {
+    // اگر نود یا یکی از والدهایش id مشخص‌شده را دارد، هیچ کاری نکن
+    if (node.id === ignoreId || (node.closest && node.closest('#' + ignoreId))) {
+        return;
+    }
+
+    if (node.nodeType === 3) {
+        node.nodeValue = toPersianDigits(node.nodeValue);
+    } else {
+        node.childNodes.forEach(child => convertTextNodes(child, ignoreId));
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    convertTextNodes(document.body, 'no-persian');
+});
+</script>
+    {% block scripts %}{% endblock scripts %}
+
+  </body>
+</html>

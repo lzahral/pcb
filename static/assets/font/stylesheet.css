@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'K24';
+    src: url('Vazirmatn.ttf') format('truetype');
+        /* url('K24KurdishBold-Bold.woff') format('woff'); */
+    font-weight: 450;
+        font-style: normal;
+}
+
