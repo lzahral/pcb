@@ -2,5 +2,5 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path("", index, name="index_2"),
+    path("", PCBCreateView.as_view(), name="index_2"),
 ]

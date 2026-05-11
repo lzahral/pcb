@@ -111969,6 +111969,8 @@ body[class*="dark-"] .for-light {
 .dimension-input {
     width: 90px !important;  /* اندازه مشابه تصویر */
     text-align: center;
+    padding-top:8px;
+    padding-bottom:5px;
 }
 
 .dimension-unit {
@@ -111990,6 +111992,9 @@ body[class*="dark-"] .for-light {
 }
 
 .pcb-color-options input[type="radio"] {
+    display: none;
+}
+.hidden {
     display: none;
 }
 
@@ -112014,7 +112019,7 @@ body[class*="dark-"] .for-light {
 }
 
 .pcb-color-options input[type="radio"]:checked + .pcb-color-card {
-    border-color: #0d6efd;
+    border-color: #6366f1;
     box-shadow: 0 0 0 2px rgba(13,110,253,0.08);
 }
 
@@ -112025,7 +112030,7 @@ body[class*="dark-"] .for-light {
     right: -1px;
     width: 16px;
     height: 16px;
-    background: #0d6efd;
+    background: #6366f1;
     color: #fff;
     font-size: 11px;
     line-height: 16px;
@@ -112071,24 +112076,24 @@ body[class*="dark-"] .for-light {
 
 .pcbcolor-card {
     display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    min-width: 108px;
-    border: 1px solid #dcdcdc;
-    border-radius: 6px;
-    background: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      min-width: 100px;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
 }
 
 .pcbcolor-card:hover {
-    border-color: #86b7fe;
+    border-color: #6366f1;
 }
 
 .pcbcolor-options input[type="radio"]:checked + .pcbcolor-card {
-    border-color: #0d6efd;
+    border-color: #6366f1;
 }
 
 .pcbcolor-options input[type="radio"]:checked + .pcbcolor-card::after {
@@ -112153,7 +112158,7 @@ body[class*="dark-"] .for-light {
 }
 
 .silkscreen-options-new input[type="radio"]:checked + .silk-card-new {
-    border-color: #0d6efd;
+    border-color: #6366f1;
 }
 
 .silkscreen-options-new input[type="radio"]:checked + .silk-card-new::after {
@@ -112162,7 +112167,7 @@ body[class*="dark-"] .for-light {
     right: -1px;
     width: 16px;
     height: 16px;
-    background: #0d6efd;
+    background: #6366f1;
     color: #fff;
     font-size: 11px;
     line-height: 16px;
@@ -112192,16 +112197,15 @@ body[class*="dark-"] .for-light {
 /* --- Silkscreen Disabled: Blur + Grey + Lock Icon --- */
 .silkscreen-options-new input:disabled + label.silk-card-new {
     position: relative;
-    filter: blur(0.7px) grayscale(1);
+    /* filter: blur(0.7px) grayscale(1); */
     opacity: 0.55;
-    border: 1px dashed #999 !important;
+    border: 1px solid #999 !important;
     pointer-events: none;
     transition: all 0.2s ease-in-out;
 }
 
-/* آیکون قفل روی کارت */
 .silkscreen-options-new input:disabled + label.silk-card-new::after {
-    content: "🔒";
+    content: "";
     position: absolute;
     font-size: 26px;
     top: 50%;
@@ -112252,7 +112256,7 @@ body[class*="dark-"] .for-light {
 }
 
 input[name="layers"]:checked + .layer-card {
-    border: 1px solid #007bff;
+    border: 1px solid #6366f1;
     font-weight: bold;
 }
 

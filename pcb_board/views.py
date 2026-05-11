@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 
-# Create your views here.
+from .models import *
 
-
-def index(request):
-    print('test')
-    return render(request, "pcb_board/pcb_form.html")
+class PCBCreateView(CreateView):
+    model = Board
+    fields = "__all__"
+    template_name = 'pcb_board/pcb_form.html'
+    success_url = reverse_lazy('index')

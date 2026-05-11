@@ -12,17 +12,18 @@
     <meta name="author" content="pixelstrap" />
     <link rel="icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon" />
     <link rel="shortcut icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon" />
+    <link type="text/css" rel="stylesheet"  href="{% static 'assets/dist/jalalidatepicker.min.css' %}" />
+
     <title>Cuba - Landing Template</title>
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;display=swap" rel="stylesheet" />
+
     <!-- Swiper css -->
     <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper-bundle.min.css' %}" />
-
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/font/stylesheet.css' %}"
+    />
     <!-- Font awesome css -->
     <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/fontawesome/all.css' %}" />
 
@@ -32,6 +33,183 @@
     <!-- App css -->
     <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/landing/css/custom.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/flatpickr/flatpickr.min.css' %}"
+    />
+        <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/select/bootstrap-select.min.css' %}"
+    />
+    <!-- ico-font-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/icofont.css' %}"
+    />
+        <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/jquery.dataTables.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/select.bootstrap5.css' %}"
+    />
+    <!-- Themify icon-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/themify.css' %}"
+    />
+    <!-- Flag icon-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/flag-icon.css' %}"
+    />
+    <!-- Feather icon-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/feather-icon.css' %}"
+    />
+    <!-- Plugins css start-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/slick.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/slick-theme.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/scrollbar.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/animate.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/jquery.dataTables.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/select.bootstrap5.css' %}"
+    />
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/vendors/bootstrap.css' %}"
+    />
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+    <link
+      id="color"
+      rel="stylesheet"
+      href="{% static 'assets/css/color-1.css' %}"
+      media="screen"
+    />
+    <!-- Responsive css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'assets/css/responsive.css' %}"
+    />
+    <script defer src="{% static 'assets/css/color-1.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-2.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-3.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-4.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-5.js' %}"></script>
+    <script defer src="{% static 'assets/css/color-6.js' %}"></script>
+    <script defer src="{% static 'assets/css/responsive.js' %}"></script>
+    <script defer src="{% static 'assets/css/style.js' %}"></script>
+    <link href="{% static 'assets/css/color-1.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-2.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-3.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-4.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-5.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/color-6.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+{% block styles %}{% endblock styles %}
+    
+    <style>
+      .logOut{
+        font-family: K24;
+      }
+      .Popover{
+        font-family: K24 !important;
+      }
+      .popover-body {
+        font-family: K24 !important;
+      }
+      .popover-header { 
+        font-family: K24 !important;
+      }
+
+      .badge{
+        font-family: K24;
+      }
+      .dropdown-menu{
+        font-family: K24 !important;
+      }
+      .dt-select-checkbox {
+          display: none !important;
+      }
+      body{
+        font-family: K24;
+      }
+      p{
+        font-size: 18px;
+      }
+      .btn{
+        font-size: 18px;
+      }
+      .bar{
+        font-size: 18px !important;
+      }
+      div{
+        font-size: 16px !important;
+      }
+      .sidebar-list i {
+          font-size: 20px;
+          margin-right:4px!important;
+      }
+      .notif{
+          font-size: 10px!important;
+      }
+      .cog-click{
+        display: none!important;
+      }
+      .grip-click{
+        display: none!important;
+      }
+      .bar, .c-o-light{
+            cursor: pointer !important;
+
+      }
+        .btn-icon{
+            margin: 0 !important;
+            padding: 10px 12px 7px 12px !important;
+        }
+        .filter-option-inner-inner{
+          color: #333;
+        }
+    </style>
   </head>
 
   <body class="layout-2">
@@ -120,9 +298,9 @@
         </nav>
       </header>
       <!-- Header start -->
-      {% block content %}
-
-      {% endblock %}
+      <div class='mt-5 pt-5'>
+        {% block content %}{% endblock %}
+      </div>
       {% comment %} <!-- Home section start -->
       <section class="home-style-1 home-style-2">
         <div class="custom-container container">

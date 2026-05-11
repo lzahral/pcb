@@ -152,62 +152,85 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const baseMaterialRadios = document.querySelectorAll('input[name="base_material"]');
-    const flexSubstrateGroup = document.querySelector('.flex-substrate-group');
+// document.addEventListener('DOMContentLoaded', function () {
+//     const baseMaterialRadios = document.querySelectorAll('input[name="base_material"]');
+//     const flexSubstrateGroup = document.querySelector('.flex-substrate-group');
 
-    function updateUIForBaseMaterial(selectedMaterialId) {
-        // ۱) منطق لایه‌هایت که قبلاً نوشتی (allowedLayersForMaterial و ...)
+//     function updateUIForBaseMaterial(selectedMaterialId) {
 
-        // ۲) منطق نمایش/عدم نمایش بستر
-        if (selectedMaterialId === 'flex') {
-            flexSubstrateGroup.classList.remove('hidden');
-        } else {
-            // اگر متریال دیگر انتخاب شد، بخش بستر را مخفی و مقدار را reset کن
-            flexSubstrateGroup.classList.add('hidden');
+//         if (selectedMaterialId === 'flex') {
+//             flexSubstrateGroup.classList.remove('hidden');
+//         } else {
+//             flexSubstrateGroup.classList.add('hidden');
 
-            const defaultSubstrate = document.getElementById('flex-substrate-none');
-            if (defaultSubstrate) {
-                defaultSubstrate.checked = true;
-            }
-        }
-    }
+//             const defaultSubstrate = document.getElementById('flex-substrate-none');
+//             if (defaultSubstrate) {
+//                 defaultSubstrate.checked = true;
+//             }
+//         }
+//     }
 
-    // لیسنر انتخاب متریال
-    baseMaterialRadios.forEach(radio => {
-        radio.addEventListener('change', function () {
-            if (this.checked) {
-                updateUIForBaseMaterial(this.id); // چون idها را در allowedLayersForMaterial هم استفاده می‌کنی
-            }
-        });
-    });
+//     // لیسنر انتخاب متریال
+//     baseMaterialRadios.forEach(radio => {
+//         radio.addEventListener('change', function () {
+//             if (this.checked) {
+//                 updateUIForBaseMaterial(this.id); // چون idها را در allowedLayersForMaterial هم استفاده می‌کنی
+//             }
+//         });
+//     });
 
-    // مقدار اولیه (اگر صفحه با گزینه‌ای شروع می‌شود)
-    const initiallyChecked = document.querySelector('input[name="base_material"]:checked');
-    if (initiallyChecked) {
-        updateUIForBaseMaterial(initiallyChecked.id);
-    }
-});
+//     // مقدار اولیه (اگر صفحه با گزینه‌ای شروع می‌شود)
+//     const initiallyChecked = document.querySelector('input[name="base_material"]:checked');
+//     if (initiallyChecked) {
+//         updateUIForBaseMaterial(initiallyChecked.id);
+//     }
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
     const radios = document.querySelectorAll('input[name="base_material"]');
-    const substrateWrapper = document.getElementById("flex-substrate-wrapper");
-
+    const substrateWrapper = document.getElementById("substrate-wrapper");
+    const green = document.getElementById("id-green");
+    const purple = document.getElementById("id-purple");
+    const red = document.getElementById("id-red");
+    const blue = document.getElementById("id-blue");
+    console.log(green)
     function updateSubstrateVisibility() {
-        // گزینه انتخاب‌شده را پیدا‌کن
         const selected = document.querySelector('input[name="base_material"]:checked');
         if (selected && selected.value === "flex") {
-            substrateWrapper.style.display = "grid"; // چون layout شما grid است (row-alignment)
+            substrateWrapper.classList.remove("hidden");
+            green.classList.add("hidden");
+            purple.classList.add("hidden");
+            red.classList.add("hidden");
+            blue.classList.add("hidden");
         } else {
-            substrateWrapper.style.display = "none";
+            substrateWrapper.classList.add("hidden");
+            green.classList.remove("hidden");
+            purple.classList.remove("hidden");
+            red.classList.remove("hidden");
+            blue.classList.remove("hidden");
         }
     }
 
-    // هر بار کاربر نوع برد را عوض کرد:
     radios.forEach(radio => {
         radio.addEventListener("change", updateSubstrateVisibility);
     });
 
-    // اجرای اولیه، مثلاً اگر default روی Flex باشد
+    updateSubstrateVisibility();
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const radios = document.querySelectorAll('input[name="surface_finish"]');
+    const goldWrapper = document.getElementById("gold_thickness");
+    function updateSubstrateVisibility() {
+        const selected = document.querySelector('input[name="surface_finish"]:checked');
+        if (selected && selected.value === "ENIG") {
+            goldWrapper.classList.remove("hidden");
+        } else {
+            goldWrapper.classList.add("hidden");
+        }
+    }
+    radios.forEach(radio => {
+        radio.addEventListener("change", updateSubstrateVisibility);
+    });
+
     updateSubstrateVisibility();
 });

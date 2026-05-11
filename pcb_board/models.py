@@ -2,23 +2,24 @@ from django.db import models
 
 # Create your models here.
 
+
 class Board (models.Model):
     BASE_MATERIAL_CHOICES = (
-        ('FR_4', 'FR-4'),
-        ('Flex', 'Flex'),
-        ('Aluminum', 'Aluminum'),
-        ('Copper_Core', 'Copper Core'),
-        ('Rogers', 'Rogers'),
-        ('PTFE_Teflon', 'PTFE Teflon'),
+        ('fr4', 'FR-4'),
+        ('flex', 'Flex'),
+        ('aluminum', 'Aluminum'),
+        ('copper', 'Copper Core'),
+        ('rogers', 'Rogers'),
+        ('ptfe', 'PTFE Teflon'),
     )
     UNIT_CHOICES = (
         ('mm', 'میلی متر'),
         ('inch', 'اینچ'),
     )
     PRODUCT_TYPE_CHOICES = (
-        ('Industrial', 'Industrial/Consumer electronics'),
-        ('Aerospace', 'Aerospace'),
-        ('Medical', 'Medical'),
+        ('industrial', 'صنعتی مصرفی'),
+        ('aerospace', 'هوا فضا'),
+        ('medical', 'پزشکی'),
     )
     SUBSTRATE_TYPE_CHOICES = (
         ('25µm', 'ضخامت دی‌الکتریک  ۲۵µm'),
@@ -26,13 +27,13 @@ class Board (models.Model):
         ('transparent', ' شفاف'),
     )
     THICKNESS_CHOICES = (
-        ('0.4mm', '0.4mm'),
-        ('0.6mm', '0.6mm'),
-        ('0.8mm', '0.8mm'),
-        ('1.0mm', '1.0mm'),
-        ('1.2mm', '1.2mm'),
-        ('1.6mm', '1.6mm'),
-        ('2.0mm', '2.0mm'),
+        ('0.4', '0.4mm'),
+        ('0.6', '0.6mm'),
+        ('0.8', '0.8mm'),
+        ('1.0', '1.0mm'),
+        ('1.2', '1.2mm'),
+        ('1.6', '1.6mm'),
+        ('2.0', '2.0mm'),
     )
     COLOR_CHOICES = (
         ('green', 'سبز'),
@@ -152,51 +153,55 @@ class Board (models.Model):
         ('Copper', 'Copper paste Filled & Capped'),
     )
     MIN_VIA_CHOICES = (
-        ('0.3mm', '0.3mm/(0.4/0.45mm)'),
-        ('0.25mm', '0.3mm/(0.35/0.4mm)'),
-        ('0.2mm', '0.3mm/(0.3/0.35mm)'),
-        ('0.315mm', '0.3mm/(0.25/0.3mm)'),
+        ('0.3', '0.3mm/(0.4/0.45mm)'),
+        ('0.25', '0.3mm/(0.35/0.4mm)'),
+        ('0.2', '0.3mm/(0.3/0.35mm)'),
+        ('0.315', '0.3mm/(0.25/0.3mm)'),
     )
     TOLERANCE_CHOICES = (
-        ('0.2mm', '±0.2mm(Regular)'),
-        ('0.1mm', '±0.1mm(Precision)'),
+        ('0.2', '±0.2mm(Regular)'),
+        ('0.1', '±0.1mm(Precision)'),
     )
     TEST_CHOICES = (
-        ('Random_Test', 'Flying Probe Random Test'),
-        ('Fully_Test', 'Flying Probe Fully Test'),
-        ('E_Test', 'E-Test Fixture'),
+        ('random', 'Flying Probe Random Test'),
+        ('fully', 'Flying Probe Fully Test'),
+        ('e', 'E-Test Fixture'),
     )
 
     base_material = models.CharField(
-        choices=BASE_MATERIAL_CHOICES, default='FR_4')
+        max_length=20, choices=BASE_MATERIAL_CHOICES, default='FR_4')
     layers = models.IntegerField()
     substrate_type = models.CharField(
-        choices=UNIT_CHOICES, default='25µm')
+        max_length=20, choices=SUBSTRATE_TYPE_CHOICES, default='25µm', null=True,  blank=True)
 
     dimension_x = models.IntegerField()
     dimension_y = models.IntegerField()
-    dimension_unit = models.CharField(
-        choices=UNIT_CHOICES, default='mm')
-    qty = models.CharField(
-        choices=QTY_CHOICES, default='5')
-    product_type = models.CharField(
-        choices=BASE_MATERIAL_CHOICES, default='Industrial')
+    dimension_unit = models.CharField(max_length=20,
+                                      choices=UNIT_CHOICES, default='mm')
+    qty = models.CharField(max_length=20,
+                           choices=QTY_CHOICES, default='5')
+    product_type = models.CharField(max_length=20,
+                                    choices=PRODUCT_TYPE_CHOICES, default='industrial')
     panel = models.BooleanField()
-    PCB_thickness = models.CharField(
-        choices=THICKNESS_CHOICES, default='0.4mm')
-    PCB_color = models.CharField(choices=COLOR_CHOICES, default='green')
-    silkscreen = models.CharField(choices=COLOR_CHOICES, default='white')
-    material_type = models.CharField(choices=MATERIAL_CHOICES, default='white')
-    surface_finish = models.CharField(choices=SURFACE_CHOICES, default='white')
-    gold_thickness = models.CharField(choices=GOLD_THICKNESS_CHOICES, default='white')
-    outer_copper_weight = models.CharField(
-        choices=OUTER_COPPER_CHOICES, default='white')
-    via_covering = models.CharField(
-        choices=COVERING_CHOICES, default='white')
-    min_via = models.CharField(choices=MIN_VIA_CHOICES, default='white')
-    board_outline_tolerance = models.CharField(
-        choices=TOLERANCE_CHOICES, default='white')
-    electrical_test = models.CharField(choices=TEST_CHOICES, default='white')
-    
-
-
+    PCB_thickness = models.CharField(max_length=20,
+                                     choices=THICKNESS_CHOICES, default='0.4')
+    PCB_color = models.CharField(
+        max_length=20, choices=COLOR_CHOICES, default='green')
+    silkscreen = models.CharField(
+        max_length=20, choices=COLOR_CHOICES, default='white')
+    material_type = models.CharField(
+        max_length=20, choices=MATERIAL_CHOICES, default='')
+    surface_finish = models.CharField(
+        max_length=20, choices=SURFACE_CHOICES, default='HASL')
+    gold_thickness = models.CharField(max_length=20,
+                                      choices=GOLD_THICKNESS_CHOICES, default='1U')
+    outer_copper_weight = models.CharField(max_length=20,
+                                           choices=OUTER_COPPER_CHOICES, default='1')
+    via_covering = models.CharField(max_length=20,
+                                    choices=COVERING_CHOICES, default='Tented')
+    min_via = models.CharField(
+        max_length=20, choices=MIN_VIA_CHOICES, default='0.3')
+    board_outline_tolerance = models.CharField(max_length=20,
+                                               choices=TOLERANCE_CHOICES, default='0.2')
+    electrical_test = models.CharField(
+        max_length=20, choices=TEST_CHOICES, default='random')
