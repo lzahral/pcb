@@ -1,0 +1,45 @@
+/* Force override Cuba dropdown */
+nav .dropdown-menu {
+    min-width: 100% !important;
+}
+
+nav .dropdown-menu.dropdown-menu-end {
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08) !important;
+    padding: 8px !important;
+    min-width: 210px;
+    width: 100% !important;
+}
+
+nav .dropdown-item {
+    border-radius: 8px !important;
+    padding: 8px 14px !important;
+    color: #2b2b2b !important;
+    transition: all .25s ease;
+}
+
+nav .dropdown-item i {
+    color: #7366ff !important;
+    margin-left: 8px !important;
+}
+
+nav .dropdown-item:hover {
+    background-color: #f3f2ff !important;
+    color: #7366ff !important;
+}
+
+nav .dropdown-item.text-danger:hover {
+    background-color: #fff2f2 !important;
+}
+
+nav .dropdown-divider {
+    border-top: 1px solid rgba(115, 102, 255, 0.25) !important;
+    opacity: 1 !important;
+    margin: 6px 0 !important;
+}
+
+.dropdown-toggle::after {
+  margin-right: 6px !important; /* برای زبان فارسی و راست‌چین */
+  vertical-align: middle !important;
+}

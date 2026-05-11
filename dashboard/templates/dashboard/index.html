@@ -28,9 +28,9 @@
         </div>
         <div class="col-lg-6 d-lg-block d-none">
           <div class="home-image text-end d-md-block d-none">
-            <img class="img-fluid" src="../assets/images/app-landing/home/1.png" alt="mobile" />
-            <img class="img-fluid left-image" src="../assets/images/app-landing/home/2.webp" alt="card" />
-            <img class="img-fluid right-image" src="../assets/images/app-landing/home/3.webp" alt="card" />
+            <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/home/1.png' %}" alt="mobile" />
+            <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card" />
+            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}" alt="card" />
           </div>
         </div>
       </div>
@@ -45,13 +45,13 @@
       <div class="title-style-4 row g-4">
         <div class="col-md-6">
           <h2><span class="txt-success"></span> راهکارهای<span class="txt-success">تخصصی</span> ما</h2>
-          <img src="../assets/images/nft/line.webp" alt="line" class="img-fluid" />
+          <img src="{% static 'assets/landing/images/nft/line.webp' %}" alt="line" class="img-fluid" />
         </div>
       </div>
       <div class="row g-4">
         <div class="col-xl-3 col-md-6 h-100">
           <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-            <img src="../assets/images/nft/cart/1.webp" alt="wallet" class="img-fluid" />
+            <img src="{% static 'assets/landing/images/nft/cart/1.webp' %}" alt="wallet" class="img-fluid" />
             <h5>طراحی سخت افزار</h5>
             <ul class="card-list">
               <p>طراحی و سفارشی‌سازی</p>
@@ -62,14 +62,14 @@
             <p>درایور بردها و ارتباط آن‌ها با سیستم عامل</p>
             <a class="d-flex align-items-center" href="#!">
               <svg>
-                <use href="../assets/svg/icon_sprite.svg#arrow-right-1"></use>
+                <use href="{% static 'assets/landing/svg/icon_sprite.svg#arrow-right-1' %}"></use>
               </svg>
             </a>
           </div>
         </div>
         <div class="col-xl-3 col-md-6 h-100">
           <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-            <img src="../assets/images/nft/cart/2.webp" alt="collection" class="img-fluid" />
+            <img src="{% static 'assets/landing/images/nft/cart/2.webp' %}" alt="collection" class="img-fluid" />
             <h5>مشاوره تخصصی</h5>
             <p>مشاوره تخصصی و رایگان:</p>
             <ul class="card-list">
@@ -80,14 +80,14 @@
             <p>محصولات الکترونیکی و بردهای مبتنی بر سیستم</p>
             <a class="d-flex align-items-center" href="#!">
               <svg>
-                <use href="../assets/svg/icon_sprite.svg#arrow-right-1"></use>
+                <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
               </svg>
             </a>
           </div>
         </div>
         <div class="col-xl-3 col-md-6 h-100">
           <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-            <img src="../assets/images/nft/cart/3.webp" alt="nft" class="img-fluid" />
+            <img src="{% static 'assets/landing/images/nft/cart/3.webp' %}" alt="nft" class="img-fluid" />
             <h5>پشتیبانی سیستم عامل</h5>
             <p>مشاوره و پشتیبانی سیستم عامل‌های مختلف:</p>
             <ul class="card-list">
@@ -98,14 +98,14 @@
             <p>توسعه درایورهای مختلف و تغییر ساختار سیستم عامل</p>
             <a class="d-flex align-items-center" href="#!">
               <svg>
-                <use href="../assets/svg/icon_sprite.svg#arrow-right-1"></use>
+                <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
               </svg>
             </a>
           </div>
         </div>
         <div class="col-xl-3 col-md-6 h-100">
           <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-            <img src="../assets/images/nft/cart/4.webp" alt="sale" class="img-fluid" />
+            <img src="{% static 'assets/landing/images/nft/cart/4.webp' %}" alt="sale" class="img-fluid" />
             <h5>پشتیبانی فنی</h5>
             <p>پشتیبانی فنی تمام محصولات ارائه شده توسط ایسیس:</p>
             <ul class="card-list">
@@ -118,7 +118,7 @@
             </ul>
             <a class="d-flex align-items-center" href="#!">
               <svg>
-                <use href="../assets/svg/icon_sprite.svg#arrow-right-1"></use>
+                <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
               </svg>
             </a>
           </div>
@@ -129,7 +129,7 @@
   <!-- Customer review section end -->
 
   <!-- Feature section start -->
-  <!--  <section class="feature-style-2" id="features">
+  <!--   <section class="feature-style-2" id="features">
             <div class="container custom-container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -146,7 +146,7 @@
                             <div class="feature-icon-wrap">
                                 <div class="feature-icon primary">
                                     <svg>
-                                        <use href="../assets/svg/icon_sprite.svg#hand-shake"></use>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#hand-shake'%}"></use>
                                     </svg>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                             <div class="feature-icon-wrap">
                                 <div class="feature-icon success">
                                     <svg>
-                                        <use href="../assets/svg/icon_sprite.svg#calendar"></use>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#calendar'%}"></use>
                                     </svg>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
                             <div class="feature-icon-wrap">
                                 <div class="feature-icon warning">
                                     <svg>
-                                        <use href="../assets/svg/icon_sprite.svg#hand-dollar-sign"></use>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#hand-dollar-sign' %}"></use>
                                     </svg>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                             <div class="feature-icon-wrap">
                                 <div class="feature-icon info">
                                     <svg>
-                                        <use href="../assets/svg/icon_sprite.svg#chat"></use>
+                                        <use href="{% static 'assets/svg/icon_sprite.svg#chat' %}"></use>
                                     </svg>
                                 </div>
                             </div>
@@ -206,11 +206,11 @@
                     </div>
                 </div>
             </div>
-        </section>  -->
+        </section>   -->
   <!-- Feature section end -->
 
   <!-- About section start -->
-  <!--  <section class="about-style-2" id="about-us">
+  <!--   <section class="about-style-2" id="about-us">
             <div class="container custom-container">
                 <div class="row justify-content-lg-between justify-content-center gy-md-5 gy-3">
                     <div class="col-lg-6">
@@ -237,12 +237,12 @@
                     </div>
                     <div class="col-xl-5 col-lg-6 col-sm-8 col-10">
                         <div class="about-image">
-                            <img class="img-fluid" src="../assets/images/app-landing/about.webp" alt="mobile">
+                            <img class="img-fluid" src="{% static 'assets/images/app-landing/about.webp' %}" alt="mobile">
                         </div>
                     </div>
                 </div>
             </div>
-        </section>  -->
+        </section>   -->
   <!-- About section end -->
 
   <!-- why choose us section start -->
@@ -251,8 +251,8 @@
       <div class="row justify-content-lg-between justify-content-center gy-4">
         <div class="col-lg-6 col-md-8">
           <div class="choose-image">
-            <img class="img-fluid" src="../assets/images/app-landing/choose-us/1.webp" alt="to do app" />
-            <img class="img-fluid right-image" src="../assets/images/app-landing/choose-us/2.webp" alt="chart card" />
+            <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/choose-us/1.webp' %}" alt="to do app" />
+            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/choose-us/2.webp' %}" alt="chart card" />
           </div>
         </div>
         <div class="col-lg-6 col-xxl-5">
@@ -264,7 +264,7 @@
               <li>
                 <div class="choose-icon primary">
                   <svg>
-                    <use href="../assets/svg/icon_sprite.svg#dollar"></use>
+                    <use href="{% static 'assets/svg/icon_sprite.svg#dollar' %}"></use>
                   </svg>
                 </div>
                 <div class="choose-details">
@@ -274,7 +274,7 @@
               <li>
                 <div class="choose-icon primary">
                   <svg>
-                    <use href="../assets/svg/icon_sprite.svg#user-right"></use>
+                    <use href="{% static 'assets/svg/icon_sprite.svg#user-right' %}"></use>
                   </svg>
                 </div>
                 <div class="choose-details">
@@ -284,7 +284,7 @@
               <li>
                 <div class="choose-icon primary">
                   <svg>
-                    <use href="../assets/svg/icon_sprite.svg#power"></use>
+                    <use href="{% static 'assets/svg/icon_sprite.svg#power' %}"></use>
                   </svg>
                 </div>
                 <div class="choose-details">
@@ -297,140 +297,19 @@
       </div>
     </div>
   </section>
-  <!-- why choose us section end -->
-
-  <!-- Service section start -->
-  <!--  <section class="service-style-1 service-style-2" id="service">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="title-style-1 text-center">
-                            <h5>About Us</h5>
-                            <h2>The complete, integrated solution for people and workplace terms</h2>
-                            <p>Whether it’s for work, a side project or even the next family vacation, we helps your
-                                team stay organize</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row service-wrapper gy-4 mb-0">
-                    <div class="col-md-6">
-                        <div class="light-card">
-                            <div class="service-content">
-                                <div class="service-content-wrap">
-                                    <h3>Performance Management</h3>
-                                    <p>Performance management is a corporate management tool that helps managers monitor
-                                        and evaluate employees' work. Performance management's goal is to create </p>
-                                </div>
-                            </div>
-                            <div class="service-image">
-                                <img class="img-fluid" src="../assets/images/app-landing/service/1.webp" alt="card">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="light-card">
-                            <div class="service-content">
-                                <div class="service-content-wrap">
-                                    <h3>Room Scheduling</h3>
-                                    <p>Easy scheduling for meeting rooms. Set user access rules & allow users to book
-                                        from the web, mobile device, booking kiosks, or live maps/floor plans</p>
-                                </div>
-                            </div>
-                            <div class="service-image">
-                                <img class="img-fluid" src="../assets/images/app-landing/service/2.webp" alt="card">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>  -->
-  <!-- Service section end -->
 
   <!-- Brand section start -->
   <section class="brand-style-1">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12">
-          <div class="title-style-1 text-center">
-            <h5></h5>
-            <h2>چرا Bordino؟</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="brand-slider-wrapper">
-            <div class="swiper brand-slider-2">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/1.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/2.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/3.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/4.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/5.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/6.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/3.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/4.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/5.webp" alt="logo" />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="brand-box">
-                    <img src="../assets/images/sass/brand/6.webp" alt="logo" />
-                  </div>
-                </div>
-              </div>
-              <div class="bottom-nav">
-                <div class="slidePrev-btn">
-                  <i class="fa-solid fa-arrow-left"></i>
-                </div>
-                <div class="slideNext-btn">
-                  <i class="fa-solid fa-arrow-right"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="col-sm-12"></div>
       </div>
     </div>
   </section>
   <!-- Brand section end -->
 
   <!-- Track section start -->
-  <!--  <section class="service-style-2 track-style-2">
+  <!--   <section class="service-style-2 track-style-2">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -445,17 +324,17 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="track-card">
-                            <img class="img-fluid women-image" src="../assets/images/app-landing/track/2.webp"
+                            <img class="img-fluid women-image" src="{% static 'assets/images/app-landing/track/2.webp' %}"
                                 alt="women vector">
                             <div class="row justify-content-center">
                                 <div class="col-xl-6">
                                     <div class="track-images-wrapper text-center">
-                                        <img class="img-fluid" src="../assets/images/app-landing/track/3.webp"
+                                        <img class="img-fluid" src="{% static 'assets/images/app-landing/track/3.webp' %}"
                                             alt="card">
                                         <img class="img-fluid left-image"
-                                            src="../assets/images/app-landing/track/4.webp" alt="card">
+                                            src="{% static 'assets/images/app-landing/track/4.webp' %}" alt="card">
                                         <img class="img-fluid right-image"
-                                            src="../assets/images/app-landing/track/5.webp" alt="card">
+                                            src="{% static 'assets/images/app-landing/track/5.webp' %}" alt="card">
                                     </div>
                                 </div>
                             </div>
@@ -463,11 +342,11 @@
                     </div>
                 </div>
             </div>
-        </section>  -->
+        </section>   -->
   <!-- Track section end -->
 
   <!-- Plan section start -->
-  <!--  <section class="plan-style-2 section-b-space" id="plan">
+  <!--   <section class="plan-style-2 section-b-space" id="plan">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -490,7 +369,7 @@
                                                 <div class="plan-icon-wrapper">
                                                     <div class="plan-icon">
                                                         <svg>
-                                                            <use href="../assets/svg/icon_sprite.svg#bulb"></use>
+                                                            <use href="{% static 'assets/svg/icon_sprite.svg#bulb' %}"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -500,25 +379,25 @@
                                             <ul>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>Up to 5 Website</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>50 GB disk space</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#wrong"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
                                                     </svg>
                                                     <span>2 Domains access</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#wrong"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
                                                     </svg>
                                                     <span>Support on request</span>
                                                 </li>
@@ -540,7 +419,7 @@
                                                 <div class="plan-icon-wrapper">
                                                     <div class="plan-icon">
                                                         <svg>
-                                                            <use href="../assets/svg/icon_sprite.svg#trending"></use>
+                                                            <use href="{% static 'assets/svg/icon_sprite.svg#trending' %}"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -550,37 +429,37 @@
                                             <ul>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>E- mail address</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>50 GB disk space</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>10 Customize sub pages</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>Unlimited Bandwidth</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#wrong"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
                                                     </svg>
                                                     <span>Support on request</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#wrong"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
                                                     </svg>
                                                     <span>30GB Uploads</span>
                                                 </li>
@@ -602,7 +481,7 @@
                                                 <div class="plan-icon-wrapper">
                                                     <div class="plan-icon">
                                                         <svg>
-                                                            <use href="../assets/svg/icon_sprite.svg#plane"></use>
+                                                            <use href="{% static 'assets/svg/icon_sprite.svg#plane' %}"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
@@ -612,31 +491,31 @@
                                             <ul>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>Up to 5 Website</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>50 GB disk space</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#right"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#right' %}"></use>
                                                     </svg>
                                                     <span>10 Customize sub pages</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#wrong"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
                                                     </svg>
                                                     <span>2 Domains access</span>
                                                 </li>
                                                 <li>
                                                     <svg>
-                                                        <use href="../assets/svg/icon_sprite.svg#wrong"></use>
+                                                        <use href="{% static 'assets/svg/icon_sprite.svg#wrong' %}"></use>
                                                     </svg>
                                                     <span>Support on request</span>
                                                 </li>
@@ -658,11 +537,11 @@
                     </div>
                 </div>
             </div>
-        </section>  -->
+        </section>   -->
   <!-- Plan section end -->
 
   <!-- Review section start -->
-  <!--  <section class="review-style-1 review-style-2 section-b-space review">
+  <!--   <section class="review-style-1 review-style-2 section-b-space review">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -682,7 +561,7 @@
                                         <div class="review-box">
                                             <div class="review-user d-flex align-items-center">
                                                 <div class="review-image">
-                                                    <img src="../assets/images/user/1.webp" alt="profile">
+                                                    <img src="{% static 'assets/images/user/1.webp' %}" alt="profile">
                                                 </div>
                                                 <div>
                                                     <h3>Cameron Williamson</h3>
@@ -707,7 +586,7 @@
                                         <div class="review-box">
                                             <div class="review-user d-flex align-items-center">
                                                 <div class="review-image">
-                                                    <img src="../assets/images/user/3.webp" alt="profile">
+                                                    <img src="{% static 'assets/images/user/3.webp' %}" alt="profile">
                                                 </div>
                                                 <div>
                                                     <h3>Esther Howard</h3>
@@ -732,7 +611,7 @@
                                         <div class="review-box">
                                             <div class="review-user d-flex align-items-center">
                                                 <div class="review-image">
-                                                    <img src="../assets/images/user/4.webp" alt="profile">
+                                                    <img src="{% static 'assets/images/user/4.webp' %}" alt="profile">
                                                 </div>
                                                 <div>
                                                     <h3>Jacob Jones</h3>
@@ -763,6 +642,6 @@
                     </div>
                 </div>
             </div>
-        </section>  -->
+        </section>   -->
   <!-- Review section end -->
 {% endblock %}

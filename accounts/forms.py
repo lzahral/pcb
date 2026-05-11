@@ -30,3 +30,17 @@ class RegisterForm(forms.ModelForm):
             raise forms.ValidationError("کاربری با این ایمیل وجود دارد.")
 
         return email
+    
+    
+class LoginForm(forms.Form):
+    username = forms.CharField(
+        max_length=50,
+        required=False,
+        label="ایمیل"
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput,
+        required=False,
+        min_length=4,
+        label="رمز عبور"
+    )

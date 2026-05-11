@@ -1,226 +1,247 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Cuba landing is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with
-        unlimited possibilities.">
+        unlimited possibilities." />
     <meta name="keywords" content="landing template, Cuba landing template,responsive landing
-        template, web app">
-    <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon">
-    <link rel="shortcut icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon">
+        template, web app" />
+    <meta name="author" content="pixelstrap" />
+    <link rel="icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon" />
     <title>Cuba - Landing Template</title>
-    <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;display=swap" rel="stylesheet">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&amp;display=swap" rel="stylesheet" />
     <!-- Swiper css -->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper-bundle.min.css' %}" />
 
     <!-- Font awesome css -->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/fontawesome/all.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/fontawesome/all.css' %}" />
 
     <!-- Animate css -->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/animate.css' %}" />
 
-    <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/style.css' %}">
-</head>
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/landing/css/custom.css' %}" />
+  </head>
 
-<body class="layout-2">
+  <body class="layout-2">
     <div class="loader-wrapper">
-        <div class="loader-index"> <span></span></div><svg>
-            <defs></defs>
-            <filter id="goo">
-                <fegaussianblur in="SourceGraphic" stddeviation="11" result="blur"></fegaussianblur>
-                <fecolormatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo">
-                </fecolormatrix>
-            </filter>
-        </svg>
+      <div class="loader-index">
+        <span></span>
+      </div>
+      <svg>
+        <defs></defs>
+        <filter id="goo">
+          <fegaussianblur in="SourceGraphic" stddeviation="11" result="blur"></fegaussianblur>
+          <fecolormatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></fecolormatrix>
+        </filter>
+      </svg>
     </div>
-    <div class="tap-top"><i class="fa-solid fa-angles-up"></i></div>
+    <div class="tap-top">
+      <i class="fa-solid fa-angles-up"></i>
+    </div>
     <main>
-        <!-- Header start -->
-        <header class="header-absolute">
-            <nav class="navbar navbar-expand-lg bg-light">
-                <div class="custom-container container">
-                    <a class="navbar-brand m-0" href="index.html">
-                        <img src="{% static 'assets/landing/images/logo/logo.webp' %}" alt="logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+      <!-- Header start -->
+      <header class="header-absolute">
+        <nav class="navbar navbar-expand-lg bg-light">
+          <div class="custom-container container">
+            <a class="navbar-brand m-0" href="index.html"><img src="{% static 'assets/landing/images/logo/logo.webp' %}" alt="logo" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav navigation">
-                            <li class="nav-item dropdown">
-
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="index.html">sass</a></li>
-                                    <li><a class="dropdown-item" href="index-2.html">app landing</a></li>
-                                    <li><a class="dropdown-item" href="index-3.html">job</a></li>
-                                    <li><a class="dropdown-item" href="index-4.html">nft</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#service">فروشگاه</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about-us">سفارش PCB</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="#features">سفارش خارج/BOM</a>
-                            </li> -->
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="#plan">سفارش استنسیل</a>
-                            </li> -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#review">خدمات طراحی</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about-us">درباره ما</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about-us">تماس با ما</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="https://1.envato.market/3GVzd" class="btn btn-primary rounded-pill">ورود / ثبت نام</a>
-                </div>
-            </nav>
-        </header>
-        <!-- Header start -->
-         
-        <!-- Home section start -->
-        <section class="home-style-1 home-style-2">
-            <div class="custom-container container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="home-content">
-                            <h1>تولید انواع مدار چاپی <span>پیشرفته </span>در <b>کمترین زمان</b></h1>
-                            <ul class="card-list">
-                               <li>طراحی بدون محدودیت </li> <br>
-                               <li>تولید زمان‌بندی شده </li> <br>
-                               <li>اقتصادی محاسبه آنلاین هزینه تولید</li> <br>
-                               <li>پشتیبانی کامل از محصولات </li> <br>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 d-lg-block d-none">
-                        <div class="home-image text-end d-md-block d-none">
-                            <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/home/1.png' %}" alt="mobile">
-                            <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card">
-                            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}"
-                                alt="card">
-                        </div>
-                    </div>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav navigation">
+                <li class="nav-item dropdown">
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="index.html">sass</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="index-2.html">app landing</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="index-3.html">job</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="index-4.html">nft</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index_2' %}">سفارش PCB</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about_us' %}">درباره ما</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact_us' %}">تماس با ما</a>
+                </li>
+              </ul>
             </div>
-        </section>
-        <!-- Home section end -->
+            
+            {% if request.user.is_authenticated %}
+              <div class="dropdown">
+                <!-- دکمه اصلی که منو را باز می‌کند -->
+                <button class="btn btn-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user-circle-o me-1"></i> حساب کاربری</button>
 
-        <!-- Customer review section start -->
-        <section class="customer-review-style-1">
-            <div class="bg-blur-color"></div>
-            <div class="container">
-                <div class="title-style-4 row g-4">
-                    <div class="col-md-6">
-                        <h2><span class="txt-success"></span> راهکارهای<span class="txt-success"> تخصصی</span> ما
-                        </h2>
-                        <img src="{% static 'assets/landing/images/nft/line.webp' %}" alt="line" class="img-fluid">
-                    </div>
-                </div>
-                <div class="row g-4">
-                    <div class="col-xl-3 col-md-6 h-100">
-                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-                            <img src="{% static 'assets/landing/images/nft/cart/1.webp' %}" alt="wallet" class="img-fluid">
-                            <h5>طراحی سخت افزار</h5>
-                           <ul class="card-list">
-                                <p>طراحی و سفارشی‌سازی</p>
-                                <p>سخت‌افزارهای خاص</p>
-                                <li>Core Board</li>
-                                <li>Carrier Board</li> <br>
-                            </ul>
-                            <p>درایور بردها و ارتباط آن‌ها با سیستم عامل</p>
-                            <a class="d-flex align-items-center" href="#!">
-                                <svg>
-                                    <use href="{% static 'assets/landing/svg/icon_sprite.svg#arrow-right-1'%}"></use>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 h-100">
-                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-                            <img src="{% static 'assets/landing/images/nft/cart/2.webp' %}" alt="collection" class="img-fluid">
-                            <h5>مشاوره تخصصی</h5>
-                            <p> مشاوره تخصصی و رایگان: </p>
-                            <ul class="card-list">
-                                <li>طراحی</li>
-                                <li>نمونه‌سازی</li>  
-                                <li>تولید</li> <br>
-                            </ul>
-                            <p>محصولات الکترونیکی و بردهای مبتنی بر سیستم</p> 
-                            <a class="d-flex align-items-center" href="#!">
-                                <svg>
-                                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 h-100">
-                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-                            <img src="{% static 'assets/landing/images/nft/cart/3.webp' %}" alt="nft" class="img-fluid">
-                            <h5>پشتیبانی سیستم عامل</h5>
-                            <p>مشاوره و پشتیبانی سیستم عامل‌های مختلف:</p>  
-                            <ul class="card-list">
-                                <li>Linux</li> 
-                                <li>Androind</li>
-                                <li>WinCe</li>
-                            </ul>
-                            <p>توسعه درایورهای مختلف و تغییر ساختار سیستم عامل </p> 
-                            <a class="d-flex align-items-center" href="#!">
-                                <svg>
-                                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 h-100">
-                        <div class="collection-wrapper aos-animate" data-aos="zoom-in">
-                            <img src="{% static 'assets/landing/images/nft/cart/4.webp' %}" alt="sale" class="img-fluid">
-                            <h5>پشتیبانی فنی</h5>
-                            <p>پشتیبانی فنی تمام محصولات ارائه شده توسط ایسیس:</p>
-                            <ul class="card-list">
-                                <li>سخت افزار</li> 
-                                <li>سیستم عامل</li>
-                                <li>بردهای PCB</li>
-                                <li>قطعات</li>
-                                <br>
-                                <br>
-                            </ul>
-                            <a class="d-flex align-items-center" href="#!">
-                                <svg>
-                                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <!-- لیست کشویی -->
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenu">
+                  <li>
+                    <a class="dropdown-item text-end" href="{% url 'index' %}"><i class="fa fa-edit ms-2"></i> ویرایش</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item text-end" href="{% url 'index' %}"><i class="fa fa-shopping-basket ms-2"></i> سفارشات</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <!-- فرم خروج (امن‌تر از لینک مستقیم در جنگو) -->
+                    <form action="{% url 'logout' %}" method="post" id="logout-form" style="display: none;">
+                      {% csrf_token %}
+                    </form>
+                    <a class="dropdown-item text-end text-danger" href="#" onclick="document.getElementById('logout-form').submit(); return false;"><i class="fa fa-sign-out ms-2"></i> خروج</a>
+                  </li>
+                </ul>
+              </div>
+            {% else %}
+              <a href="{% url 'login' %}" class="btn btn-primary">ورود / ثبت نام</a>
+            {% endif %}
+          </div>
+        </nav>
+      </header>
+      <!-- Header start -->
+      {% block content %}
+
+      {% endblock %}
+      {% comment %} <!-- Home section start -->
+      <section class="home-style-1 home-style-2">
+        <div class="custom-container container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="home-content">
+                <h1>تولید انواع مدار چاپی <span>پیشرفته</span>در <b>کمترین زمان</b></h1>
+                <ul class="card-list">
+                  <li>طراحی بدون محدودیت</li> <br />
+                  <li>تولید زمان‌بندی شده</li> <br />
+                  <li>اقتصادی محاسبه آنلاین هزینه تولید</li> <br />
+                  <li>پشتیبانی کامل از محصولات</li> <br />
+                </ul>
+              </div>
             </div>
-        </section>
-        <!-- Customer review section end -->
+            <div class="col-lg-6 d-lg-block d-none">
+              <div class="home-image text-end d-md-block d-none">
+                <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/home/1.png' %}" alt="mobile" />
+                <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card" />
+                <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}" alt="card" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Home section end -->
 
-        <!-- Feature section start -->
-        <!-- <section class="feature-style-2" id="features">
+      <!-- Customer review section start -->
+      <section class="customer-review-style-1">
+        <div class="bg-blur-color"></div>
+        <div class="container">
+          <div class="title-style-4 row g-4">
+            <div class="col-md-6">
+              <h2><span class="txt-success"></span> راهکارهای<span class="txt-success">تخصصی</span> ما</h2>
+              <img src="{% static 'assets/landing/images/nft/line.webp' %}" alt="line" class="img-fluid" />
+            </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-xl-3 col-md-6 h-100">
+              <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                <img src="{% static 'assets/landing/images/nft/cart/1.webp' %}" alt="wallet" class="img-fluid" />
+                <h5>طراحی سخت افزار</h5>
+                <ul class="card-list">
+                  <p>طراحی و سفارشی‌سازی</p>
+                  <p>سخت‌افزارهای خاص</p>
+                  <li>Core Board</li>
+                  <li>Carrier Board</li> <br />
+                </ul>
+                <p>درایور بردها و ارتباط آن‌ها با سیستم عامل</p>
+                <a class="d-flex align-items-center" href="#!">
+                  <svg>
+                    <use href="{% static 'assets/landing/svg/icon_sprite.svg#arrow-right-1' %}"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 h-100">
+              <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                <img src="{% static 'assets/landing/images/nft/cart/2.webp' %}" alt="collection" class="img-fluid" />
+                <h5>مشاوره تخصصی</h5>
+                <p>مشاوره تخصصی و رایگان:</p>
+                <ul class="card-list">
+                  <li>طراحی</li>
+                  <li>نمونه‌سازی</li>
+                  <li>تولید</li> <br />
+                </ul>
+                <p>محصولات الکترونیکی و بردهای مبتنی بر سیستم</p>
+                <a class="d-flex align-items-center" href="#!">
+                  <svg>
+                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 h-100">
+              <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                <img src="{% static 'assets/landing/images/nft/cart/3.webp' %}" alt="nft" class="img-fluid" />
+                <h5>پشتیبانی سیستم عامل</h5>
+                <p>مشاوره و پشتیبانی سیستم عامل‌های مختلف:</p>
+                <ul class="card-list">
+                  <li>Linux</li>
+                  <li>Androind</li>
+                  <li>WinCe</li>
+                </ul>
+                <p>توسعه درایورهای مختلف و تغییر ساختار سیستم عامل</p>
+                <a class="d-flex align-items-center" href="#!">
+                  <svg>
+                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 h-100">
+              <div class="collection-wrapper aos-animate" data-aos="zoom-in">
+                <img src="{% static 'assets/landing/images/nft/cart/4.webp' %}" alt="sale" class="img-fluid" />
+                <h5>پشتیبانی فنی</h5>
+                <p>پشتیبانی فنی تمام محصولات ارائه شده توسط ایسیس:</p>
+                <ul class="card-list">
+                  <li>سخت افزار</li>
+                  <li>سیستم عامل</li>
+                  <li>بردهای PCB</li>
+                  <li>قطعات</li>
+                  <br />
+                  <br />
+                </ul>
+                <a class="d-flex align-items-center" href="#!">
+                  <svg>
+                    <use href="{% static 'assets/svg/icon_sprite.svg#arrow-right-1' %}"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Customer review section end -->
+
+      <!-- Feature section start -->
+      <!--         <section class="feature-style-2" id="features">
             <div class="container custom-container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -297,11 +318,11 @@
                     </div>
                 </div>
             </div>
-        </section> -->
-        <!-- Feature section end -->
+        </section>         -->
+      <!-- Feature section end -->
 
-        <!-- About section start -->
-        <!-- <section class="about-style-2" id="about-us">
+      <!-- About section start -->
+      <!--         <section class="about-style-2" id="about-us">
             <div class="container custom-container">
                 <div class="row justify-content-lg-between justify-content-center gy-md-5 gy-3">
                     <div class="col-lg-6">
@@ -333,77 +354,74 @@
                     </div>
                 </div>
             </div>
-        </section> -->
-        <!-- About section end -->
+        </section>         -->
+      <!-- About section end -->
 
-        <!-- why choose us section start -->
-        <section class="choose-style-2">
-            <div class="container custom-container">
-                <div class="row justify-content-lg-between justify-content-center gy-4">
-                    <div class="col-lg-6 col-md-8">
-                        <div class="choose-image">
-                            <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/choose-us/1.webp' %}" alt="to do app">
-                            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/choose-us/2.webp' %}"
-                                alt="chart card">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-xxl-5">
-                        <div class="title-style-1">
-                            <h2>چرا Bordino؟</h2>
-                        </div>
-                        <div class="choose-content">
-                            <ul>
-                                <li>
-                                    <div class="choose-icon primary">
-                                        <svg>
-                                            <use href="{% static 'assets/svg/icon_sprite.svg#dollar' %}"></use>
-                                        </svg>
-                                    </div>
-                                    <div class="choose-details">
-                                        <h3>ضمانت گارانتی</h3>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="choose-icon primary">
-                                        <svg>
-                                            <use href="{% static 'assets/svg/icon_sprite.svg#user-right' %}"></use>
-                                        </svg>
-                                    </div>
-                                    <div class="choose-details">
-                                        <h3>تحویل سریع</h3>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="choose-icon primary">
-                                        <svg>
-                                            <use href="{% static 'assets/svg/icon_sprite.svg#power' %}"></use>
-                                        </svg>
-                                    </div>
-                                    <div class="choose-details">
-                                        <h3>متناسب با نیاز خاص</h3>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+      <!-- why choose us section start -->
+      <section class="choose-style-2">
+        <div class="container custom-container">
+          <div class="row justify-content-lg-between justify-content-center gy-4">
+            <div class="col-lg-6 col-md-8">
+              <div class="choose-image">
+                <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/choose-us/1.webp' %}" alt="to do app" />
+                <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/choose-us/2.webp' %}" alt="chart card" />
+              </div>
             </div>
-        </section>
-
-        <!-- Brand section start -->
-        <section class="brand-style-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-  
+            <div class="col-lg-6 col-xxl-5">
+              <div class="title-style-1">
+                <h2>چرا Bordino؟</h2>
+              </div>
+              <div class="choose-content">
+                <ul>
+                  <li>
+                    <div class="choose-icon primary">
+                      <svg>
+                        <use href="{% static 'assets/svg/icon_sprite.svg#dollar' %}"></use>
+                      </svg>
                     </div>
-                </div>
+                    <div class="choose-details">
+                      <h3>ضمانت گارانتی</h3>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="choose-icon primary">
+                      <svg>
+                        <use href="{% static 'assets/svg/icon_sprite.svg#user-right' %}"></use>
+                      </svg>
+                    </div>
+                    <div class="choose-details">
+                      <h3>تحویل سریع</h3>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="choose-icon primary">
+                      <svg>
+                        <use href="{% static 'assets/svg/icon_sprite.svg#power' %}"></use>
+                      </svg>
+                    </div>
+                    <div class="choose-details">
+                      <h3>متناسب با نیاز خاص</h3>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
-        </section>
-        <!-- Brand section end -->
+          </div>
+        </div>
+      </section>
 
-        <!-- Track section start -->
-        <!-- <section class="service-style-2 track-style-2">
+      <!-- Brand section start -->
+      <section class="brand-style-1">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Brand section end -->
+
+      <!-- Track section start -->
+      <!--         <section class="service-style-2 track-style-2">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -436,11 +454,11 @@
                     </div>
                 </div>
             </div>
-        </section> -->
-        <!-- Track section end -->
+        </section>         -->
+      <!-- Track section end -->
 
-        <!-- Plan section start -->
-        <!-- <section class="plan-style-2 section-b-space" id="plan">
+      <!-- Plan section start -->
+      <!--         <section class="plan-style-2 section-b-space" id="plan">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -631,11 +649,11 @@
                     </div>
                 </div>
             </div>
-        </section> -->
-        <!-- Plan section end -->
+        </section>         -->
+      <!-- Plan section end -->
 
-        <!-- Review section start -->
-        <!-- <section class="review-style-1 review-style-2 section-b-space review">
+      <!-- Review section start -->
+      <!--         <section class="review-style-1 review-style-2 section-b-space review">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -736,78 +754,83 @@
                     </div>
                 </div>
             </div>
-        </section> -->
-        <!-- Review section end -->
+        </section>         -->
+      <!-- Review section end --> {% endcomment %}
 
-        <!-- Footer section start -->
-        <footer class="footer-style-1">
-            <div class="main-footer">
-                <div class="container">
-                    <div class="row gx-xl-5 gy-md-5 gy-4 gx-4">
-                        <div class="col-xl-4">
-                            <div class="footer-contact">
-                                <a href="index.html">
-                                    <img src="{% static 'assets/landing/images/logo/logo_dark.webp' %}" alt="logo">
-                                </a>
-                                <p>ما با تکیه بر تجربه فنی، تجهیزات دقیق و کنترل کیفیت مرحله‌به‌مرحله، خدمات طراحی و چاپ بردهای 
-                                    PCB را برای پروژه‌های صنعتی، تجاری و تحقیقاتی ارائه می‌دهیم؛ از نمونه‌سازی سریع تا تولید انبوه.</p>
-                                <ul>
-                                    <li>
-                                        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="https://in.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-md-4 col-6">
-                            <div class="footer-content">
-                                <h3>دسترسی سریع</h3>
-                                <ul class="footer-links">
-                                    <!-- <li>
+      <!-- Footer section start -->
+      <footer class="footer-style-1">
+        <div class="main-footer">
+          <div class="container">
+            <div class="row gx-xl-5 gy-md-5 gy-4 gx-4">
+              <div class="col-xl-4">
+                <div class="footer-contact">
+                  <a href="index.html"><img src="{% static 'assets/landing/images/logo/logo_dark.webp' %}" alt="logo" /></a>
+                  <p>ما با تکیه بر تجربه فنی، تجهیزات دقیق و کنترل کیفیت مرحله‌به‌مرحله، خدمات طراحی و چاپ بردهای PCB را برای پروژه‌های صنعتی، تجاری و تحقیقاتی ارائه می‌دهیم؛ از نمونه‌سازی سریع تا تولید انبوه.</p>
+                  <ul>
+                    <li>
+                      <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+                    </li>
+                    <li>
+                      <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                    </li>
+                    <li>
+                      <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                    </li>
+                    <li>
+                      <a href="https://in.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-2 col-md-4 col-6">
+                <div class="footer-content">
+                  <h3>دسترسی سریع</h3>
+                  <ul class="footer-links">
+                    <!--         <li>
                                         <a href="#">
                                             <i class="fa-solid fa-chevron-right"></i>
                                             <span>Home </span>
                                         </a>
-                                    </li> -->
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                            <span>درباره ما</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                            <span>سفارش PCB</span>
-                                        </a>
-                                    </li>
-                                    <!-- <li>
+                                    </li>         -->
+                    <li>
+                      <a href="{% url 'login' %}">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <span>ورود / ثبت نام</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'index_2' %}">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <span>سفارش PCB</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'contact_us' %}">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <span>تماس با ما</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'about_us' %}">
+                        <i class="fa-solid fa-chevron-right"></i>
+                        <span>درباره ما</span>
+                      </a>
+                    </li>
+
+                    <!--         
+                    <li>
                                         <a href="#">
                                             <i class="fa-solid fa-chevron-right"></i>
                                             <span>Blog Page</span>
                                         </a>
-                                    </li> -->
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                            <span>ورود / ثبت نام</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- <div class="col-xl-2 col-md-4 col-6">
+                                    </li>         -->
+                  </ul>
+                </div>
+              </div>
+              <!--         <div class="col-xl-2 col-md-4 col-6">
                             <div class="footer-content">
                                 <h3>Community</h3>
                                 <ul class="footer-links">
@@ -843,51 +866,50 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div> -->
-                        <div class="col-xl-4 col-md-4">
-                            <div class="footer-content">
-                                <h3>راه‌های ارتباطی</h3>
-                                <ul class="footer-location">
-                                    <li>
-                                        <div class="d-flex">
-                                            <div class="footer-icon">
-                                                <svg>
-                                                    <use href="{% static 'assets/svg/icon_sprite.svg#map-pin' %}"></use>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h6>آدرس:</h6>
-                                                <p>ایران، تبریز، بلوار 29 بهمن، دانشگاه تبریز - مرکز رشد</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="d-flex">
-                                            <div class="footer-icon">
-                                                <svg>
-                                                    <use href="{% static 'assets/svg/icon_sprite.svg#inbox' %}"></use>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h6>ایمیل:</h6>
-                                                <p>info@bordino.com</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
+                        </div>         -->
+              <div class="col-xl-4 col-md-4">
+                <div class="footer-content">
+                  <h3>راه‌های ارتباطی</h3>
+                  <ul class="footer-location">
+                    <li>
+                      <div class="d-flex">
+                        <div class="footer-icon">
+                          <svg>
+                            <use href="{% static 'assets/svg/icon_sprite.svg#map-pin' %}"></use>
+                          </svg>
                         </div>
-                    </div>
+                        <div>
+                          <h6>آدرس:</h6>
+                          <p>ایران، تبریز، بلوار 29 بهمن، دانشگاه تبریز - مرکز رشد</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex">
+                        <div class="footer-icon">
+                          <svg>
+                            <use href="{% static 'assets/svg/icon_sprite.svg#inbox' %}"></use>
+                          </svg>
+                        </div>
+                        <div>
+                          <h6>ایمیل:</h6>
+                          <p>info@bordino.com</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
+              </div>
             </div>
-            <div class="container">
-                <div class="sub-footer">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <p>کلیه حقوق این وب‌ سایت متعلق به مجموعه بردینو می‌باشد. </p>
-                        </div>
-                        <!-- <div class="col-md-6">
+          </div>
+        </div>
+        <div class="container">
+          <div class="sub-footer">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <p>کلیه حقوق این وب‌ سایت متعلق به مجموعه بردینو می‌باشد.</p>
+              </div>
+              <!--         <div class="col-md-6">
                             <ul class="footer-links sub-footer-links">
                                 <li>
                                     <a href="#">Terms</a>
@@ -899,17 +921,16 @@
                                     <a href="#">Support</a>
                                 </li>
                             </ul>
-                        </div> -->
-                    </div>
-                </div>
+                        </div>         -->
             </div>
-        </footer>
-        <!-- Footer section end -->
-
+          </div>
+        </div>
+      </footer>
+      <!-- Footer section end -->
     </main>
 
     <!-- bootstrap js -->
-    <script src="{% static 'assets/landing/js/vendors/bootstrap/dist/js/bootstrap.bundle.min' %}"></script>
+    <script src="{% static 'assets/landing/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- swiper js -->
     <script src="{% static 'assets/landing/js/vendors/swiper/swiper-bundle.min' %}"></script>
@@ -918,9 +939,6 @@
     <!-- font awesome js -->
     <script src="{% static 'assets/landing/js/vendors/fontawesome/all.min' %}"></script>
 
-
     <script src="{% static 'assets/landing/js/script.js' %}"></script>
-
-</body>
-
+  </body>
 </html>

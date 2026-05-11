@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login
 from .forms import *
 from django.views.generic import FormView
 from django.urls import reverse_lazy
@@ -33,3 +34,38 @@ class RegisterView(FormView):
         profile.save()
 
         return super().form_valid(form)
+    
+
+class LoginView(FormView):
+    form_class = LoginForm
+    template_name = "accounts/login_form.html"
+    success_url = reverse_lazy('index')
+
+    def form_valid(self, form):
+        username = form.cleaned_data['username']
+        password = form.data['login[password]']
+        is_error = False
+        if username == "":
+            is_error = True
+            form.add_error("username", "Enter your username.")
+        if password == "":
+            is_error = True
+            form.add_error("password", "Enter your password.")
+        if is_error:
+            return super().form_invalid(form)
+        else:
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(self.request, user)
+                # messages.success(self.request,  "Login successful.")
+
+                return super().form_valid(form)
+            else:
+                form.add_error(
+                    "password", "The username or password is incorrect.")
+
+        return super().form_invalid(form)
+
+
+
+
