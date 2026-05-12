@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const silkWhite = document.getElementById('silk-white');
   const silkBlack = document.getElementById('silk-black');
 
-  // تابع تنظیم وضعیت رنگ چاپ (فعال/غیرفعال + انتخاب خودکار)
   function setSilkscreen(color) {
 
     if (color === 'white') {
@@ -73,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
       silkWhite.disabled = true;   // غیرفعال کردن White
     }
     else {
-      // رنگ‌های دیگر PCB → فقط سفید فعال
       silkWhite.checked = true;
       silkWhite.disabled = false;
       silkBlack.checked = false;
@@ -81,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // وابستگی رنگ چاپ به رنگ PCB
   pcbRadios.forEach(radio => {
     radio.addEventListener('change', () => {
       const color = radio.value;
@@ -91,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // تغییر دستی کاربر روی Silkscreen
   silkWhite.addEventListener('change', function () {
     if (this.checked) setSilkscreen('white');
   });
@@ -100,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (this.checked) setSilkscreen('black');
   });
 
-  // حالت اولیه هنگام بارگذاری
   if (silkWhite.checked) setSilkscreen('white');
   if (silkBlack.checked) setSilkscreen('black');
 
@@ -123,19 +118,16 @@ const materialRadios = document.querySelectorAll('input[name="base_material"]');
 function showLayersForMaterial(material) {
     const allowed = allowedLayersForMaterial[material];
 
-    // پنهان کردن همه لایه‌ها
     layerOptions.forEach(opt => {
         opt.classList.add("hidden");
         opt.querySelector("input").checked = false;
     });
 
-    // نمایش لایه‌های مجاز
     allowed.forEach(num => {
         const el = document.querySelector(`.layer-option[data-layer="${num}"]`);
         if (el) el.classList.remove("hidden");
     });
 
-    // انتخاب اولین لایه مجاز
     const first = allowed[0];
     document.querySelector(`input[name="layers"][value="${first}"]`).checked = true;
 }
@@ -152,40 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     const baseMaterialRadios = document.querySelectorAll('input[name="base_material"]');
-//     const flexSubstrateGroup = document.querySelector('.flex-substrate-group');
-
-//     function updateUIForBaseMaterial(selectedMaterialId) {
-
-//         if (selectedMaterialId === 'flex') {
-//             flexSubstrateGroup.classList.remove('hidden');
-//         } else {
-//             flexSubstrateGroup.classList.add('hidden');
-
-//             const defaultSubstrate = document.getElementById('flex-substrate-none');
-//             if (defaultSubstrate) {
-//                 defaultSubstrate.checked = true;
-//             }
-//         }
-//     }
-
-//     // لیسنر انتخاب متریال
-//     baseMaterialRadios.forEach(radio => {
-//         radio.addEventListener('change', function () {
-//             if (this.checked) {
-//                 updateUIForBaseMaterial(this.id); // چون idها را در allowedLayersForMaterial هم استفاده می‌کنی
-//             }
-//         });
-//     });
-
-//     // مقدار اولیه (اگر صفحه با گزینه‌ای شروع می‌شود)
-//     const initiallyChecked = document.querySelector('input[name="base_material"]:checked');
-//     if (initiallyChecked) {
-//         updateUIForBaseMaterial(initiallyChecked.id);
-//     }
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
     const radios = document.querySelectorAll('input[name="base_material"]');
     const substrateWrapper = document.getElementById("substrate-wrapper");
@@ -193,15 +151,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const purple = document.getElementById("id-purple");
     const red = document.getElementById("id-red");
     const blue = document.getElementById("id-blue");
+    const ENIG = document.getElementById("id-ENIG");
+    const ENIG_input = document.getElementById("in-ENIG");
+    const HASL = document.getElementById("id-HASL");
+    const LeadFree_HASL = document.getElementById("id-LeadFree_HASL");
+    const OSP = document.getElementById("id-OSP");
     console.log(green)
     function updateSubstrateVisibility() {
         const selected = document.querySelector('input[name="base_material"]:checked');
-        if (selected && selected.value === "flex") {
+        if (selected.value === "flex") {
             substrateWrapper.classList.remove("hidden");
             green.classList.add("hidden");
             purple.classList.add("hidden");
             red.classList.add("hidden");
             blue.classList.add("hidden");
+        } else {
+            substrateWrapper.classList.add("hidden");
+            green.classList.remove("hidden");
+            purple.classList.remove("hidden");
+            red.classList.remove("hidden");
+            blue.classList.remove("hidden");
+        }
+        if (selected.value === "fr4") {
+            OSP.classList.add("hidden");
+        }else if(selected.value === "flex"){
+            OSP.classList.add("hidden");
+            HASL.classList.add("hidden");
+            LeadFree_HASL.classList.add("hidden");
+            ENIG_input.checked = true;
+
         } else {
             substrateWrapper.classList.add("hidden");
             green.classList.remove("hidden");
@@ -218,6 +196,20 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSubstrateVisibility();
 });
 document.addEventListener("DOMContentLoaded", function () {
+
+const checkbox = document.getElementById("change");
+const panel_grid = document.getElementById("panel_grid");
+const dimension = document.getElementById("dimension");
+
+checkbox.addEventListener("change", handleSwitch);
+
+function handleSwitch(e) {
+    if (e.target.checked) {
+        panel_grid.classList.remove("hidden");
+    } else {
+        panel_grid.classList.add("hidden");
+    }
+}
     const radios = document.querySelectorAll('input[name="surface_finish"]');
     const goldWrapper = document.getElementById("gold_thickness");
     function updateSubstrateVisibility() {

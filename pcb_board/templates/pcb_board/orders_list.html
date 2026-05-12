@@ -1,0 +1,77 @@
+{% extends 'base.html' %} {% load static %} {% load widget_tweaks %}
+{% load filters %}
+
+{% block styles %}
+    <style>
+        .btn-pill{
+            padding: 2px 8px 1px 8px !important;
+            font-size: 13px !important;     
+        }
+    </style>
+{% endblock %}
+
+
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="لیست سفارشات" %}
+{% endblock breadcrumb %}
+
+{% block content %}
+
+    <div class="container candidate-wrapper ">
+        <div class="card">
+          <div class="card-body candidates-box px-0">
+            <div class="table-responsive custom-scrollbar">
+              <table class="table" id="candidates-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class='hide'></th>
+                        <th>عنوان</th>
+                        <th>پروژه</th>
+                        <th>نوع</th>
+                        <th>نرخ</th>
+                        <th>تاریخ</th>
+                        <th>ویرایش</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <td></td>                         
+                            <td id='no-persian' class='hide'>-{{ item.date|date:'Ymd'  }}</td>
+                            <td class="align-middle">
+                                {{item.name}}                             
+                                {% if item.description %}
+                                <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="توضیحات" data-offset="-20px -20px" data-bs-content="{{item.description}}"><i class="fa-solid fa-info"></i></button>
+                                {% endif %}
+                            </td>
+                            {% comment %} <td class="align-middle">{{item.name}}</td> {% endcomment %}
+                            <td class="align-middle">{{item.type}}</td>
+                            {% if item.type.trade_type %}
+                                <td class="align-middle txt-danger">
+                                    {{item.cost|format_price}}
+                                </td>
+                            {% else %}
+                                <td class="align-middle txt-success">
+                                    {{item.cost|format_price}}
+                                </td>
+                            {% endif %}
+                            <td class="align-middle">{{item.date|locale_date}}</td>
+
+                            {% comment %} <td class="align-middle "><button class="mx-auto btn-icon btn btn-primary btn-icon" onclick="location.href='{% url "project_transaction_edit" item.id %}'"><i class="fa fa-pen"></i></button></td> {% endcomment %}
+                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon" onclick='set_id("{{item.id}}" , "{{item.title}}")'  data-bs-toggle="modal" data-bs-target="#delete_handler"><i class="fa fa-trash"></i></button></td>
+                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon" onclick='set_id("{{item.id}}" , "{{item.title}}")'  data-bs-toggle="modal" data-bs-target="#delete_handler"><i class="fa fa-trash"></i></button></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    {% url 'project_transaction_delete' 0 as delete_url %}
+    {% include "components/delete_modal.html" with model_fa="تراکنش" model_en="project_transaction" url=delete_url %}
+
+{%endblock%}

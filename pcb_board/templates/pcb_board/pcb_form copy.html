@@ -222,7 +222,7 @@
                             </div>
                             
                             <div class="mb-3 row align-items-center">
-                                <label class="col-sm-3">ابعاد برد</label>
+                                <label id='dimension' class="col-sm-3">ابعاد پنل</label>
 
                                 <div
                                     class="col-sm-9 d-flex align-items-center gap-2 dimension-group">
@@ -246,32 +246,20 @@
                             </div>
 
                             <div class="mb-3 row">
-                                <label class="col-sm-3">تعداد برد</label>
+                                <label class="col-sm-3" id='num'>تعداد پنل</label>
                                 <div class="col-sm-9">
                                     {{form.qty|add_class:'form-select form-select-sm dimension-unit'}}
                                 </div>
                             </div>
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">پنل شده</label>
-                                <label class="switch mx-2"><input type="checkbox"  id='change' name='panel' ><span class="switch-state"></span></label>
-                            </div>
-                            <div id='panel_grid' class="mb-3 row align-items-center hidden">
-                                <label  class="col-sm-3">چیدمان در پنل</label>
-                                <div
-                                    class="col-sm-9 d-flex align-items-center gap-2 dimension-group">
-                                    <input
-                                        class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="2" name='grid_x'>
-                                    <span class="dimension-multiply">*</span>
-                                    <input
-                                        class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="2" name='grid_y'>
-                                </div>
+                                <label class="switch mx-2"><input type="checkbox" checked id='change' name='panel' ><span class="switch-state"></span></label>
+
                             </div>
 
                             
                             
-                            <div class="card-header pt-3">
+                            <div class="card-header">
                                 <h5>مشخصات برد</h5>
                             </div>
                             <div class="my-3 row align-items-center">
@@ -449,7 +437,7 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                            <div class="card-header pt-3">
+                            <div class="card-header">
                                 <h5>جزئیات فنی</h5>
                             </div>
                             <div class="my-3 row align-items-center">
@@ -509,9 +497,9 @@
                                         {% endif %}
                                     {% endfor %}
                                 </div>
-                            {% comment %} <div class="card-header">
+                                                            {% comment %} <div class="card-header">
                                 <h5>جزئیات فنی</h5>
-                            </div> {% endcomment %}      
+                            </div> {% endcomment %}       </div>
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     min via
@@ -571,22 +559,25 @@
                                 </div>
                             </div>
                              
-                            <div class="card-header pt-3">
+                            <div class="card-header">
                                 <h5>اطلاعات تکمیلی</h5>
                             </div>
-                            <div class="my-3 row">
-                                <label class="col-sm-3"> نام برد</label>
-                                <div class="col-sm-9">
-                                    {{form.name|add_class:'form-control'}}
+
+                            <div class="my-3 row align-items-center">
+                                <label class="col-sm-3">
+                                    نام برد
+                                </label>
+                                <div class="col-sm-9 card-options p-0 ps-4">
+                                    <input class="form-control m-0"  type="text" name='name' aria-label="First name" required="">                                </div>
                                 </div>
                             </div>
-                            <div class="my-3 row">
-                                <label class="col-sm-3">توضیحات</label>
-                                <div class="col-sm-9">
-                                    {{form.description|add_class:'form-control'}}
-                                </div>
+                            <div class="my-3 row align-items-center p-0">
+                                <label class="col-sm-3">
+                                    توضیحات
+                                </label>
+                                <div class="col-sm-9 card-options">
+                                    <textarea class="form-control" name='description' rows="5"></textarea>                                </div>
                             </div>
-                           
                             <!-- ===== JavaScript ===== -->
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {

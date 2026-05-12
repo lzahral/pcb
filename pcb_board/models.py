@@ -1,9 +1,25 @@
-from django.db import models
 
+from django.db import models
+from accounts.models import  Profile
 # Create your models here.
+def hex_to_rgba(hex_color, alpha=1):
+    hex_color = hex_color.lstrip('#')
+
+    r = int(hex_color[0:2], 16)
+    g = int(hex_color[2:4], 16)
+    b = int(hex_color[4:6], 16)
+
+    return f"rgba({r}, {g}, {b}, {alpha})"
 
 
 class Board (models.Model):
+    STATE_CHOICES = [
+        ('pending', 'در دست بررسی'),
+        ('preparing', 'در پروسه تولید'),
+        ('shipping', 'در حال ارسال'),
+        ('completed', 'پایان یافته'),
+    ]
+
     BASE_MATERIAL_CHOICES = (
         ('fr4', 'FR-4'),
         ('flex', 'Flex'),
@@ -111,23 +127,23 @@ class Board (models.Model):
         ('60000', '60000'),
         ('70000', '70000'),
     )
-    MATERIAL_CHOICES = (
-        ('FR4_TG135', 'FR4 TG135'),
-        ('Nan_Ya_NP_140F', 'Nan Ya NP-140F'),
-        ('KB6164_TG135', 'KB6164 - TG135'),
-        ('S1000H_TG155', 'S1000H TG155'),
-        ('S1141_TG140', 'S1141 TG140'),
+        # MATERIAL_CHOICES = (
+        #     ('FR4_TG135', 'FR4 TG135'),
+        #     ('Nan_Ya_NP_140F', 'Nan Ya NP-140F'),
+        #     ('KB6164_TG135', 'KB6164 - TG135'),
+        #     ('S1000H_TG155', 'S1000H TG155'),
+        #     ('S1141_TG140', 'S1141 TG140'),
 
-        ('Electro_deposited', 'Electro-deposited'),
-        ('Rolled_Annealed', 'Rolled Annealed'),
+        #     ('Electro_deposited', 'Electro-deposited'),
+        #     ('Rolled_Annealed', 'Rolled Annealed'),
 
-        ('RO4350B', 'RO4350B(Dk=3.48, Df=0.0037)'),
+        #     ('RO4350B', 'RO4350B(Dk=3.48, Df=0.0037)'),
 
-        ('ZYF300CA-P', 'ZYF300CA-P(Dk=3.0, Df=0.0018)'),
-        ('ZYF300CA-C', 'ZYF300CA-C(Dk=2.94, Df=0.0016)'),
-        ('ZYF265D', 'ZYF265D(Dk=2.65, Df=0.0019)'),
-        ('ZYF255DA', 'ZYF255DA(Dk=2.55, Df=0.0018'),
-    )
+        #     ('ZYF300CA-P', 'ZYF300CA-P(Dk=3.0, Df=0.0018)'),
+        #     ('ZYF300CA-C', 'ZYF300CA-C(Dk=2.94, Df=0.0016)'),
+        #     ('ZYF265D', 'ZYF265D(Dk=2.65, Df=0.0019)'),
+        #     ('ZYF255DA', 'ZYF255DA(Dk=2.55, Df=0.0018'),
+        # )
     SURFACE_CHOICES = (
         ('HASL', 'HASL(with lead)'),
         ('LeadFree_HASL', 'LeadFree HASL'),
@@ -167,7 +183,9 @@ class Board (models.Model):
         ('fully', 'Flying Probe Fully Test'),
         ('e', 'E-Test Fixture'),
     )
-
+    
+    
+    name = models.CharField(max_length=30)
     base_material = models.CharField(
         max_length=20, choices=BASE_MATERIAL_CHOICES, default='FR_4')
     layers = models.IntegerField()
@@ -176,6 +194,8 @@ class Board (models.Model):
 
     dimension_x = models.IntegerField()
     dimension_y = models.IntegerField()
+    grid_x = models.IntegerField(null=True)
+    grid_y = models.IntegerField(null=True)
     dimension_unit = models.CharField(max_length=20,
                                       choices=UNIT_CHOICES, default='mm')
     qty = models.CharField(max_length=20,
@@ -189,8 +209,6 @@ class Board (models.Model):
         max_length=20, choices=COLOR_CHOICES, default='green')
     silkscreen = models.CharField(
         max_length=20, choices=COLOR_CHOICES, default='white')
-    material_type = models.CharField(
-        max_length=20, choices=MATERIAL_CHOICES, default='')
     surface_finish = models.CharField(
         max_length=20, choices=SURFACE_CHOICES, default='HASL')
     gold_thickness = models.CharField(max_length=20,
@@ -205,3 +223,30 @@ class Board (models.Model):
                                                choices=TOLERANCE_CHOICES, default='0.2')
     electrical_test = models.CharField(
         max_length=20, choices=TEST_CHOICES, default='random')
+    
+    description = models.TextField(verbose_name="توضیحات پروژه", blank=True)
+    state = models.CharField(
+        max_length=20, choices=STATE_CHOICES, default='pending')
+    user = models.ForeignKey(Profile, on_delete=models.SET_NULL, related_name="orders",null=True)
+    created_at = models.DateTimeField(null=True,verbose_name="تاریخ ایجاد")
+    is_deleted = models.BooleanField(default=False)
+
+
+    def priority_colors(self):
+        colors = {
+            'urgent': '#dc3545',
+            'high': '#fd7e14',
+            'medium': '#ffc107',
+            'low': '#20c997'
+        }
+
+        hex_color = colors.get(self.priority, '#6c757d')
+
+        return {
+            "text": hex_color,
+            "bg": hex_to_rgba(hex_color, 0.1)
+        }
+
+    def __str__(self):
+        return f'{self.name} - {self.user.user.get_full_name}'
+    

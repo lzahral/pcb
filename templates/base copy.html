@@ -212,10 +212,6 @@
         body{
           background-color:#f4f2f2;
         }
-        .page-title {
-            height: 36px;
-            padding-right: 5px;
-        }
     </style>
   </head>
 
@@ -237,7 +233,7 @@
     </div>
     <main>
       <!-- Header start -->
-      <header class="header-absolute bg-white">
+      <header class="header-absolute">
         <nav class="navbar navbar-expand-lg bg-light">
           <div class="custom-container container">
             <a class="navbar-brand m-0" href="index.html"><img src="{% static 'assets/landing/images/logo/logo.webp' %}" alt="logo" /></a>
@@ -276,10 +272,10 @@
             {% if request.user.is_authenticated %}
               <div class="dropdown">
                 <!-- دکمه اصلی که منو را باز می‌کند -->
-                <button class="btn btn-primary dropdown-toggle" type="button" id="myUserMenu" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-user-circle-o me-1"></i> حساب کاربری</button>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user-circle-o me-1"></i> حساب کاربری</button>
 
                 <!-- لیست کشویی -->
-                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="myUserMenu">
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenu">
                   <li>
                     <a class="dropdown-item text-end" href="{% url 'index' %}"><i class="fa fa-edit ms-2"></i> ویرایش</a>
                   </li>
@@ -306,7 +302,6 @@
       </header>
       <!-- Header start -->
       <div class='mt-5 pt-5'>
-        {% block breadcrumb %}{% endblock %}
         {% block content %}{% endblock %}
       </div>
       {% comment %} <!-- Home section start -->
@@ -1126,56 +1121,10 @@
     <script src="{% static 'assets/landing/js/vendors/fontawesome/all.min' %}"></script>
 
     <script src="{% static 'assets/landing/js/script.js' %}"></script>
-    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-    <!-- Bootstrap js-->
-    <!-- scrollbar js-->
-    <script src="{% static 'assets/js/scrollbar/simplebar.min.js' %}"></script>
-    <script src="{% static 'assets/js/scrollbar/custom.js' %}"></script>
-    <!-- Sidebar jquery-->
-    <script src="{% static 'assets/js/config.js' %}"></script>
-    <!-- Plugins JS start-->
-    <script src="{% static 'assets/js/sidebar-menu.js' %}"></script>
-    <script src="{% static 'assets/js/sidebar-pin.js' %}"></script>
-    <script src="{% static 'assets/js/clock.js' %}"></script>
-    <script src="{% static 'assets/js/slick/slick.min.js' %}"></script>
-    <script src="{% static 'assets/js/slick/slick.js' %}"></script>
-    <script src="{% static 'assets/js/header-slick.js' %}"></script>
-    <script src="{% static 'assets/js/chart/apex-chart/apex-chart.js' %}"></script>
-    <script src="{% static 'assets/js/chart/apex-chart/stock-prices.js' %}"></script>
-    <script src="{% static 'assets/js/counter/counter-custom.js' %}"></script>
-    <script src="{% static 'assets/js/notify/bootstrap-notify.min.js' %}"></script>
-    <script src="{% static 'assets/js/dashboard/default.js' %}"></script>
-    <script src="{% static 'assets/js/notify/index.js' %}"></script>
     <script src="{% static 'assets/js/datatable/datatables/jquery.dataTables.min.js' %}"></script>
     <script src="{% static 'assets/js/datatable/datatables/dataTables.js' %}"></script>
     <script src="{% static 'assets/js/datatable/datatables/dataTables.select.js' %}"></script>
     <script src="{% static 'assets/js/datatable/datatables/select.bootstrap5.js' %}"></script>
     <script src="{% static 'assets/js/datatable/datatables/datatable.custom.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead/handlebars.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead/typeahead.bundle.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead/typeahead.custom.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead-search/handlebars.js' %}"></script>
-    <script src="{% static 'assets/js/typeahead-search/typeahead-custom.js' %}"></script>
-    <script src="{% static 'assets/js/popover-custom.js' %}"></script>
-    <!-- Plugins JS Ends--><!-- Theme js-->
-    <script src="{% static 'assets/js/tooltip-init.js' %}"></script>
-
-    <script src="{% static 'assets/js/trash.js' %}"></script>
-    <script src="{% static 'assets/js/letter-box/custom-mail-pagination.js' %}"></script>
-    <script src="{% static 'assets/js/letter-box/custom-usermail.js' %}"></script>
-    <script src="{% static 'assets/js/script.js' %}"></script>
-    <script src="{% static 'assets/js/script1.js' %}"></script>
-    <script src="{% static 'assets/js/theme-customizer/customizer.js' %}"></script>
-    <script src="{% static 'assets/js/select/bootstrap-select.min.js' %}"></script>
-    <script src="{% static 'assets/js/select2/tagify.js' %}"></script>
-    <script src="{% static 'assets/js/select2/tagify.polyfills.min.js' %}"></script>
-    <script src="{% static 'assets/js/select2/intltelinput.min.js' %}"></script>
-    <script src="{% static 'assets/js/select2/telephone-input.js' %}"></script>
-    <script src="{% static 'assets/js/select2/custom-inputsearch.js' %}"></script>
-    <script src="{% static 'assets/js/select2/select3-custom.js' %}"></script>
-    <script src="{% static 'assets/js/flat-pickr/flatpickr.js' %}"></script>
-    <script src="{% static 'assets/js/flat-pickr/custom-flatpickr.js' %}"></script>
-    <script src="{% static 'assets/js/notify/custom-notify.js' %}"></script>
-    <script src="{% static 'assets/js/bs-indeterminate.js' %}"></script> 
   </body>
 </html>

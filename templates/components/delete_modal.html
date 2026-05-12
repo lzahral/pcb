@@ -1,0 +1,47 @@
+<div class="modal" id="delete_handler" style="display: none;" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-demo">
+            {% csrf_token %}
+            <div class="modal-header">
+                <h5 id='{{model_en}}_title' class="modal-title"> </h5>
+            </div>
+            <div class="modal-body py-4 my-2">
+                <h6>آیا مطمئن هستید که می‌خواهید این {{model_fa}} را حذف کنید؟</h6>
+            </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-primary" data-bs-dismiss="modal" type="button">بستن</button>
+                <button onclick='delete_item()' class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">حذف</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var item_id = null  
+
+    function set_id(id, name){
+        let title = document.getElementById('{{model_en}}_title');
+        title.innerText =`حذف ${name}` 
+        item_id= id
+    }
+    function delete_item() {
+
+    const url = "{{url}}".replace('0', item_id ).replace('model', '{{model_en}}');
+    fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('input[name=csrfmiddlewaretoken]').value,
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        location.reload();
+    })
+    .catch(error => {
+        console.log('Error:', error);
+        alert('خطا در حذف .');
+        console.log(error)
+    }); 
+    }
+</script>
