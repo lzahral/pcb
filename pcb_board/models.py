@@ -33,7 +33,7 @@ class Board (models.Model):
         ('inch', 'اینچ'),
     )
     PRODUCT_TYPE_CHOICES = (
-        ('industrial', 'صنعتی مصرفی'),
+        ('industrial', 'صنعتی / مصرفی'),
         ('aerospace', 'هوا فضا'),
         ('medical', 'پزشکی'),
     )
@@ -144,6 +144,7 @@ class Board (models.Model):
         #     ('ZYF265D', 'ZYF265D(Dk=2.65, Df=0.0019)'),
         #     ('ZYF255DA', 'ZYF255DA(Dk=2.55, Df=0.0018'),
         # )
+        
     SURFACE_CHOICES = (
         ('HASL', 'HASL(with lead)'),
         ('LeadFree_HASL', 'LeadFree HASL'),
@@ -179,9 +180,8 @@ class Board (models.Model):
         ('0.1', '±0.1mm(Precision)'),
     )
     TEST_CHOICES = (
-        ('random', 'Flying Probe Random Test'),
-        ('fully', 'Flying Probe Fully Test'),
-        ('e', 'E-Test Fixture'),
+        ('random', 'رندوم'),
+        ('fully', 'تست کامل'),
     )
     
     

@@ -16,90 +16,113 @@
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://cuba/./assets/scss/style.scss?");
+                eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://cuba/./assets/scss/style.scss?");
 
-/***/ })
+                /***/
+            })
 
-/******/ 	});
+        /******/
+    });
 /************************************************************************/
 /******/ 	// The require scope
 /******/ 	var __webpack_require__ = {};
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
 /******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
+                /******/
+            }
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
+            /******/
+        };
+        /******/
+    })();
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
 /******/ 	__webpack_modules__["./assets/scss/style.scss"](0, __webpack_exports__, __webpack_require__);
-/******/ 	
-/******/ })()
-;
+    /******/
+    /******/
+})()
+    ;
 
 // ------------------------------------------------------------
 // PCB Color + Silkscreen Logic (custom code)
 // ------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-  const pcbRadios = document.querySelectorAll('input[name="pcb_color"]');
+  // همه رنگ‌های PCB
+  const pcbRadios = document.querySelectorAll('input[name="PCB_color"]');
+
+  // چاپ‌ها
   const silkWhite = document.getElementById('silk-white');
   const silkBlack = document.getElementById('silk-black');
 
-  function setSilkscreen(color) {
-
-    if (color === 'white') {
-      silkWhite.checked = true;
-      silkWhite.disabled = false;
-      silkBlack.checked = false;
-      silkBlack.disabled = true;   // غیرفعال کردن Black
-    } 
-    else if (color === 'black') {
-      silkBlack.checked = true;
-      silkBlack.disabled = false;
-      silkWhite.checked = false;
-      silkWhite.disabled = true;   // غیرفعال کردن White
-    }
-    else {
-      silkWhite.checked = true;
-      silkWhite.disabled = false;
-      silkBlack.checked = false;
-      silkBlack.disabled = true;
-    }
+  // آیدی‌ها را چک کنیم (برای جلوگیری از null error)
+  if (!pcbRadios.length || !silkWhite || !silkBlack) {
+    console.error("PCB or silkscreen fields not found in DOM");
+    return;
   }
 
+  // از بین بردن loop: فقط PCB تصمیم می‌گیرد
+  function applySilkscreen(pcbColor) {
+
+    const colorsWhiteSilk = ['green', 'purple', 'red', 'yellow', 'blue']; 
+    // سازگار با name/value رادیوهای شما
+
+    if (pcbColor === 'white') {
+      // PCB سفید → چاپ مشکی
+      silkBlack.disabled = false;
+      silkBlack.checked = true;
+
+      silkWhite.disabled = true;
+      silkWhite.checked = false;
+    }
+    else if (pcbColor === 'black') {
+      // PCB مشکی → چاپ سفید
+      silkWhite.disabled = false;
+      silkWhite.checked = true;
+
+      silkBlack.disabled = true;
+      silkBlack.checked = false;
+    }
+    else if (colorsWhiteSilk.includes(pcbColor)) {
+      // رنگ‌های رنگی → چاپ سفید
+      silkWhite.disabled = false;
+      silkWhite.checked = true;
+
+      silkBlack.disabled = true;
+      silkBlack.checked = false;
+    }
+
+    // ارسال رویداد برای هر سیستم قیمت‌دهی / فرم
+    silkWhite.dispatchEvent(new Event('change', { bubbles: true }));
+   silkBlack.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+
+  // وقتی PCB تغییر می‌کند
   pcbRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      const color = radio.value;
-      if (color === 'black') setSilkscreen('white');
-      else if (color === 'white') setSilkscreen('black');
-      else setSilkscreen('white');
+    radio.addEventListener('change', function () {
+      applySilkscreen(this.value);
     });
   });
 
-  silkWhite.addEventListener('change', function () {
-    if (this.checked) setSilkscreen('white');
-  });
-
-  silkBlack.addEventListener('change', function () {
-    if (this.checked) setSilkscreen('black');
-  });
-
-  if (silkWhite.checked) setSilkscreen('white');
-  if (silkBlack.checked) setSilkscreen('black');
+  // حالت اولیه (مثلاً هنگام edit فرم)
+  const initial = document.querySelector('input[name="PCB_color"]:checked');
+  if (initial) applySilkscreen(initial.value);
 
 });
+
+
 
 
 // Base Materials' Layers 
@@ -174,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (selected.value === "fr4") {
             OSP.classList.add("hidden");
-        }else if(selected.value === "flex"){
+        } else if (selected.value === "flex") {
             OSP.classList.add("hidden");
             HASL.classList.add("hidden");
             LeadFree_HASL.classList.add("hidden");
@@ -197,19 +220,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 document.addEventListener("DOMContentLoaded", function () {
 
-const checkbox = document.getElementById("change");
-const panel_grid = document.getElementById("panel_grid");
-const dimension = document.getElementById("dimension");
+    const checkbox = document.getElementById("change");
+    const panel_grid = document.getElementById("panel_grid");
+    const dimension = document.getElementById("dimension");
 
-checkbox.addEventListener("change", handleSwitch);
+    checkbox.addEventListener("change", handleSwitch);
 
-function handleSwitch(e) {
-    if (e.target.checked) {
-        panel_grid.classList.remove("hidden");
-    } else {
-        panel_grid.classList.add("hidden");
+    function handleSwitch(e) {
+        if (e.target.checked) {
+            panel_grid.classList.remove("hidden");
+        } else {
+            panel_grid.classList.add("hidden");
+        }
     }
-}
     const radios = document.querySelectorAll('input[name="surface_finish"]');
     const goldWrapper = document.getElementById("gold_thickness");
     function updateSubstrateVisibility() {

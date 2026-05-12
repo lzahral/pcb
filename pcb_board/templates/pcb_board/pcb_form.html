@@ -69,7 +69,7 @@
             <div class="card-header">
                 <h5>PCB</h5>
             </div>
-            <form method="POST" class=' row px-3'  enctype="multipart/form-data" >
+            <form method="POST" class="row px-3  enctype='multipart/form-data'" >
                 {% csrf_token %}
                 <div class="card-body custom-input">
                     <div class="row">
@@ -88,7 +88,7 @@
                                 <div class="col-sm-9 ">
                                     <div class="pcb-options">
 
-                                        <input type="radio" name="base_material" id="fr4" value='fr4'
+                                        <input type="radio" name="base_material" id="fr4" value="fr4"
                                             checked>
                                         <label for="fr4" class="pcb-card">
                                             <img src="{% static 'assets/images/pcb/fr4.png'%}" 
@@ -96,7 +96,7 @@
                                             <span>FR‑4</span>
                                         </label>
 
-                                        <input type="radio" name="base_material" id="flex" value='flex'
+                                        <input type="radio" name="base_material" id="flex" value="flex"
                                             value="flex">
                                         <label for="flex" class="pcb-card">
                                             <img src="{% static 'assets/images/pcb/flex.png'%}" 
@@ -104,7 +104,7 @@
                                             <span>Flex</span>
                                         </label>
 
-                                        <input type="radio" name="base_material" id="aluminum" value='aluminum'>
+                                        <input type="radio" name="base_material" id="aluminum" value="aluminum">
                                         <label for="aluminum" class="pcb-card">
 
                                             <img src="{% static 'assets/images/pcb/aluminum.png'%}" 
@@ -113,21 +113,21 @@
                                         </label>
 
                                         <input type="radio" name="base_material"
-                                            id="copper-core" value='copper'>
+                                            id="copper-core" value="copper">
                                         <label for="copper-core" class="pcb-card">
                                             <img src="{% static 'assets/images/pcb/copper.png'%}"
                                                 alt="Copper Core PCB">
                                             <span>Copper Core</span>
                                         </label>
 
-                                        <input type="radio" name="base_material" id="rogers" value='rogers'>
+                                        <input type="radio" name="base_material" id="rogers" value="rogers">
                                         <label for="rogers" class="pcb-card">
                                             <img src="{% static 'assets/images/pcb/rogers.png'%}"
                                                 alt="Rogers PCB">
                                             <span>Rogers</span>
                                         </label>
 
-                                        <input type="radio" name="base_material" id="PTFE" value='ptfe'>
+                                        <input type="radio" name="base_material" id="PTFE" value="ptfe">
                                         <label for="PTFE" class="pcb-card">
                                             <img src="{% static 'assets/images/pcb/ptfe.png'%}"
                                                 alt="PTFE Teflon PCB">
@@ -229,15 +229,15 @@
 
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="100" name='dimension_x'>
+                                        type="number" placeholder="100" name="dimension_x">
 
                                     <span class="dimension-multiply">*</span>
 
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="100" name='dimension_y'>
+                                        type="number" placeholder="100" name="dimension_y">
 
-                                    <select class="form-select form-select-sm dimension-unit" name='dimension_unit'>
+                                    <select class="form-select form-select-sm dimension-unit" name="dimension_unit">
                                         <option value="mm" checked>میلی‌متر</option>
                                         <option value="inch">اینچ</option>
                                     </select>
@@ -253,19 +253,19 @@
                             </div>
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">پنل شده</label>
-                                <label class="switch mx-2"><input type="checkbox"  id='change' name='panel' ><span class="switch-state"></span></label>
+                                <label class="switch mx-2"><input type="checkbox"  id="change" name="panel" ><span class="switch-state"></span></label>
                             </div>
-                            <div id='panel_grid' class="mb-3 row align-items-center hidden">
+                            <div id="panel_grid" class="mb-3 row align-items-center hidden">
                                 <label  class="col-sm-3">چیدمان در پنل</label>
                                 <div
                                     class="col-sm-9 d-flex align-items-center gap-2 dimension-group">
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="2" name='grid_x'>
+                                        type="number" placeholder="2" name="grid_x">
                                     <span class="dimension-multiply">*</span>
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="2" name='grid_y'>
+                                        type="number" placeholder="2" name="grid_y">
                                 </div>
                             </div>
 
@@ -514,7 +514,7 @@
                             </div> {% endcomment %}      
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
-                                    min via
+                                    Min via
                                     <button
                                         class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
                                         type="button" data-bs-trigger="hover"
@@ -543,7 +543,7 @@
                             </div>
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
-                                    board outline tolerance
+                                    Board Outline Tolerance
                                     <button
                                         class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
                                         type="button" data-bs-trigger="hover"
@@ -569,6 +569,38 @@
                                         {% endif %}
                                     {% endfor %}
                                 </div>
+                                
+                            </div>
+
+                            <div class="mb-3 row align-items-center">
+                                <label class="col-sm-3">
+                                    تست الکتریکال
+                                    <button
+                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
+                                        type="button" data-bs-trigger="hover"
+                                        data-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom" title="توضیحات"
+                                        data-offset="-20px -20px" data-bs-content="تست"><i
+                                            class="fa-solid fa-info"></i></button>
+                                </label>
+                                <div class="col-sm-9 card-options">
+                                    {% for value, label in form.electrical_test.field.choices %}
+                                        {% if value %}
+                                            <label class="item-card">
+                                                <input 
+                                                    type="radio"
+                                                    name="{{ form.electrical_test.name }}"
+                                                    value="{{ value }}"
+                                                    {% if form.electrical_test.value == value %}checked{% endif %}
+                                                >
+                                                <span class="card-content">
+                                                    {{ label }}
+                                                </span>
+                                            </label>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                
                             </div>
                              
                             <div class="card-header pt-3">

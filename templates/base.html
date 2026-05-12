@@ -276,10 +276,10 @@
             {% if request.user.is_authenticated %}
               <div class="dropdown">
                 <!-- دکمه اصلی که منو را باز می‌کند -->
-                <button class="btn btn-primary dropdown-toggle" type="button" id="myUserMenu" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-user-circle-o me-1"></i> حساب کاربری</button>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="true"><i class="fa fa-user-circle-o me-1"></i> حساب کاربری</button>
 
                 <!-- لیست کشویی -->
-                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="myUserMenu">
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenu">
                   <li>
                     <a class="dropdown-item text-end" href="{% url 'index' %}"><i class="fa fa-edit ms-2"></i> ویرایش</a>
                   </li>
