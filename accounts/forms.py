@@ -9,9 +9,9 @@ class RegisterForm(forms.ModelForm):
     first_name = forms.CharField(label=" نام", max_length=150)
     last_name = forms.CharField(label="نام خانوادگی", max_length=150)
     email = forms.EmailField(label="ایمیل")
-    password1 = forms.CharField(widget=forms.PasswordInput, label="پسورد")
+    password1 = forms.CharField(widget=forms.PasswordInput, label="رمز عبور")
     password2 = forms.CharField(
-        widget=forms.PasswordInput, label="تکرار پسورد")
+        widget=forms.PasswordInput, label="تکرار رمز عبور")
 
     class Meta:
         model = Profile

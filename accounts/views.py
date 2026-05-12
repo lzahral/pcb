@@ -17,7 +17,7 @@ class RegisterView(FormView):
         data = form.cleaned_data
 
         if data['password1'] != data['password2']:
-            form.add_error("password1", "پسوردها مطابقت ندارند.")
+            form.add_error("password1", "رمز عبورها مطابقت ندارند.")
             return super().form_invalid(form)
 
 
@@ -47,10 +47,10 @@ class LoginView(FormView):
         is_error = False
         if username == "":
             is_error = True
-            form.add_error("username", "Enter your username.")
+            form.add_error("username", "ایمیل خود را وارد کنید.")
         if password == "":
             is_error = True
-            form.add_error("password", "Enter your password.")
+            form.add_error("password", "رمز عبور خود را وارد کنید.")
         if is_error:
             return super().form_invalid(form)
         else:
@@ -62,7 +62,7 @@ class LoginView(FormView):
                 return super().form_valid(form)
             else:
                 form.add_error(
-                    "password", "The username or password is incorrect.")
+                    "password", "ایمیل یا رمز عبور اشتباه است.")
 
         return super().form_invalid(form)
 

@@ -166,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (selected) showLayersForMaterial(selected.id);
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const radios = document.querySelectorAll('input[name="base_material"]');
     const substrateWrapper = document.getElementById("substrate-wrapper");

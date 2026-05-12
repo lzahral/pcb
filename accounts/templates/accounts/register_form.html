@@ -142,6 +142,9 @@
       .txt-danger{
         font-size: 14px;
       }
+      .text-color{
+        background-color: #f3f3ff !important;
+      }
     </style>
     <title>
       MÂD Mail Service
@@ -167,70 +170,115 @@
               </div>
               <div class="login-main">
                 
-                <form class=" row" method="POST">
+                <form class=" row theme-form" method="POST">
                   
                   {% csrf_token %}
                   {{form.password.errors}}
                   <h4>ایجاد حساب کاربری</h4>
+                  <p>مشخصات خود را برای ایجاد حساب وارد کنید.</p>
                   <br>
                   {% comment %} <p>ایمیل و پسورد خود را برای ورود وارد کنید.</p> {% endcomment %}
                   {% for field in form %}
-                      <div class="py-2 px-3 m-0 {% if field.name == 'address' %}col-sm-12{% else %}col-md-6{% endif %}">
-                          <label class='form-label pt-2 pb-0'>{{ field.label }}<span class='txt-danger px-1'>*</span></label>
-                          {{ field|add_class:'form-control'}}
+                       {% if field.name == 'address' %}
+                      <div class="py-2 px-3 m-0col-sm-12">
+                          <label class='form-label pt-2 pb-0'>{{ field.label }}
+                                {% if field.field.required %}
+                                    <span class='txt-danger px-1'>*</span>
+                                {% endif %}
+                          </label>
+                          <textarea name="address" cols="40" rows="7" class="form-control text-color" required="" id="id_address"></textarea>
                           {% if field.errors %}
                               <p class="txt-danger">{{ field.errors|striptags }}</p> 
                           {% endif %}
                       </div>
+                      {% elif   field.name == 'password1' %}
+                      <div class="form-group py-2 px-3 m-0  col-sm-6">
+                        <label class="col-form-label">رمز عبور <span class='txt-danger px-1'>*</span></label>
+                        <div class="form-input position-relative" dir="ltr">
+                            <input class="form-control" type="password" name="password1" required id="passwordField1" />
+                            <div class="show-hide">
+                                <span onclick="togglePasswordVisibility('passwordField1', 'eyeIcon1')">
+                                    <i id='eyeIcon1' class="fa-solid fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        {% if form.password1.errors %}
+                          <p class="txt-danger mb-0">{{ form.password1.errors|striptags }}</p>
+                        {% endif %}
+                      </div>
+                      {% elif   field.name == 'password2' %}
+                        <div class="form-group py-2 px-3 m-0  col-sm-6">
+                          <label class="col-form-label">تکرار رمز عبور<span class='txt-danger px-1'>*</span></label>
+                          <div class="form-input position-relative" dir="ltr">
+                              <input class="form-control" type="password" name="password2" required id="passwordField2" />
+                              <div class="show-hide">
+                                  <span onclick="togglePasswordVisibility('passwordField2', 'eyeIcon2')">
+                                      <i id='eyeIcon2' class="fa-solid fa-eye"></i>
+                                  </span>
+                              </div>
+                          </div>
+                          {% if form.password1.errors %}
+                            <p class="txt-danger mb-0">{{ form.password2.errors|striptags }}</p>
+                          {% endif %}
+                        </div>
+                      {% else %}
+                        <div class="py-2 px-3 m-0 col-sm-6">
+                          <label class='form-label pt-2 pb-0'>{{ field.label }}
+                                {% if field.field.required %}
+                                    <span class='txt-danger px-1'>*</span>
+                                {% endif %}
+                          </label>
+                          <div {% if field.name == 'email' %}dir='ltr'{% endif %}>
+                            {{ field|add_class:'form-control'}}
+                          </div>
+                          {% if field.errors %}
+                              <p class="txt-danger">{{ field.errors|striptags }}</p> 
+                          {% endif %}
+                      </div>
+                      {% endif %}
                   {% endfor %}
                     <div class="text-end">
                       <button
                         class="btn btn-primary btn-block w-100 mt-3"
                         type="submit"
                       >
-                        ورود
+                        ثبت‌نام
                       </button>
                     </div>
+                    <div class="mt-3">
+                    <p class='mb-0'>
+                      حساب کاربری دارید؟
+                      <a href="{% url "login" %}" class="txt-primary fw-bold">
+                        ورود.
+                      </a>
+                
+                    </p>
                   </div>
-                  {% comment %}
-                  <h6 class="text-muted mt-4 or">Or Sign in with</h6>
-                  <div class="social mt-4">
-                    <div class="btn-showcase">
-                      <a
-                        class="btn btn-light"
-                        href="https://www.linkedin.com/login"
-                        target="_blank"
-                        ><i class="fa-brands fa-linkedin-in"></i></a
-                      ><a
-                        class="btn btn-light"
-                        href="https://twitter.com/login?lang=en"
-                        target="_blank"
-                        ><i class="fa-brands fa-x-twitter"></i></a
-                      ><a
-                        class="btn btn-light"
-                        href="https://www.facebook.com/"
-                        target="_blank"
-                        ><i class="fa-brands fa-facebook-f"></i></a
-                      ><a
-                        class="btn btn-light"
-                        href="https://www.google.com/"
-                        target="_blank"
-                        ><i class="fa-brands fa-google"></i
-                      ></a>
-                    </div>
                   </div>
-                  <p class="mt-4 mb-0 text-center">
-                    Don't have account?<a class="ms-2" href="sign-up.html"
-                      >Create Account</a
-                    >
-                  </p>
-                  {% endcomment %}
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <script>
+        function togglePasswordVisibility(passwordInputId, eyeIconId) {
+            var passwordInput = document.getElementById(passwordInputId);
+            var eyeIcon = document.getElementById(eyeIconId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+
+
+      </script>
       <!-- latest jquery-->
       <script src="{% static 'assets/js/jquery.min.js' %}"></script>
       <!-- Bootstrap js-->

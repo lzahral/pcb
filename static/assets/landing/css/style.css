@@ -21485,11 +21485,5 @@ ul.card-list li::before {
     margin-bottom: 10px;
 }
 
-
-/* حذف مربع اضافی از کنار آیکون چشم */
-.show-hide span::before,
-.show-hide span.toggle-password::before,
-.show-hide span.toggle-password.show::before {
-  content: none !important;
-  display: none !important;
-}
+/*  */
+/* "\f06e" */
