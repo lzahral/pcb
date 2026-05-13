@@ -16,6 +16,6 @@ class OrdersListView(ListView):
     context_object_name = "data"
     model = Board
 
-    # def get_queryset(self):
-    #     # queryset = Board.objects.filter(is_deleted = False)
-    #     return queryset
+    def get_queryset(self):
+        queryset = Board.objects.filter(user = self.request.user.profile)
+        return queryset

@@ -1114,7 +1114,27 @@
       </footer>
       <!-- Footer section end -->
     </main>
+    <script>
+      function toPersianDigits(str) {
+          return str.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+      }
 
+      function convertTextNodes(node, ignoreId) {
+          if (node.id === ignoreId || (node.closest && node.closest('#' + ignoreId))) {
+              return;
+          }
+
+          if (node.nodeType === 3) {
+              node.nodeValue = toPersianDigits(node.nodeValue);
+          } else {
+              node.childNodes.forEach(child => convertTextNodes(child, ignoreId));
+          }
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+          convertTextNodes(document.body, 'no-persian');
+    });
+    </script>
     <!-- bootstrap js -->
     <script src="{% static 'assets/landing/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 

@@ -14,7 +14,7 @@ def hex_to_rgba(hex_color, alpha=1):
 
 class Board (models.Model):
     STATE_CHOICES = [
-        ('pending', 'در دست بررسی'),
+        ('pending', 'در حال بررسی'),
         ('preparing', 'در پروسه تولید'),
         ('shipping', 'در حال ارسال'),
         ('completed', 'پایان یافته'),
@@ -143,8 +143,7 @@ class Board (models.Model):
         #     ('ZYF300CA-C', 'ZYF300CA-C(Dk=2.94, Df=0.0016)'),
         #     ('ZYF265D', 'ZYF265D(Dk=2.65, Df=0.0019)'),
         #     ('ZYF255DA', 'ZYF255DA(Dk=2.55, Df=0.0018'),
-        # )
-        
+        # )  
     SURFACE_CHOICES = (
         ('HASL', 'HASL(with lead)'),
         ('LeadFree_HASL', 'LeadFree HASL'),
@@ -194,8 +193,8 @@ class Board (models.Model):
 
     dimension_x = models.IntegerField()
     dimension_y = models.IntegerField()
-    grid_x = models.IntegerField(null=True)
-    grid_y = models.IntegerField(null=True)
+    grid_x = models.IntegerField(null=True, blank=True)
+    grid_y = models.IntegerField(null=True, blank=True)
     dimension_unit = models.CharField(max_length=20,
                                       choices=UNIT_CHOICES, default='mm')
     qty = models.CharField(max_length=20,
@@ -223,24 +222,25 @@ class Board (models.Model):
                                                choices=TOLERANCE_CHOICES, default='0.2')
     electrical_test = models.CharField(
         max_length=20, choices=TEST_CHOICES, default='random')
-    
-    description = models.TextField(verbose_name="توضیحات پروژه", blank=True)
+    description = models.TextField(verbose_name="توضیحات پروژه", blank=True, null=True)
+
+    cost = models.PositiveIntegerField(verbose_name="قیمت", null=True, blank=True)
     state = models.CharField(
-        max_length=20, choices=STATE_CHOICES, default='pending')
-    user = models.ForeignKey(Profile, on_delete=models.SET_NULL, related_name="orders",null=True)
-    created_at = models.DateTimeField(null=True,verbose_name="تاریخ ایجاد")
+        max_length=20, choices=STATE_CHOICES, default='pending',blank=True)
+    user = models.ForeignKey(Profile, on_delete=models.SET_NULL, related_name="orders",null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
     is_deleted = models.BooleanField(default=False)
 
 
-    def priority_colors(self):
+    def state_colors(self):
         colors = {
-            'urgent': '#dc3545',
-            'high': '#fd7e14',
-            'medium': '#ffc107',
-            'low': '#20c997'
+            'pending': "#35b5dc",
+            'preparing': '#fd7e14',
+            'shipping': '#ffc107',
+            'completed': '#20c997'
         }
 
-        hex_color = colors.get(self.priority, '#6c757d')
+        hex_color = colors.get(self.state, '#6c757d')
 
         return {
             "text": hex_color,
@@ -248,5 +248,5 @@ class Board (models.Model):
         }
 
     def __str__(self):
-        return f'{self.name} - {self.user.user.get_full_name}'
+        return f'{self.name} - {self.user.user.get_full_name()}'
     

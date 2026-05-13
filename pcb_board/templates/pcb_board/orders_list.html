@@ -21,47 +21,42 @@
         <div class="card">
           <div class="card-body candidates-box px-0">
             <div class="table-responsive custom-scrollbar">
-              <table class="table" id="candidates-table">
+              <table class="table text-center" id="candidates-table">
                 <thead>
                     <tr>
                         <th></th>
                         <th class='hide'></th>
-                        <th>عنوان</th>
-                        <th>پروژه</th>
-                        <th>نوع</th>
-                        <th>نرخ</th>
-                        <th>تاریخ</th>
-                        <th>ویرایش</th>
-                        <th>حذف</th>
+                        <th class="text-center">عنوان</th>
+                        <th class="text-center">تاریخ</th>
+                        <th class="text-center">وضعیت</th>
+                        <th class="text-center">قیمت</th>
+                        <th class="text-center">مشاهده سفارش</th>
+                        <th class="text-center">فاکتور</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in data %}
                         <tr>
                             <td></td>                         
-                            <td id='no-persian' class='hide'>-{{ item.date|date:'Ymd'  }}</td>
+                            <td id='no-persian' class='hide'>-{{ item.created_at|date:'Ymd'  }}</td>
                             <td class="align-middle">
                                 {{item.name}}                             
-                                {% if item.description %}
+                                {% comment %} {% if item.description %}
                                 <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="توضیحات" data-offset="-20px -20px" data-bs-content="{{item.description}}"><i class="fa-solid fa-info"></i></button>
-                                {% endif %}
+                                {% endif %} {% endcomment %}
                             </td>
-                            {% comment %} <td class="align-middle">{{item.name}}</td> {% endcomment %}
-                            <td class="align-middle">{{item.type}}</td>
-                            {% if item.type.trade_type %}
-                                <td class="align-middle txt-danger">
-                                    {{item.cost|format_price}}
-                                </td>
-                            {% else %}
-                                <td class="align-middle txt-success">
-                                    {{item.cost|format_price}}
-                                </td>
-                            {% endif %}
-                            <td class="align-middle">{{item.date|locale_date}}</td>
-
-                            {% comment %} <td class="align-middle "><button class="mx-auto btn-icon btn btn-primary btn-icon" onclick="location.href='{% url "project_transaction_edit" item.id %}'"><i class="fa fa-pen"></i></button></td> {% endcomment %}
-                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon" onclick='set_id("{{item.id}}" , "{{item.title}}")'  data-bs-toggle="modal" data-bs-target="#delete_handler"><i class="fa fa-trash"></i></button></td>
-                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon" onclick='set_id("{{item.id}}" , "{{item.title}}")'  data-bs-toggle="modal" data-bs-target="#delete_handler"><i class="fa fa-trash"></i></button></td>
+                            <td class="align-middle">{{item.created_at|locale_date}}</td>
+                            <td class="align-middle">
+                                <span class="badge"
+                                    style="background-color: {{ item.state_colors.bg }}; color: {{ item.state_colors.text}};">
+                                    {{item.get_state_display}}
+                                </span>
+                            </td>
+                            <td class="align-middle">
+                                {% if item.cost %}{{item.cost|format_price}}{% else %} - {% endif %}
+                            </td>
+                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon" onclick='set_id("{{item.id}}" , "{{item.title}}")'  data-bs-toggle="modal" data-bs-target="#delete_handler"><i class="fa fa-eye"></i></button></td>
+                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon" onclick='set_id("{{item.id}}" , "{{item.title}}")'  data-bs-toggle="modal" data-bs-target="#delete_handler"><i class="far fa-file-alt"></i></button></td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -69,6 +64,11 @@
             </div>
           </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 
     {% url 'project_transaction_delete' 0 as delete_url %}
