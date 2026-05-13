@@ -281,7 +281,7 @@
                 <!-- لیست کشویی -->
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="userMenu">
                   <li>
-                    <a class="dropdown-item text-end" href="{% url 'index' %}"><i class="fa fa-edit ms-2"></i> ویرایش</a>
+                    <a class="dropdown-item text-end" href="{% url 'profile_edit' %}"><i class="fa fa-edit ms-2"></i> ویرایش</a>
                   </li>
                   <li>
                     <a class="dropdown-item text-end" href="{% url 'orders_list' %}"><i class="fa fa-shopping-basket ms-2"></i> سفارشات</a>
@@ -1114,6 +1114,26 @@
       </footer>
       <!-- Footer section end -->
     </main>
+        <script>
+      {% if messages %}
+        {% for message in messages %}
+          (function ($) {
+          "use strict";
+          var notify = $.notify('<i class="fa-regular fa-bell"></i>{{message}}.', {
+              type: "theme",
+              allow_dismiss: true,
+              delay: 2000,
+              timer: 300,
+              animate: {
+              enter: "animated fadeInDown",
+              exit: "animated fadeOutUp",
+              },
+          });
+
+          })(jQuery);
+        {% endfor %}
+      {% endif %}
+    </script>
     <script>
       function toPersianDigits(str) {
           return str.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);

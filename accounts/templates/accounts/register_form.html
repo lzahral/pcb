@@ -197,9 +197,7 @@
                         <div class="form-input position-relative" dir="ltr">
                             <input class="form-control" type="password" name="password1" required id="passwordField1" />
                             <div class="show-hide">
-                                <span onclick="togglePasswordVisibility('passwordField1', 'eyeIcon1')">
-                                    <i id='eyeIcon1' class="fa-solid fa-eye"></i>
-                                </span>
+                                <span onclick="togglePasswordVisibility('passwordField1', 'eyeIcon1')"></span>
                             </div>
                         </div>
                         {% if form.password1.errors %}
@@ -212,9 +210,7 @@
                           <div class="form-input position-relative" dir="ltr">
                               <input class="form-control" type="password" name="password2" required id="passwordField2" />
                               <div class="show-hide">
-                                  <span onclick="togglePasswordVisibility('passwordField2', 'eyeIcon2')">
-                                      <i id='eyeIcon2' class="fa-solid fa-eye"></i>
-                                  </span>
+                                  <span onclick="togglePasswordVisibility('passwordField2', 'eyeIcon2')"></span>
                               </div>
                           </div>
                           {% if form.password1.errors %}

@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import *
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from .forms import *
 # Create your views here.
 
 
@@ -65,6 +67,62 @@ class LoginView(FormView):
                     "password", "ایمیل یا رمز عبور اشتباه است.")
 
         return super().form_invalid(form)
+
+
+class ProfileUpdateView(LoginRequiredMixin, TemplateView):
+    template_name = "accounts/profile_form.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        profile = self.request.user.profile
+
+        context["profile_form"] = kwargs.get(
+            "profile_form",
+            ProfileForm(user=self.request.user)
+        )
+
+        context["password_form"] = kwargs.get(
+            "password_form",
+            PasswordChangeForm(user=self.request.user)
+        )
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+
+        if "update_profile" in request.POST:
+            profile_form = ProfileForm(
+                request.POST,
+                request.FILES,
+                user=request.user
+            )
+
+            if profile_form.is_valid():
+                profile_form.save()
+                return redirect("profile_edit")
+
+            return self.render_to_response(
+                self.get_context_data(profile_form=profile_form)
+            )
+
+        elif "change_password" in request.POST:
+            password_form = PasswordChangeForm(
+                user=request.user,
+                data=request.POST
+            )
+
+            if password_form.is_valid():
+                user = password_form.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, "  پسورد با موفقیت تغییر کرد")
+                return redirect("profile_edit")
+
+            return self.render_to_response(
+                self.get_context_data(password_form=password_form)
+            )
+
+        return redirect("profile_edit")
 
 
 

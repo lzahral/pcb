@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% load static %} {% load widget_tweaks %}
+
+{% block styles %}
+    <style>
+        input[type="file"]{
+            display: none;
+        }   
+        .hide{
+            display: none;
+        }
+        .custom-file-upload{
+            background-color: #7366ff !important;
+            display: block;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            right: 90px;
+            top: 115px;
+            }
+        .custom-file-upload i {
+            padding: 7px;
+            font-size: 15px;
+            color:white;
+        }
+        #display-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+{% endblock styles %}
+
+
+
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="حساب کاربری" home_url="dashboard-01.html" level1="Letters"  level2='Add' %}
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class='container'>
+    <div class=" card height-equal ">
+        <div class="card-body ">
+            <form method="POST" class=' row px-3'  enctype="multipart/form-data" >
+                {% csrf_token %}
+                {% for field in profile_form %} 
+                    <div class=" py-2 px-3 m-0 col-{% if field.name == 'address' or field.name == 'avatar' %}12{% else %}6{% endif %}">
+                        <div class=' pt-2 pb-1'>
+                                {{field.label}}
+                            </div>
+                            {{ field|add_class:"form-control col-4" }}
+                        {% if field.errors %}
+                            <p class="txt-danger mb-0">{{ field.errors|striptags}}</p> 
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div class="col-12 pt-3 text-center">
+                    <button type="submit" class="btn btn-primary px-5" name="update_profile">تایید</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="card height-equal mt-3">
+        <div class="card-body ">
+            <form method="POST" class=' row px-3'  enctype="multipart/form-data" >
+                {% csrf_token %}
+                {% for field in password_form %} 
+                    <div class=" py-2 px-3 m-0 col-6">
+                        <div class=' pt-2 pb-1'>
+                            {{field.label}}
+                        </div>
+                        {{ field|add_class:"form-control col-12" }}
+                        {% if field.errors %}
+                            <p class="txt-danger mb-0">{{ field.errors|striptags}}</p> 
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div class="col-12 pt-3 text-center">
+                    <button type="submit" class="btn btn-primary px-5" name="change_password">تغییر پسورد</button>
+                </div>
+            </form>
+        </div>
+    </div>            
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+    
+    <script>
+        const imgInput = document.querySelector("#id_avatar")
+        const displayImg = document.querySelector("#display-img")
+        imgInput.addEventListener('change',
+        (event)=>{
+            const imgObject = event.target.files[0]
+            displayImg.src = URL.createObjectURL(imgObject)})
+    </script>
+{% endblock scripts %}
+

@@ -100,13 +100,11 @@
                     <p class="txt-danger mb-0">{{ form.username.errors|striptags }}</p>
                   {% endif %}
                   <div class="form-group">
-
-
                     <label class="col-form-label">رمز عبور</label>
                     <div class="form-input position-relative" dir="ltr">
                       <input class="form-control" type="password" name="login[password]" />
                       <div class="show-hide">
-                        <span onclick='toggleEye()'><i id='eye'  class="fa-solid fa-eye"></i></span>
+                        <span></span>
                       </div>
                     </div>
                     {% if form.password.errors %}
@@ -125,7 +123,6 @@
                       <a href="{% url "register" %}" class="txt-primary fw-bold">
                          ثبت‌نام.
                       </a>
-                      
                     </p>
                   </div>
                   {% comment %}

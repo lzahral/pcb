@@ -6,7 +6,7 @@ urlpatterns = [
     # path('', UsersListView.as_view(), name='user_list'),
     # path('create/', UserCreateView.as_view(), name='user_create'),
     # path("edit/<int:pk>/", UserUpdateView.as_view(), name="user_edit"),
-    # path("edit/profile/", ProfileUpdateView.as_view(), name="profile_edit"),
+    path("edit/profile/", ProfileUpdateView.as_view(), name="profile_edit"),
     # path("delete/<int:pk>/", UserDeleteView.as_view(), name="user_delete"),
 
     # authentication

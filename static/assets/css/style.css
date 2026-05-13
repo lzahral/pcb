@@ -50682,7 +50682,7 @@ ul.dot-group li {
   margin: calc(38px + 0.625vw) auto auto;
 }
 
-.show-hide {
+/* .show-hide {
   position: absolute;
   right: 20px;
   top: 52px;
@@ -50693,8 +50693,8 @@ ul.dot-group li {
   color: var(--theme-default);
   cursor: pointer;
   font-size: 13px;
-}
-
+} */
+/* 
 .show-hide span.show:before {
   content: "\f06e";
 }
@@ -50708,7 +50708,7 @@ ul.dot-group li {
 
 .show-hide span:before {
   content: "\f070";
-}
+} */
 
 .needs-validation .invalid-feedback {
   color: #898989;
