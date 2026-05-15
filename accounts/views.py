@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, update_session_auth_hash, mixins
+from django.views.generic import FormView, TemplateView
 
 from .forms import *
-# Create your views here.
 
 
 class RegisterView(FormView):
@@ -34,6 +33,7 @@ class RegisterView(FormView):
         profile = form.save()
         profile.user= user
         profile.save()
+        login(self.request, user)
 
         return super().form_valid(form)
     
@@ -69,7 +69,7 @@ class LoginView(FormView):
         return super().form_invalid(form)
 
 
-class ProfileUpdateView(LoginRequiredMixin, TemplateView):
+class ProfileUpdateView(mixins.LoginRequiredMixin, TemplateView):
     template_name = "accounts/profile_form.html"
 
     def get_context_data(self, **kwargs):
@@ -79,7 +79,7 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView):
 
         context["profile_form"] = kwargs.get(
             "profile_form",
-            ProfileForm(user=self.request.user)
+            ProfileForm(instance=profile,user=self.request.user)
         )
 
         context["password_form"] = kwargs.get(
@@ -115,7 +115,7 @@ class ProfileUpdateView(LoginRequiredMixin, TemplateView):
             if password_form.is_valid():
                 user = password_form.save()
                 update_session_auth_hash(request, user)
-                messages.success(request, "  پسورد با موفقیت تغییر کرد")
+                messages.success(request, "  رمز عبور با موفقیت تغییر کرد.")
                 return redirect("profile_edit")
 
             return self.render_to_response(

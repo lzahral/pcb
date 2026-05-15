@@ -1,0 +1,261 @@
+{% extends 'base.html' %} {% load static %} {% load widget_tweaks %}
+{% load filters %}
+
+{% block styles %}
+    <style>
+        .dropdown-item{
+            opacity: 1 !important;
+            text-align: right !important;
+        }
+        .dropdown-toggle{
+            width: 160px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="جزئیات سفارش" %}
+{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="container candidate-wrapper ">
+        <div class="card px-4">
+            <div class="card-header">
+                <div class='header-top'>
+                    <h5>
+                        {{board.name}}
+                        <span class="badge"
+                            style="background-color: {{ board.state_colors.bg }}; color: {{ board.state_colors.text}};">
+                            {{board.get_state_display}}
+                        </span>
+                    </h5>
+                    
+                    {% comment %} {% if not board.price %} {% endcomment %}
+                        <div class="card-header-right-icon"><button class="link-only btn btn-secondary txt-light"  data-bs-toggle="modal" onclick='set_type(0)' data-bs-target="#priceModal{{ board.id }}">تعیین قیمت</button></div>            </div>
+                    {% comment %} {% endif %} {% endcomment %}
+                </div>
+            
+            <div class="card-body candidates-box px-0 row">
+            
+                <p class="col-4">
+                    نوع برد :
+                    {{board.get_base_material_display}}
+                </p>
+            
+                <p class="col-4">
+                    تعداد لایه‌ها:
+                    {{board.layers}}
+
+                </p>
+                {% if board.base_material == 'flex' %}
+                    <p class="col-4">
+                        نوع بستر :
+                        {{board.get_substrate_type_display}}
+                    </p>
+                {% endif %}
+
+                <p class="col-4">
+                    تعداد برد:
+                    {{board.qty}}
+                </p>
+
+                <p class="col-4">
+                    ابعاد برد:
+                    {{board.dimension_x}} * {{board.dimension_unit}} {{board.dimension_y}}
+                </p>
+
+                <p class="col-4">
+                    پنل شده:
+                    {% if board.panel %} بله {% else %} خیر {% endif %}
+                </p>
+
+                {% if board.panel %}
+                    <p class="col-4">
+                        تعداد در سطر:
+                        {{board.grid_y}}
+                    </p>
+            
+                    <p class="col-4">
+                        تعداد در ستون:
+                        {{board.grid_x}}
+                    </p>
+                {% endif %}                
+            
+                <p class="col-4">
+                    کاربرد:
+                    {{board.get_product_type_display}}
+                </p>
+            
+
+            
+                <p class="col-4">
+                    ضخامت:
+                    {{board.get_PCB_thickness_display}}
+                </p>
+            
+                <p class="col-4">
+                    رنگ:
+                    {{board.get_PCB_color_display}}
+                </p>
+            
+                <p class="col-4">
+                    رنگ چاپ:
+                    {{board.get_silkscreen_display}}
+                </p>
+            
+                <p class="col-4">
+                    پوشش نهایی:
+                    {{board.get_surface_finish_display}}
+                </p>
+                
+                {% if  board.surface_finish == 'ENIG' %}
+                    <p class="col-4">
+                        ضخامت طلا :
+                    {{board.get_gold_thickness_display}}
+                    </p>
+                {% endif %}
+            
+                <p class="col-4">
+                    ضخامت مس:
+                    {{board.get_outer_copper_weight_display}}
+                </p>
+            
+                <p class="col-4">
+                    پوشش ویا:
+                    {{board.get_via_covering_display}}
+                </p>
+            
+                <p class="col-4">
+                    حداقل قطر ویا:
+                    {{board.get_min_via_display}}
+                </p>
+            
+                <p class="col-4">
+                    تلرانس ابعاد برد:
+                    {{board.get_board_outline_tolerance_display}}
+                </p>
+            
+                <p class="col-4">
+                    تست الکتریکال:
+                    {{board.get_electrical_test_display}}
+                </p>
+            
+                <p class="col-12">
+                    توضیحات:
+                    <div>
+                        {{board.description}}
+                    </div>
+                </p>
+            
+                <p class="col-4">
+                    قیمت:
+                    ۸۰۰۰۰۰۰
+                </p>
+            
+                <p class="col-3">
+                    state:
+                    completed
+                </p>
+            
+                <p class="col-3">
+                    user:
+                    حسین رضایی
+                </p>
+            
+                <p class="col-3">
+                    تاریخ ایجاد:
+                    ۱۳ مه ۲۰۲۶، ساعت ۹:۳۹
+                </p>
+            
+          </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+{% comment %} <div class="modal" id="fileModal" tabindex="-1" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+          <form method="POST" action="{% url 'upload_project_file' object.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="modal-header">
+              <h5 class="modal-title">آپلود فایل</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+              <div class="mb-2">
+                <label>فایل</label>
+                <input type="file" name="file" class="form-control" required>
+              </div>
+              <input type="text" name="file_type" class="hide" id='file_type' required>
+              <div class="mb-2">
+                <label>ورژن</label>
+                <input type="number" step="0.1" name="version" class="form-control" required>
+              </div>
+
+              <div class="mb-2">
+                <label>توضیحات</label>
+                <textarea name="description" cols="40" rows="5" class="form-control"></textarea>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">ثبت</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+
+          </form>
+      </div>
+    </div>
+</div> {% endcomment %}
+<div class="modal fade" id="priceModal{{ board.id }}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    قیمت گذاری محصول
+                </h5>
+            </div>
+
+            <div class="modal-body">
+
+                <form method="post"
+                      action="{% url 'set_board_price' board.id %}">
+
+                    {% csrf_token %}
+
+                    <input
+                        type="number"
+                        name="price"
+                        class="form-control"
+                        placeholder="قیمت"
+                        required
+                    >
+                    <div dir='ltr'>
+                        <button type="submit" class="btn btn-primary mt-3">
+                            ثبت قیمت
+                        </button>  
+                    </div>
+                    
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+    {% url 'project_transaction_delete' 0 as delete_url %}
+    {% include "components/delete_modal.html" with model_fa="تراکنش" model_en="project_transaction" url=delete_url %}
+
+{%endblock%}

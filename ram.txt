@@ -1,0 +1,58 @@
+
+    input logic clk_i,
+    input logic rst_ni,
+
+    input logic pulp_clock_en_i,  // PULP clock enable (only used if PULP_CLUSTER = 1)
+    input logic scan_cg_en_i,  // Enable all clock gates for testing
+
+    // Core ID, Cluster ID, debug mode halt address and boot address are considered more or less static
+    input logic [31:0] boot_addr_i,
+    input logic [31:0] mtvec_addr_i,
+    input logic [31:0] dm_halt_addr_i,
+    input logic [31:0] hart_id_i,
+    input logic [31:0] dm_exception_addr_i,
+
+    // Instruction memory interface
+    output logic        instr_req_o,
+    input  logic        instr_gnt_i,
+    input  logic        instr_rvalid_i,
+    output logic [31:0] instr_addr_o,
+    input  logic [31:0] instr_rdata_i,
+
+    // Data memory interface
+    output logic        data_req_o,
+    input  logic        data_gnt_i,
+    input  logic        data_rvalid_i,
+    output logic        data_we_o,
+    output logic [ 3:0] data_be_o,
+    output logic [31:0] data_addr_o,
+    output logic [31:0] data_wdata_o,
+    input  logic [31:0] data_rdata_i,
+
+    // apu-interconnect
+    // handshake signals
+    output logic                              apu_req_o,
+    input  logic                              apu_gnt_i,
+    // request channel
+    output logic [   APU_NARGS_CPU-1:0][31:0] apu_operands_o,
+    output logic [     APU_WOP_CPU-1:0]       apu_op_o,
+    output logic [APU_NDSFLAGS_CPU-1:0]       apu_flags_o,
+    // response channel
+    input  logic                              apu_rvalid_i,
+    input  logic [                31:0]       apu_result_i,
+    input  logic [APU_NUSFLAGS_CPU-1:0]       apu_flags_i,
+
+    // Interrupt inputs
+    input  logic [31:0] irq_i,  // CLINT interrupts + CLINT extension interrupts
+    output logic        irq_ack_o,
+    output logic [ 4:0] irq_id_o,
+
+    // Debug Interface
+    input  logic debug_req_i,
+    output logic debug_havereset_o,
+    output logic debug_running_o,
+    output logic debug_halted_o,
+
+    // CPU Control Signals
+    input  logic fetch_enable_i,
+    output logic core_sleep_o

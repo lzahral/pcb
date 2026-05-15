@@ -15,6 +15,7 @@ def hex_to_rgba(hex_color, alpha=1):
 class Board (models.Model):
     STATE_CHOICES = [
         ('pending', 'در حال بررسی'),
+        ('pending_payment', 'در انتظار پرداخت'),
         ('preparing', 'در پروسه تولید'),
         ('shipping', 'در حال ارسال'),
         ('completed', 'پایان یافته'),
@@ -184,12 +185,12 @@ class Board (models.Model):
     )
     
     
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, verbose_name='نام برد')
     base_material = models.CharField(
-        max_length=20, choices=BASE_MATERIAL_CHOICES, default='FR_4')
-    layers = models.IntegerField()
+        max_length=20, choices=BASE_MATERIAL_CHOICES, default='FR_4', verbose_name='نوع برد ')
+    layers = models.IntegerField(verbose_name='تعداد لایه‌ها')
     substrate_type = models.CharField(
-        max_length=20, choices=SUBSTRATE_TYPE_CHOICES, default='25µm', null=True,  blank=True)
+        max_length=20, choices=SUBSTRATE_TYPE_CHOICES, default='25µm', null=True,  blank=True, verbose_name='نوع بستر ')
 
     dimension_x = models.IntegerField()
     dimension_y = models.IntegerField()
@@ -198,35 +199,35 @@ class Board (models.Model):
     dimension_unit = models.CharField(max_length=20,
                                       choices=UNIT_CHOICES, default='mm')
     qty = models.CharField(max_length=20,
-                           choices=QTY_CHOICES, default='5')
+                           choices=QTY_CHOICES, default='5',verbose_name='تعداد برد')
     product_type = models.CharField(max_length=20,
-                                    choices=PRODUCT_TYPE_CHOICES, default='industrial')
-    panel = models.BooleanField()
+                                    choices=PRODUCT_TYPE_CHOICES, default='industrial',verbose_name='کاربرد')
+    panel = models.BooleanField(verbose_name='پنل شده')
     PCB_thickness = models.CharField(max_length=20,
-                                     choices=THICKNESS_CHOICES, default='0.4')
+                                     choices=THICKNESS_CHOICES, default='0.4',verbose_name='ضخامت')
     PCB_color = models.CharField(
-        max_length=20, choices=COLOR_CHOICES, default='green')
+        max_length=20, choices=COLOR_CHOICES, default='green',verbose_name='رنگ')
     silkscreen = models.CharField(
-        max_length=20, choices=COLOR_CHOICES, default='white')
+        max_length=20, choices=COLOR_CHOICES, default='white',verbose_name='رنگ چاپ')
     surface_finish = models.CharField(
-        max_length=20, choices=SURFACE_CHOICES, default='HASL')
+        max_length=20, choices=SURFACE_CHOICES, default='HASL',verbose_name='پوشش نهایی')
     gold_thickness = models.CharField(max_length=20,
-                                      choices=GOLD_THICKNESS_CHOICES, default='1U')
+                                      choices=GOLD_THICKNESS_CHOICES, default='1U',verbose_name='ضخامت طلا ')
     outer_copper_weight = models.CharField(max_length=20,
-                                           choices=OUTER_COPPER_CHOICES, default='1')
+                                           choices=OUTER_COPPER_CHOICES, default='1',verbose_name='ضخامت مس')
     via_covering = models.CharField(max_length=20,
-                                    choices=COVERING_CHOICES, default='Tented')
+                                    choices=COVERING_CHOICES, default='Tented',verbose_name='پوشش ویا')
     min_via = models.CharField(
-        max_length=20, choices=MIN_VIA_CHOICES, default='0.3')
+        max_length=20, choices=MIN_VIA_CHOICES, default='0.3',verbose_name='حداقل قطر ویا')
     board_outline_tolerance = models.CharField(max_length=20,
-                                               choices=TOLERANCE_CHOICES, default='0.2')
+                                               choices=TOLERANCE_CHOICES, default='0.2',verbose_name='تلرانس ابعاد برد')
     electrical_test = models.CharField(
-        max_length=20, choices=TEST_CHOICES, default='random')
-    description = models.TextField(verbose_name="توضیحات پروژه", blank=True, null=True)
+        max_length=20, choices=TEST_CHOICES, default='random',verbose_name='تست الکتریکال')
+    description = models.TextField(verbose_name="توضیحات", blank=True, null=True)
 
-    cost = models.PositiveIntegerField(verbose_name="قیمت", null=True, blank=True)
+    price = models.PositiveIntegerField(verbose_name="قیمت", null=True, blank=True)
     state = models.CharField(
-        max_length=20, choices=STATE_CHOICES, default='pending',blank=True)
+        max_length=30, choices=STATE_CHOICES, default='pending',blank=True)
     user = models.ForeignKey(Profile, on_delete=models.SET_NULL, related_name="orders",null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
     is_deleted = models.BooleanField(default=False)
@@ -235,6 +236,7 @@ class Board (models.Model):
     def state_colors(self):
         colors = {
             'pending': "#35b5dc",
+            'pending_payment': "#3835dc",
             'preparing': '#fd7e14',
             'shipping': '#ffc107',
             'completed': '#20c997'
@@ -248,5 +250,5 @@ class Board (models.Model):
         }
 
     def __str__(self):
-        return f'{self.name} - {self.user.user.get_full_name()}'
+        return f'{self.name} - '
     

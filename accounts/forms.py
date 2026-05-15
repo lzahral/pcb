@@ -47,9 +47,9 @@ class LoginForm(forms.Form):
 
 
 class PasswordChangeForm(forms.Form):
-    old_password = forms.CharField(widget=forms.PasswordInput, label='پسورد فعلی')
-    new_password = forms.CharField(widget=forms.PasswordInput, label='پسورد جدید')
-    confirm_password = forms.CharField(widget=forms.PasswordInput, label='تکرار پسورد جدید')
+    old_password = forms.CharField(widget=forms.PasswordInput, label='رمز عبور فعلی')
+    new_password = forms.CharField(widget=forms.PasswordInput, label='رمز عبور جدید')
+    confirm_password = forms.CharField(widget=forms.PasswordInput, label='تکرار رمز عبور جدید')
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user")
@@ -59,7 +59,7 @@ class PasswordChangeForm(forms.Form):
         old_password = self.cleaned_data.get("old_password")
 
         if not self.user.check_password(old_password):
-            raise forms.ValidationError("پسورد فعلی اشتباه است")
+            raise forms.ValidationError("رمز عبور فعلی اشتباه است.")
 
         return old_password
 
@@ -71,7 +71,7 @@ class PasswordChangeForm(forms.Form):
 
         if new_password and confirm_password:
             if new_password != confirm_password:
-                raise forms.ValidationError("پسورد جدید و تکرار آن برابر نیست")
+                raise forms.ValidationError("رمز عبور جدید و تکرار آن برابر نیست.")
 
         return cleaned_data
 
@@ -82,23 +82,24 @@ class PasswordChangeForm(forms.Form):
         return self.user
 
 
-class ProfileForm(forms.Form):
+class ProfileForm(forms.ModelForm):
     # avatar = forms.ImageField(required=False)
     first_name = forms.CharField(required=False, label='نام')
     last_name = forms.CharField(required=False, label='نام خانوادگی')
-    # email = forms.EmailField(required=False)
-    phone_number = forms.CharField(required=False, label='شماره تلفن')
+    email = forms.EmailField(required=False, label='ایمیل', disabled=True)
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'id_code',
+                  'commercial_code', 'company', 'postal_code', 'address']
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop("user", None)
         super().__init__(*args, **kwargs)
 
         if self.user:
-            profile = self.user.profile
-
             self.fields["first_name"].initial = self.user.first_name
             self.fields["last_name"].initial = self.user.last_name
-            self.fields["phone_number"].initial = profile.phone_number
+            self.fields["email"].initial = self.user.email
 
     def save(self):
         if not self.user:
@@ -110,6 +111,11 @@ class ProfileForm(forms.Form):
         self.user.last_name = self.cleaned_data["last_name"]
 
         profile.phone_number = self.cleaned_data["phone_number"]
+        profile.id_code = self.cleaned_data["id_code"]
+        profile.commercial_code = self.cleaned_data["commercial_code"]
+        profile.company = self.cleaned_data["company"]
+        profile.postal_code = self.cleaned_data["postal_code"]
+        profile.address = self.cleaned_data["address"]
 
         avatar = self.cleaned_data.get("avatar")
         if avatar:

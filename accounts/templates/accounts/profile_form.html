@@ -2,33 +2,14 @@
 
 {% block styles %}
     <style>
-        input[type="file"]{
-            display: none;
-        }   
-        .hide{
-            display: none;
+        p {
+            font-size: 18px;
         }
-        .custom-file-upload{
-            background-color: #7366ff !important;
-            display: block;
-            text-align: center;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            position: absolute;
-            right: 90px;
-            top: 115px;
-            }
-        .custom-file-upload i {
-            padding: 7px;
+        .txt-danger{
             font-size: 15px;
-            color:white;
         }
-        #display-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
+        .show-hide{
+            margin-top: 12px !important;
         }
     </style>
 {% endblock styles %}
@@ -72,31 +53,41 @@
                         <div class=' pt-2 pb-1'>
                             {{field.label}}
                         </div>
-                        {{ field|add_class:"form-control col-12" }}
+                        <div dir='ltr'>
+                            {{ field|add_class:"form-control col-12" }}
+                            <div class="show-hide mx-2">
+                                <span onclick="togglePasswordVisibility('id_{{field.name}}')"></span>
+                            </div>
+                        </div>
                         {% if field.errors %}
                             <p class="txt-danger mb-0">{{ field.errors|striptags}}</p> 
                         {% endif %}
                     </div>
                 {% endfor %}
                 <div class="col-12 pt-3 text-center">
-                    <button type="submit" class="btn btn-primary px-5" name="change_password">تغییر پسورد</button>
+                    <button type="submit" class="btn btn-primary px-5" name="change_password">تغییر رمز عبور</button>
                 </div>
             </form>
         </div>
     </div>            
 </div>
+<br>
+
 {% endblock content %}
 
 
 {% block scripts %}
     
     <script>
-        const imgInput = document.querySelector("#id_avatar")
-        const displayImg = document.querySelector("#display-img")
-        imgInput.addEventListener('change',
-        (event)=>{
-            const imgObject = event.target.files[0]
-            displayImg.src = URL.createObjectURL(imgObject)})
+        function togglePasswordVisibility(passwordInputId) {
+            var passwordInput = document.getElementById(passwordInputId);
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
     </script>
 {% endblock scripts %}
 

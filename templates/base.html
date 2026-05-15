@@ -1095,45 +1095,13 @@
               <div class="col-md-6">
                 <p>کلیه حقوق این وب‌ سایت متعلق به مجموعه بردینو می‌باشد.</p>
               </div>
-              <!--         <div class="col-md-6">
-                            <ul class="footer-links sub-footer-links">
-                                <li>
-                                    <a href="#">Terms</a>
-                                </li>
-                                <li>
-                                    <a href="#">Privacy</a>
-                                </li>
-                                <li>
-                                    <a href="#">Support</a>
-                                </li>
-                            </ul>
-                        </div>         -->
             </div>
           </div>
         </div>
       </footer>
       <!-- Footer section end -->
     </main>
-        <script>
-      {% if messages %}
-        {% for message in messages %}
-          (function ($) {
-          "use strict";
-          var notify = $.notify('<i class="fa-regular fa-bell"></i>{{message}}.', {
-              type: "theme",
-              allow_dismiss: true,
-              delay: 2000,
-              timer: 300,
-              animate: {
-              enter: "animated fadeInDown",
-              exit: "animated fadeOutUp",
-              },
-          });
 
-          })(jQuery);
-        {% endfor %}
-      {% endif %}
-    </script>
     <script>
       function toPersianDigits(str) {
           return str.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
@@ -1153,8 +1121,9 @@
 
       document.addEventListener("DOMContentLoaded", function() {
           convertTextNodes(document.body, 'no-persian');
-    });
+     });
     </script>
+
     <!-- bootstrap js -->
     <script src="{% static 'assets/landing/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 
@@ -1217,5 +1186,25 @@
     <script src="{% static 'assets/js/flat-pickr/custom-flatpickr.js' %}"></script>
     <script src="{% static 'assets/js/notify/custom-notify.js' %}"></script>
     <script src="{% static 'assets/js/bs-indeterminate.js' %}"></script> 
+          <script>
+        {% if messages %}
+          {% for message in messages %}
+            (function ($) {
+            "use strict";
+            var notify = $.notify('<i class="fa-regular fa-bell"></i>{{message}}.', {
+                type: "theme",
+                allow_dismiss: true,
+                delay: 2000,
+                timer: 300,
+                animate: {
+                enter: "animated fadeInDown",
+                exit: "animated fadeOutUp",
+                },
+            });
+            })(jQuery);
+          {% endfor %}
+        {% endif %}
+      </script>
+      {% block scripts %}{% endblock scripts %}
   </body>
 </html>
