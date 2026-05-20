@@ -1,5 +1,6 @@
 from django import template
 from persiantools.jdatetime import JalaliDateTime, JalaliDate
+import jdatetime
 
 register = template.Library()
 
@@ -70,3 +71,13 @@ def get_date(value):
 @register.filter
 def attr(obj, field_name):
     return getattr(obj, field_name)
+
+
+@register.filter
+def jalali(value):
+    if not value:
+        return ""
+
+    return jdatetime.datetime.fromgregorian(
+        datetime=value
+    ).strftime("%Y/%m/%d - %H:%M")

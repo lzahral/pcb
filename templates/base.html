@@ -13,9 +13,22 @@
     <link rel="icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon" />
     <link rel="shortcut icon" href="{% static 'assets/images/favicon.webp' %}" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="{% static 'assets/dist/jalalidatepicker.min.css' %}" />
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{% static 'assets/favicon/apple-touch-icon.png' %}">
 
-    <title>Cuba - Landing Template</title>
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="{% static 'assets/favicon/favicon-32x32.png' %}">
 
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="{% static 'assets/favicon/favicon-16x16.png' %}">
+
+    <link rel="manifest"
+          href="{% static 'assets/favicon/site.webmanifest' %}">
+
+    <link rel="icon" href="{% static 'assets/favicon/favicon.ico' %}">
+    <title>
+      BLACKBOX
+    </title>
     <!-- Swiper css -->
     <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper-bundle.min.css' %}" />
@@ -77,6 +90,8 @@
     {% endblock %}
 
     <style>
+           .navbar-collapse {
+        background-color: white !important; }
       .logOut {
         font-family: K24;
       }
@@ -139,11 +154,15 @@
         color: #333;
       }
       body {
-        background-color: #f4f2f2;
+        background-color: #fafafa  !important;
       }
       .page-title {
-        height: 36px;
+        {% comment %} height: 36px; {% endcomment %}
+        padding-top: 10px;
         padding-right: 5px;
+      }
+      .img-logo{
+        width: 140px !important;
       }
     </style>
   </head>
@@ -169,7 +188,7 @@
       <header class="header-absolute bg-white">
         <nav class="navbar navbar-expand-lg bg-light">
           <div class="custom-container container">
-            <a class="navbar-brand m-0" href="{% url 'index' %}"><img src="{% static 'assets/landing/images/logo/logo.webp' %}" alt="logo" /></a>
+           <img class='img-logo' src="{% static 'assets/images/logo/logo.png' %}" alt="logo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -360,7 +379,7 @@
       <!-- Customer review section end -->
 
       <!-- Feature section start -->
-      <!--                <section class="feature-style-2" id="features">
+      <!--                 <section class="feature-style-2" id="features">
             <div class="container custom-container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -437,11 +456,11 @@
                     </div>
                 </div>
             </div>
-        </section>                -->
+        </section>                 -->
       <!-- Feature section end -->
 
       <!-- About section start -->
-      <!--                <section class="about-style-2" id="about-us">
+      <!--                 <section class="about-style-2" id="about-us">
             <div class="container custom-container">
                 <div class="row justify-content-lg-between justify-content-center gy-md-5 gy-3">
                     <div class="col-lg-6">
@@ -473,7 +492,7 @@
                     </div>
                 </div>
             </div>
-        </section>                -->
+        </section>                 -->
       <!-- About section end -->
 
       <!-- why choose us section start -->
@@ -540,7 +559,7 @@
       <!-- Brand section end -->
 
       <!-- Track section start -->
-      <!--                <section class="service-style-2 track-style-2">
+      <!--                 <section class="service-style-2 track-style-2">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -573,11 +592,11 @@
                     </div>
                 </div>
             </div>
-        </section>                -->
+        </section>                 -->
       <!-- Track section end -->
 
       <!-- Plan section start -->
-      <!--                <section class="plan-style-2 section-b-space" id="plan">
+      <!--                 <section class="plan-style-2 section-b-space" id="plan">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -768,11 +787,11 @@
                     </div>
                 </div>
             </div>
-        </section>                -->
+        </section>                 -->
       <!-- Plan section end -->
 
       <!-- Review section start -->
-      <!--                <section class="review-style-1 review-style-2 section-b-space review">
+      <!--                 <section class="review-style-1 review-style-2 section-b-space review">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -873,7 +892,7 @@
                     </div>
                 </div>
             </div>
-        </section>                -->
+        </section>                 -->
       <!-- Review section end --> {% endcomment %}
 
       <!-- Footer section start -->
@@ -883,9 +902,9 @@
             <div class="row gx-xl-5 gy-md-5 gy-4 gx-4">
               <div class="col-xl-4">
                 <div class="footer-contact">
-                  <a href="index.html"><img src="{% static 'assets/landing/images/logo/logo_dark.webp' %}" alt="logo" /></a>
+                   <a class="navbar-brand m-0" href="{% url 'index' %}"><img class='img-logo' src="{% static 'assets/images/logo/logo.png' %}" alt="logo"/></a>
                   <p>ما با تکیه بر تجربه فنی، تجهیزات دقیق و کنترل کیفیت مرحله‌به‌مرحله، خدمات طراحی و چاپ بردهای PCB را برای پروژه‌های صنعتی، تجاری و تحقیقاتی ارائه می‌دهیم؛ از نمونه‌سازی سریع تا تولید انبوه.</p>
-                  <ul>
+                  {% comment %} <ul>
                     <li>
                       <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook-f"></i></a>
                     </li>
@@ -901,19 +920,19 @@
                     <li>
                       <a href="https://in.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a>
                     </li>
-                  </ul>
+                  </ul> {% endcomment %}
                 </div>
               </div>
               <div class="col-xl-2 col-md-4 col-6">
                 <div class="footer-content">
                   <h3>دسترسی سریع</h3>
                   <ul class="footer-links">
-                    <!--                <li>
+                    <!--                 <li>
                                         <a href="#">
                                             <i class="fa-solid fa-chevron-right"></i>
                                             <span>Home </span>
                                         </a>
-                                    </li>                -->
+                                    </li>                 -->
                     <li>
                       <a href="{% url 'login' %}">
                         <i class="fa-solid fa-chevron-right"></i>
@@ -939,17 +958,17 @@
                       </a>
                     </li>
 
-                    <!--                
+                    <!--                 
                     <li>
                                         <a href="#">
                                             <i class="fa-solid fa-chevron-right"></i>
                                             <span>Blog Page</span>
                                         </a>
-                                    </li>                -->
+                                    </li>                 -->
                   </ul>
                 </div>
               </div>
-              <!--                <div class="col-xl-2 col-md-4 col-6">
+              <!--                 <div class="col-xl-2 col-md-4 col-6">
                             <div class="footer-content">
                                 <h3>Community</h3>
                                 <ul class="footer-links">
@@ -985,7 +1004,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>                -->
+                        </div>                 -->
               <div class="col-xl-4 col-md-4">
                 <div class="footer-content">
                   <h3>راه‌های ارتباطی</h3>
@@ -1026,9 +1045,9 @@
           <div class="sub-footer">
             <div class="row align-items-center">
               <div class="col-md-6">
-                <p>کلیه حقوق این وب‌ سایت متعلق به مجموعه بردینو می‌باشد.</p>
+                <p>© کلیه حقوق این وب سایت متعلق به مجموعه بردینو می‌باشد.</p>
               </div>
-              <!--                <div class="col-md-6">
+              <!--                 <div class="col-md-6">
                             <ul class="footer-links sub-footer-links">
                                 <li>
                                     <a href="#">Terms</a>
@@ -1040,7 +1059,7 @@
                                     <a href="#">Support</a>
                                 </li>
                             </ul>
-                        </div>                -->
+                        </div>                 -->
             </div>
           </div>
         </div>
@@ -1151,5 +1170,25 @@
     <script src="{% static 'assets/js/flat-pickr/custom-flatpickr.js' %}"></script>
     <script src="{% static 'assets/js/notify/custom-notify.js' %}"></script>
     <script src="{% static 'assets/js/bs-indeterminate.js' %}"></script>
+              <script>
+        {% if messages %}
+          {% for message in messages %}
+            (function ($) {
+            "use strict";
+            var notify = $.notify('<i class="fa-regular fa-bell"></i>{{message}}.', {
+                type: "theme",
+                allow_dismiss: true,
+                delay: 2000,
+                timer: 300,
+                animate: {
+                enter: "animated fadeInDown",
+                exit: "animated fadeOutUp",
+                },
+            });
+            })(jQuery);
+          {% endfor %}
+        {% endif %}
+      </script>
+      {% block scripts %}{% endblock scripts %}
   </body>
 </html>

@@ -1,0 +1,187 @@
+amaranth==0.5.8
+amaranth-yosys==0.50.0.0.post117
+anyio==4.11.0
+archspec @ file:///home/conda/feedstock_root/build_artifacts/archspec_1708969572489/work
+argon2-cffi==25.1.0
+argon2-cffi-bindings==25.1.0
+arrow==1.4.0
+asttokens==3.0.0
+async-lru==2.0.5
+attrs==25.4.0
+babel==2.17.0
+beautifulsoup4==4.14.2
+bleach==6.3.0
+boltons @ file:///home/conda/feedstock_root/build_artifacts/boltons_1711936407380/work
+Brotli @ file:///home/conda/feedstock_root/build_artifacts/brotli-split_1725267488082/work
+certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1725278078093/work/certifi
+cffi @ file:///home/conda/feedstock_root/build_artifacts/cffi_1725560558132/work
+chardet==5.2.0
+charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1728479282467/work
+click==8.3.1
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1666700638685/work
+comm==0.2.3
+conda @ file:///home/conda/feedstock_root/build_artifacts/conda_1732552591380/work
+conda-libmamba-solver @ file:///home/conda/feedstock_root/build_artifacts/conda-libmamba-solver_1727359833193/work/src
+conda-package-handling @ file:///home/conda/feedstock_root/build_artifacts/conda-package-handling_1729006966809/work
+conda_package_streaming @ file:///home/conda/feedstock_root/build_artifacts/conda-package-streaming_1729004031731/work
+contourpy==1.3.3
+cycler==0.12.1
+debugpy==1.8.17
+decorator==5.2.1
+defusedxml==0.7.1
+distro @ file:///home/conda/feedstock_root/build_artifacts/distro_1704321475663/work
+evdev==1.9.2
+executing==2.2.1
+fastjsonschema==2.21.2
+fonttools==4.60.1
+fqdn==1.5.1
+frozendict @ file:///home/conda/feedstock_root/build_artifacts/frozendict_1728841327252/work
+greenlet==3.2.4
+h11==0.16.0
+h2 @ file:///home/conda/feedstock_root/build_artifacts/h2_1634280454336/work
+hpack==4.0.0
+httpcore==1.0.9
+httpx==0.28.1
+hyperframe @ file:///home/conda/feedstock_root/build_artifacts/hyperframe_1619110129307/work
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1726459485162/work
+importlib_resources==6.5.2
+ipykernel==7.1.0
+ipython==9.6.0
+ipython_pygments_lexers==1.1.1
+isoduration==20.11.0
+jedi==0.19.2
+Jinja2==3.1.6
+joblib==1.5.2
+jschon==0.11.1
+json5==0.12.1
+jsonpatch @ file:///home/conda/feedstock_root/build_artifacts/jsonpatch_1695536281965/work
+jsonpointer @ file:///home/conda/feedstock_root/build_artifacts/jsonpointer_1725302935093/work
+jsonschema==4.25.1
+jsonschema-specifications==2025.9.1
+jupyter-events==0.12.0
+jupyter-lsp==2.3.0
+jupyter_client==8.6.3
+jupyter_core==5.9.1
+jupyter_server==2.17.0
+jupyter_server_terminals==0.5.3
+jupyterlab==4.4.10
+jupyterlab_pygments==0.3.0
+jupyterlab_server==2.28.0
+kagglehub==0.3.13
+kiwisolver==1.4.9
+lark==1.3.1
+libmambapy @ file:///home/conda/feedstock_root/build_artifacts/mamba-split_1725066159413/work/libmambapy
+-e git+https://github.com/enjoy-digital/litedram.git@8ca007a0372788d3d64cdc196220e729e6e940e3#egg=litedram
+-e git+https://github.com/enjoy-digital/liteeth.git@b5bdf680aeb7c7bcc8835ae55ee96ad9aec6bf98#egg=liteeth
+-e git+https://github.com/litex-hub/litei2c.git@0e47e2933880021f5d847de4b60f9e1ba8d2d76b#egg=litei2c
+-e git+https://github.com/enjoy-digital/liteiclink.git@679befc2271e64297345b15e974b2d2fdcd8fad5#egg=liteiclink
+-e git+https://github.com/enjoy-digital/litejesd204b.git@786ceff2e0b992c5d9205116c7720f8755312e08#egg=litejesd204b
+-e git+https://github.com/enjoy-digital/litepcie.git@e26e1a81750e040fb4cf6029fc8734035ad9958f#egg=litepcie
+-e git+https://github.com/enjoy-digital/litesata.git@ca3ecc33f82835912354c49c9bb4cb09cc73ebf9#egg=litesata
+-e git+https://github.com/enjoy-digital/litescope.git@8b49f61d2dd4ee70ceb2578f95aa763f1756d92e#egg=litescope
+-e git+https://github.com/enjoy-digital/litesdcard.git@5429f5d7ef57f7e0a4802087033dbde8f1b7a4d5#egg=litesdcard
+-e git+https://github.com/litex-hub/litespi.git@f482e2b1318c3e2fd8ff00d70f8bfcac4fec4054#egg=litespi
+-e git+https://github.com/enjoy-digital/litex.git@b1ba4cd86cba3d080a2a474e82e515b34008691b#egg=litex
+-e git+https://github.com/litex-hub/litex-boards.git@9323a6148147843dfdfdcf0300c7c6d96dd779c3#egg=litex_boards
+mamba @ file:///home/conda/feedstock_root/build_artifacts/mamba-split_1725066159413/work/mamba
+MarkupSafe==3.0.3
+matplotlib==3.10.7
+matplotlib-inline==0.2.1
+menuinst @ file:///home/conda/feedstock_root/build_artifacts/menuinst_1731146972698/work
+meson==1.9.1
+migen @ file:///home/zahra/Documents/RV_scnn/RV-SCNN/litex_test/migen
+mistune==3.1.4
+nbclient==0.10.2
+nbconvert==7.16.6
+nbformat==5.10.4
+nest-asyncio==1.6.0
+nltk==3.9.2
+notebook==7.4.7
+notebook_shim==0.2.4
+numpy==2.3.4
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1718189413536/work
+pandas==2.3.3
+pandocfilters==1.5.1
+parso==0.8.5
+pexpect==4.9.0
+pillow==12.0.0
+platformdirs @ file:///home/conda/feedstock_root/build_artifacts/platformdirs_1726613481435/work
+playwright==1.55.0
+pluggy @ file:///home/conda/feedstock_root/build_artifacts/pluggy_1713667077545/work
+prometheus_client==0.23.1
+prompt_toolkit==3.0.52
+psutil==7.1.2
+ptyprocess==0.7.0
+pure_eval==0.2.3
+pycosat @ file:///home/conda/feedstock_root/build_artifacts/pycosat_1696355774225/work
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1711811537435/work
+pyee==13.0.0
+pygame==2.6.1
+Pygments==2.19.2
+pynput==1.8.1
+pyparsing==3.2.5
+pyserial==3.5
+PySide6==6.10.1
+PySide6_Addons==6.10.1
+PySide6_Essentials==6.10.1
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
+python-dateutil==2.9.0.post0
+python-json-logger==4.0.0
+python-xlib==0.33
+-e git+https://github.com/litex-hub/pythondata-cpu-lm32.git@594f2068e32a6faa84f05f9b443b58c3c4658113#egg=pythondata_cpu_lm32
+-e git+https://github.com/litex-hub/pythondata-cpu-minerva.git@8db577a903f525758443909c863425549bada9bc#egg=pythondata_cpu_minerva
+-e git+https://github.com/litex-hub/pythondata-cpu-mor1kx.git@4b9d59badcc535fbb96fd5208411a3377a53a45b#egg=pythondata_cpu_mor1kx
+-e git+https://github.com/litex-hub/pythondata-cpu-naxriscv.git@dfb4bfdf19e864ec773f9c2ac2c90aef5a4961a2#egg=pythondata_cpu_naxriscv
+-e git+https://github.com/litex-hub/pythondata-cpu-sentinel.git@83f93b66ac8c71d5a35773911f8c82e63803067f#egg=pythondata_cpu_sentinel
+-e git+https://github.com/litex-hub/pythondata-cpu-serv.git@cdede3b5e35e0c8c385ff10d783905d95cd864ab#egg=pythondata_cpu_serv
+-e git+https://github.com/litex-hub/pythondata-cpu-vexiiriscv.git@f0b0d455b56767a7ff34efb0a8b56ec237ad481d#egg=pythondata_cpu_vexiiriscv
+-e git+https://github.com/litex-hub/pythondata-cpu-vexriscv.git@1979a644dbe64d8d32dfbdd970dccee6add63723#egg=pythondata_cpu_vexriscv
+-e git+https://github.com/litex-hub/pythondata-cpu-vexriscv-smp.git@0a97182aff60dd830d04f8e10b042ecd99638fa3#egg=pythondata_cpu_vexriscv_smp
+-e git+https://github.com/litex-hub/pythondata-misc-tapcfg.git@fbcb02422940bbb97c492f0c970959d262b33632#egg=pythondata_misc_tapcfg
+-e git+https://github.com/litex-hub/pythondata-misc-usb_ohci.git@f141aed6d264c01aa7484a2efe0bcb97a2cbbb34#egg=pythondata_misc_usb_ohci
+-e git+https://github.com/litex-hub/pythondata-software-compiler_rt.git@fcb03245613ccf3079cc833a701f13d0beaae09d#egg=pythondata_software_compiler_rt
+-e git+https://github.com/litex-hub/pythondata-software-picolibc.git@a5e11229885a87083ec54034f8d693ba52ea2718#egg=pythondata_software_picolibc
+pytz==2025.2
+pyvcd==0.4.1
+PyYAML==6.0.3
+pyzmq==27.1.0
+referencing==0.37.0
+regex==2025.11.3
+requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1717057054362/work
+rfc3339-validator==0.1.4
+rfc3986==2.0.0
+rfc3986-validator==0.1.1
+rfc3987-syntax==1.1.0
+rpds-py==0.28.0
+ruamel.yaml @ file:///home/conda/feedstock_root/build_artifacts/ruamel.yaml_1728764986945/work
+ruamel.yaml.clib @ file:///home/conda/feedstock_root/build_artifacts/ruamel.yaml.clib_1728724466132/work
+scikit-learn==1.7.2
+scipy==1.16.3
+seaborn==0.13.2
+Send2Trash==1.8.3
+setuptools==75.3.0
+shiboken6==6.10.1
+six==1.17.0
+sniffio==1.3.1
+soupsieve==2.8
+stack-data==0.6.3
+tabulate==0.9.0
+terminado==0.18.1
+threadpoolctl==3.6.0
+tinycss2==1.4.0
+tornado==6.5.2
+tqdm @ file:///home/conda/feedstock_root/build_artifacts/tqdm_1730926118411/work
+traitlets==5.14.3
+truststore @ file:///home/conda/feedstock_root/build_artifacts/truststore_1729762363021/work
+typing_extensions==4.15.0
+tzdata==2025.2
+uri-template==1.3.0
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1726496430923/work
+-e git+https://github.com/litex-hub/valentyusb.git@0b534ccfccfcdcb7a5db219743f0c0b20e5ec412#egg=valentyusb
+wasmtime==38.0.0
+wcwidth==0.2.14
+webcolors==25.10.0
+webencodings==0.5.1
+websocket-client==1.9.0
+wheel==0.45.0
+zstandard==0.23.0

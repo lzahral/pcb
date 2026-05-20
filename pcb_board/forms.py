@@ -13,3 +13,9 @@ class BoardPriceForm(forms.ModelForm):
                 'placeholder': 'قیمت را وارد کنید'
             })
         }
+
+
+class PaymentReceiptForm(forms.ModelForm):
+    class Meta:
+        model = Board
+        fields = ['payment_receipt']

@@ -19,7 +19,7 @@ class Profile(models.Model):
     )
 
     id_code = models.CharField(max_length=11, verbose_name='کدملی / شناسه‌ملی', null=True, blank=True)
-    company = models.CharField(max_length=11, verbose_name='شرکت', null=True, blank=True)
+    company = models.CharField(max_length=30, verbose_name='شرکت', null=True, blank=True)
     postal_code = models.CharField(max_length=11, verbose_name='کدپستی')
     commercial_code = models.CharField(max_length=11, verbose_name='کداقتصادی', null=True, blank=True)
     address = models.TextField( verbose_name='آدرس')

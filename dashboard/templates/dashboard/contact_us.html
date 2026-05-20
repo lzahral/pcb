@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="تماس با ما" %}
+{% endblock breadcrumb %}
 {% block content %}
-  <div class="container pt-5 mt-5 mb-5">
-    <div class="card">
+  <div class="container  mb-5 pb-3">
+    <div class="">
       <div class="container-fluid contact-section">
         <div class="row">
           <!-- ستون اول -->

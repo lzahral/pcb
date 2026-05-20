@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% load static %} {% load widget_tweaks %}
+{% load filters %}
+
+{% block styles %}
+    <style>
+        .dropdown-item{
+            opacity: 1 !important;
+            text-align: right !important;
+        }
+        .dropdown-toggle{
+            width: 160px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="لیست سفارشات" %}
+{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="container candidate-wrapper ">
+        <div class="card">
+          <div class="card-body candidates-box px-0">
+            <div class="table-responsive custom-scrollbar">
+              <table class="table text-center" id="candidates-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class='hide'></th>
+                        <th class="text-center">سفارش دهنده</th>
+                        <th class="text-center">تاریخ</th>
+                        <th class="text-center">وضعیت</th>
+                        <th class="text-center">قیمت</th>
+                        <th class="text-center">مشاهده سفارش</th>
+                        <th class="text-center">فاکتور</th>
+                        <th class="text-center">فاکتور</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                        <tr>
+                            <td></td>                         
+                            <td id='no-persian' class='hide'>-{{ item.created_at|date:'Ymd'  }}</td>
+                            <td class="align-middle">
+                                {{item.user}}                             
+                                {% comment %} {% if item.description %}
+                                <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="توضیحات" data-offset="-20px -20px" data-bs-content="{{item.description}}"><i class="fa-solid fa-info"></i></button>
+                                {% endif %} {% endcomment %}
+                            </td>
+                            <td class="align-middle">{{item.created_at|locale_date}}</td>
+                            <td class="align-middle">
+                                <span class="badge"
+                                    style="background-color: {{ item.state_colors.bg }}; color: {{ item.state_colors.text}};">
+                                    {{item.get_state_display}}
+                                </span>
+                            </td>
+                            <td class="align-middle">
+                                {% if item.price %}{{item.price|format_price}}{% else %} - {% endif %}
+                            </td>
+                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon"  onclick="location.href='{% url "board_detail" item.id %}'"><i class="fa fa-eye"></i></button></td>
+                            
+                            <td class="align-middle ">
+                                {% if item.state == 'preparing' or item.state == 'shipping' or item.state == 'completed' %}
+                                    <button class= "btn btn-icon mx-auto btn-primary btn-icon" onclick="location.href='{% url "invoice_detail" item.id %}'"><i class="far fa-file-alt"></i></button>
+                                {% endif %}
+                            </td>
+                            <td>
+                                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    تغییر وضعیت
+                                  </button>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'change_board_state' item.id 'pending' %}">در حال بررسی</a>
+                                    <a class="dropdown-item" href="{% url 'change_board_state' item.id 'preparing' %}">در پروسه تولید</a>
+                                    <a class="dropdown-item" href="{% url 'change_board_state' item.id 'shipping' %}">در حال ارسال</a>
+                                    <a class="dropdown-item" href="{% url 'change_board_state' item.id 'completed' %}">پایان‌ یافته</a>
+                                  </div>
+                                </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    {% url 'project_transaction_delete' 0 as delete_url %}
+    {% include "components/delete_modal.html" with model_fa="تراکنش" model_en="project_transaction" url=delete_url %}
+
+{%endblock%}

@@ -1,0 +1,326 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load filters %}
+
+{% block styles %}
+<style>
+
+body{
+    background:#f5f5f5;
+}
+
+.card{
+    width: 18cm;
+    min-height: 26.7cm;
+    margin: 20px auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* ===== PRINT ===== */
+
+@media print {
+
+    *{
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body{
+        background: #fff !important;
+    }
+
+    body *{
+        visibility: hidden;
+    }
+
+    #print-area,
+    #print-area *{
+        visibility: visible;
+    }
+
+    #print-area{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .no-print{
+        display:none !important;
+    }
+
+    table{
+        border-collapse: collapse !important;
+    }
+
+    tr,td,th{
+        page-break-inside: avoid !important;
+    }
+}
+
+</style>
+{% endblock styles %}
+
+
+{% block content %}
+
+<div class="container candidate-wrapper">
+
+    <div class="card">
+
+        <div id="print-area">
+
+            <!-- HEADER -->
+            <table style="width:100%; margin-bottom:25px;">
+
+                <tr>
+
+                    <td>
+
+                        <table
+                            style="
+                                width:100%;
+                                background-image:url('{% static "assets/images/email-template/invoice-3/bg-0.png" %}');
+                                background-size:cover;
+                                background-position:center;
+                                border-radius:10px;
+                                padding:20px;
+                            "
+                        >
+
+                            <tr>
+
+                                <td style="text-align:center;">
+
+                                    <img
+                                        src="{% static 'assets/images/logo/logo.png' %}"
+                                        alt="logo"
+                                        style="width:5cm;"
+                                    >
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+
+            <!-- USER INFO -->
+            <table style="width:100%; margin-bottom:20px; direction:rtl;">
+
+                <tr>
+
+                    <!-- RIGHT -->
+                    <td style="width:50%; vertical-align:top; text-align:right;">
+
+                        <span style="font-size:16px; color:#666;">
+                            نام و نام خانوادگی:
+                        </span>
+
+                        <h3 style="color:#7366FF;">
+                            {{ profile.user.get_full_name }}
+                        </h3>
+
+                        <span style="display:block; margin-bottom:8px;">
+                            تاریخ ثبت سفارش:
+                            <br>
+                            {{ data.created_at|jalali }}
+                        </span>
+
+                        <span style="display:block; margin-bottom:8px;">
+                            کدپستی:
+                            {{ profile.postal_code }}
+                        </span>
+
+                        <span style="display:block;">
+                            شماره همراه:
+                            {{ profile.phone_number }}
+                        </span>
+
+                    </td>
+
+
+                    <!-- LEFT -->
+                    <td style="width:50%; vertical-align:top; text-align:right;">
+
+                        {% if profile.company %}
+
+                            <span style="font-size:16px; color:#666;">
+                                نام شرکت:
+                            </span>
+
+                            <h3 style="color:#7366FF;">
+                                {{ profile.company }}
+                            </h3>
+
+                        {% endif %}
+
+                        <span style="display:block; margin-bottom:8px;">
+                            آدرس:
+                            {{ profile.address }}
+                        </span>
+
+                        {% if profile.id_code %}
+                        <span style="display:block; margin-bottom:8px;">
+                            کد ملی / شناسه ملی:
+                            {{ profile.id_code }}
+                        </span>
+                        {% endif %}
+
+                        {% if profile.commercial_code %}
+                        <span style="display:block;">
+                            کد اقتصادی:
+                            {{ profile.commercial_code }}
+                        </span>
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+
+            <!-- LINE -->
+            <div
+                style="
+                    width:100%;
+                    height:1px;
+                    background:#ddd;
+                    margin-bottom:20px;
+                "
+            ></div>
+
+
+
+            <!-- PRODUCTS -->
+            <table
+                style="
+                    width:100%;
+                    border-collapse:collapse;
+                    margin-bottom:25px;
+                "
+                border="1"
+            >
+
+                <thead>
+
+                    <tr style="background:#7366FF;">
+
+                        <th style="padding:15px; color:#fff;">
+                            مشخصات کالا
+                        </th>
+
+                        <th style="padding:15px; color:#fff;">
+                            تعداد
+                        </th>
+
+                        <th style="padding:15px; color:#fff;">
+                            مبلغ واحد
+                        </th>
+
+                        <th style="padding:15px; color:#fff;">
+                            مبلغ کل
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td style="padding:15px; text-align:right;">
+                            {{ data.name }}
+                        </td>
+
+                        <td style="padding:15px; text-align:center;">
+                            {{ data.qty }}
+                        </td>
+
+                        <td style="padding:15px; text-align:center;">
+                            {{ data.price_unit|format_price }}
+                        </td>
+
+                        <td style="padding:15px; text-align:center;">
+                            {{ data.price|format_price }}
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+
+            <!-- TOTAL -->
+            <table style="width:100%; margin-top:30px;">
+
+                <tr>
+
+                    <td style="text-align:left;">
+
+                        <span
+                            style="
+                                font-size:16px;
+                                color:#666;
+                                display:block;
+                                margin-bottom:10px;
+                            "
+                        >
+                            مبلغ کل فاکتور
+                        </span>
+
+                        <h2 style="color:#7366FF;">
+                            {{ data.price|format_price }}
+                        </h2>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PRINT BUTTON -->
+    <div class="no-print" style="text-align:center; margin:30px 0;">
+
+        <button
+            onclick="window.print()"
+            style="
+                background:#7366FF;
+                color:#fff;
+                border:none;
+                padding:14px 30px;
+                border-radius:10px;
+                cursor:pointer;
+                font-size:16px;
+            "
+        >
+            چاپ
+        </button>
+
+    </div>
+
+</div>
+
+{% endblock %}

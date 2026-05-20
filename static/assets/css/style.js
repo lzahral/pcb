@@ -165,58 +165,145 @@ document.addEventListener("DOMContentLoaded", () => {
     const selected = document.querySelector('input[name="base_material"]:checked');
     if (selected) showLayersForMaterial(selected.id);
 });
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const radios = document.querySelectorAll('input[name="base_material"]');
-    const substrateWrapper = document.getElementById("substrate-wrapper");
-    const green = document.getElementById("id-green");
-    const purple = document.getElementById("id-purple");
-    const red = document.getElementById("id-red");
-    const blue = document.getElementById("id-blue");
-    const ENIG = document.getElementById("id-ENIG");
-    const ENIG_input = document.getElementById("in-ENIG");
-    const HASL = document.getElementById("id-HASL");
-    const LeadFree_HASL = document.getElementById("id-LeadFree_HASL");
-    const OSP = document.getElementById("id-OSP");
-    console.log(green)
-    function updateSubstrateVisibility() {
-        const selected = document.querySelector('input[name="base_material"]:checked');
-        if (selected.value === "flex") {
-            substrateWrapper.classList.remove("hidden");
-            green.classList.add("hidden");
-            purple.classList.add("hidden");
-            red.classList.add("hidden");
-            blue.classList.add("hidden");
-        } else {
-            substrateWrapper.classList.add("hidden");
-            green.classList.remove("hidden");
-            purple.classList.remove("hidden");
-            red.classList.remove("hidden");
-            blue.classList.remove("hidden");
-        }
-        if (selected.value === "fr4") {
-            OSP.classList.add("hidden");
-        } else if (selected.value === "flex") {
-            OSP.classList.add("hidden");
-            HASL.classList.add("hidden");
-            LeadFree_HASL.classList.add("hidden");
-            ENIG_input.checked = true;
 
-        } else {
-            substrateWrapper.classList.add("hidden");
-            green.classList.remove("hidden");
-            purple.classList.remove("hidden");
-            red.classList.remove("hidden");
-            blue.classList.remove("hidden");
-        }
+    const el = (id) => document.getElementById(id);
+
+    const ui = {
+        substrateWrapper: el("substrate-wrapper"),
+        green: el("id-green"),
+        purple: el("id-purple"),
+        red: el("id-red"),
+        blue: el("id-blue"),
+        ENIG: el("id-ENIG"),
+        ENIG_input: el("in-ENIG"),
+        HASL: el("id-HASL"),
+        HASL_input: el("in-HASL"),           // فرض کردم input مربوط به HASL این id رو داره
+        LeadFree_HASL: el("id-LeadFree_HASL"),
+        OSP: el("id-OSP"),
+        goldWrapper: el("gold_thickness"),
+    };
+
+    const hide = (items) => items.forEach(i => i?.classList.add("hidden"));
+    const show = (items) => items.forEach(i => i?.classList.remove("hidden"));
+
+    // rules
+    const GOLD_REQUIRED_MATERIALS = new Set(["flex", "rogers", "ptfe"]);
+    const HASL_AUTO_MATERIALS = new Set(["aluminum"]);
+
+    function getSelectedValue() {
+        const selected = document.querySelector('input[name="base_material"]:checked');
+        return selected ? selected.value : null;
     }
 
-    radios.forEach(radio => {
-        radio.addEventListener("change", updateSubstrateVisibility);
-    });
+    function updateUI() {
+        const value = getSelectedValue();
+        if (!value) return;
 
-    updateSubstrateVisibility();
+        const isFlex = value === "flex";
+        const isFR4 = value === "fr4";
+        const isAl = value === "aluminum";
+        const isRogers = value === "rogers";
+        const isPtfe = value === "ptfe";
+        const isCopper = value === "copper";
+
+        const goldRequired = GOLD_REQUIRED_MATERIALS.has(value);
+        const haslRequired = HASL_AUTO_MATERIALS.has(value);
+
+        const colors = [ui.green, ui.purple, ui.red, ui.blue];
+
+        // substrate
+        ui.substrateWrapper.classList.toggle("hidden", !isFlex);
+
+        // colors
+        isFlex ? hide(colors) : show(colors);
+
+        // OSP
+        ui.OSP.classList.toggle(
+            "hidden",
+            isFR4 || isFlex || isAl || isRogers || isPtfe
+        );
+
+        // HASL auto select
+        if (haslRequired) {
+            ui.HASL_input.checked = true;
+        }
+
+        ui.HASL.classList.toggle("hidden", isFlex);
+        ui.LeadFree_HASL.classList.toggle("hidden", isFlex);
+
+        // ENIG auto select for special materials
+        if (goldRequired) {
+            ui.ENIG_input.checked = true;
+        }
+        
+        // GOLD visibility depends on ENIG state + material
+        const showGold = goldRequired && ui.ENIG_input.checked;
+        ui.goldWrapper.classList.toggle("hidden", !showGold);
+    }
+
+    // events
+    radios.forEach(r => r.addEventListener("change", updateUI));
+    ui.ENIG_input.addEventListener("change", updateUI);
+
+    // init
+    updateUI();
 });
+// document.addEventListener("DOMContentLoaded", function () {
+//     const radios = document.querySelectorAll('input[name="base_material"]');
+//     const substrateWrapper = document.getElementById("substrate-wrapper");
+//     const green = document.getElementById("id-green");
+//     const purple = document.getElementById("id-purple");
+//     const red = document.getElementById("id-red");
+//     const blue = document.getElementById("id-blue");
+//     const ENIG = document.getElementById("id-ENIG");
+//     const ENIG_input = document.getElementById("in-ENIG");
+//     const HASL = document.getElementById("id-HASL");
+//     const LeadFree_HASL = document.getElementById("id-LeadFree_HASL");
+//     const OSP = document.getElementById("id-OSP");
+//     const goldWrapper = document.getElementById("gold_thickness");
+
+//     console.log(green)
+//     function updateSubstrateVisibility() {
+//         const selected = document.querySelector('input[name="base_material"]:checked');
+//         if (selected.value === "flex") {
+//             substrateWrapper.classList.remove("hidden");
+//             green.classList.add("hidden");
+//             purple.classList.add("hidden");
+//             red.classList.add("hidden");
+//             blue.classList.add("hidden");
+//         } else {
+//             substrateWrapper.classList.add("hidden");
+//             green.classList.remove("hidden");
+//             purple.classList.remove("hidden");
+//             red.classList.remove("hidden");
+//             blue.classList.remove("hidden");
+//         }
+//         if (selected.value === "fr4") {
+//             OSP.classList.add("hidden");
+//         } else if (selected.value === "flex") {
+//             OSP.classList.add("hidden");
+//             HASL.classList.add("hidden");
+//             LeadFree_HASL.classList.add("hidden");
+//             ENIG_input.checked = true;
+//             goldWrapper.classList.remove("hidden");
+//         } else {
+//             substrateWrapper.classList.add("hidden");
+//             goldWrapper.classList.add("hidden");
+//             green.classList.remove("hidden");
+//             purple.classList.remove("hidden");
+//             red.classList.remove("hidden");
+//             blue.classList.remove("hidden");
+//         }
+//     }
+
+//     radios.forEach(radio => {
+//         radio.addEventListener("change", updateSubstrateVisibility);
+//     });
+
+//     updateSubstrateVisibility();
+// });
 document.addEventListener("DOMContentLoaded", function () {
 
     const checkbox = document.getElementById("change");

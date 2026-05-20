@@ -1,165 +1,207 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load filters %}
-{% load jalali_tags %}
+{% block styles %}
+<style>
+    .card{
+        width: 23cm;
+        height: 277mm;
+        margin: auto;
+    }
+@media print {
 
+    body * {
+        visibility: hidden;
+    }
+
+    #print-area,
+    #print-area * {
+        visibility: visible;
+    }
+
+    #print-area {
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    a {
+        display: none !important;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    tr, td, th {
+        page-break-inside: avoid;
+    }
+}
+</style>
+{% endblock styles %}
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="فاکتور" %}
+{% endblock breadcrumb %}
 {% block content %}
-  <div class="container candidate-wrapper">
-    <div class="card" id="onvoice-area">
-      <table style="width:1160px;margin:0 auto;">
-        <tbody>
-          <tr>
-            <td style="text-align: right;">
-              <table style="width: 100%;background-image: url(../assets/images/email-template/invoice-3/bg-0.png);background-position: center;background-size: cover;background-repeat: no-repeat; border-radius: 10px;">
-                <tbody>
-                  <tr>
-                    <td style="padding: 30px 0;">
-                      <img src="../assets/images/logo/logo.png" alt="logo" />
-                      {% comment %} <address style="color: #52526C;opacity: 0.8; width: 36%; margin-top: 10px; font-style:normal;">
-                        <span style="font-size: 18px; line-height: 1.5; font-weight: 500;">تاریخ:</span>
+<page size='A4'>
+  <div class="container candidate-wrapper pt-3">
+    <div class="card" id="invoice-area">
+        <div id="print-area">
+                <table style="margin:0 auto; width: 18cm;">
+                    <tbody>
+                    <tr>
+                        <td style="text-align: right;">
+                        <table style="width: 100%;background-image: url(../assets/images/email-template/invoice-3/bg-0.png);background-position: center;background-size: cover;background-repeat: no-repeat; border-radius: 10px;">
+                            <tbody>
+                            <tr dir="ltr">
 
-                        <span style="font-size: 18px; line-height: 1.5; font-weight: 500;">ساعت:</span>
-                      </address> {% endcomment %}
-                    </td>
-                    <td style="text-align:end; padding:30px 30px 30px 0;">
-                      <span style="display:block; line-height: 1.5; font-size:18px; color: #fff; font-weight:700;">Invoice</span><span style="display:block; line-height: 1.5; font-size:18px; color: #fff; font-weight:500;">Receipt #1923195</span><span style="display:block; line-height: 1.5; font-size:18px; color: #fff; font-weight:500;">May 02, 2024</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div style="display: flex; justify-content: space-between; width: 100%; direction: rtl;">
-                <!-- ستون راست: نام و نام خانوادگی -->
-                <div style="width: 48%; text-align: right;">
-                  <span style="color:#52526C; font-size:16px; font-weight:500; opacity:0.8;">نام و نام خانوادگی:</span>
-
-                  <h4 style="font-weight:600; margin:12px 0 5px 0; font-size:18px; color:rgba(115,102,255,1);">{{ profile.user.get_full_name }}</h4>
-
-                  <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">
-                    تاریخ و ساعت ثبت سفارش:
-                    {{ data.created_at|jalali }}
-                  </span>
-
-                  <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">کدپستی: {{ profile.postal_code }}</span>
-
-                  <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">شماره همراه: {{ profile.phone_number }}</span>
-                </div>
-
-                <!-- ستون چپ: نام شرکت -->
-                <div style="width: 48%; text-align: right;">
-                  <span style="color:#52526C; font-size:16px; font-weight:500; opacity:0.8;">نام شرکت:</span>
-
-                  <h4 style="font-weight:600; margin:12px 0 5px 0; font-size:18px; color:rgba(115,102,255,1);">{{ profile.company }}</h4>
-
-                  <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">آدرس: {{ profile.address }}</span>
-
-                  <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">کد ملی / شناسه ملی: {{ profile.id_code }}</span>
-
-                  <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">کد اقتصادی: {{ profile.commercial_code }}</span>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span style="display:block;background: rgba(82, 82, 108, 0.3);height: 1px;width: 100%;margin-bottom:20px;"></span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <table style="width: 100%;border-spacing:0;">
-                <thead>
-                  <tr style="background: #7366FF;">
-                    <th style="padding: 18px 15px;text-align: center">
-                      <span style="color: #fff; font-size: 18px; font-weight: 600;">مشخصات کالا</span>
-                    </th>
-                    <th style="padding: 18px 15px;text-align: center;border-inline: 3px solid #fff;">
-                      <span style="color: #fff; font-size: 18px; font-weight: 600;">تعداد</span>
-                    </th>
-                    <th style="padding: 18px 15px;text-align: center;border-right: 3px solid #fff;">
-                      <span style="color: #fff; font-size: 18px; font-weight: 600;">مبلغ واحد</span>
-                    </th>
-                    <th style="padding: 18px 15px;text-align: center">
-                      <span style="color: #fff; font-size: 18px; font-weight: 600;">مبلغ کل</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <!-- مشخصات کالا -->
-                    <td style="padding: 18px; text-align: right;">
-                      <h5 style="font-size: 18px; margin-bottom: 6px; color:#000;">{{ data.name }}</h5>
-                      {% comment %} <span style="color: #777; font-size: 14px;">نوع سفارش: {{ data.board_type }}</span> {% endcomment %}
-                    </td>
-
-                    <!-- تعداد -->
-                    <td style="padding: 18px; text-align: center;">
-                      <span style="font-size: 18px; color:#555;">{{ data.qty }}</span>
-                    </td>
-
-                    <!-- مبلغ واحد -->
-                    <td style="padding: 18px; text-align: center;">
-                      <span style="font-size: 18px; color:#555;">تومان</span>
-                    </td>
-
-                    <!-- مبلغ کل -->
-                    <td style="padding: 18px; text-align: center; font-weight:600;">
-                      <span style="font-size: 18px; color:#444;">تومان</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <table style="width:100%;">
-                <tbody>
-                  <tr style="display:flex; justify-content: space-between; margin:28px 0; align-items: center; direction: rtl;">
-                    <!-- روش ارسال -->
-                    <td style="text-align:right;">
-                      <span style="color: #52526C; font-size: 16px; opacity: 0.8; font-weight: 600;">روش ارسال</span>
-
-                      <h4 style="font-weight:600; margin: 12px 0 5px 0; font-size: 18px; color:#7366FF;"></h4>
-
-                      {% comment %} <span style="display:block; line-height: 1.5; color: #52526C; font-size: 18px;">ارسال از طریق شرکت انتخاب شده</span>
-
-                      <span style="line-height:1.6; color: #52526C; font-size: 18px;">پس از آماده‌سازی سفارش</span> {% endcomment %}
-                    </td>
-
-                    <!-- مبلغ کل -->
-                    <td style="text-align:right;">
-                      <span style="color: #52526C;font-size: 16px; opacity: 0.8; font-weight: 600;">مبلغ کل فاکتور</span>
-
-                      <h4 style="font-weight:600; margin: 12px 0 5px 0; font-size: 26px;color:#7366FF;">... تومان</h4>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span style="display:block;background: rgba(82, 82, 108, 0.3);height: 1px;width: 100%;margin-bottom:24px;"></span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span style="display: flex; justify-content: end; gap: 15px;"><a style="background: rgba(115, 102, 255, 1); color:rgba(255, 255, 255, 1);border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;" href="#!" onclick="window.print();">چاپ فاکتور</a><a style="background: rgba(115, 102, 255, 0.1);color: rgba(115, 102, 255, 1);border-radius: 10px;padding: 18px 27px;font-size: 16px;font-weight: 600;outline: 0;border: 0; text-decoration: none;" href="../template/invoice-3.html" download="">دانلود (PDF)</a></span>
-              <br />
-              <br />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                                <td style="text-align:center; padding:50px;">
+                                    <img
+                                        src="{% static 'assets/images/logo/logo.png' %}"
+                                        alt="logo"
+                                        style="width:5cm"
+                                    />
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <div style="display: flex; justify-content: space-between; width: 100%; direction: rtl;">
+                            <!-- ستون راست: نام و نام خانوادگی -->
+                            <div style="width: 48%; text-align: right;">
+                            <span style="color:#52526C; font-size:16px; font-weight:500; opacity:0.8;">نام و نام خانوادگی:</span>
+    
+                            <h4 style="font-weight:600; margin:12px 0 5px 0; font-size:18px; color:rgba(115,102,255,1);">{{ profile.user.get_full_name }}</h4>
+    
+                            <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">
+                                تاریخ و ساعت ثبت سفارش:
+                                <br>
+                                {{ data.created_at|jalali }}
+                            </span>
+    
+                            <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">کدپستی: {{ profile.postal_code }}</span>
+    
+                            <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">شماره همراه: {{ profile.phone_number }}</span>
+                            </div>
+    
+                            <!-- ستون چپ: نام شرکت -->
+                            <div style="width: 48%; text-align: right;">
+                            {% if profile.company %}
+                                <span style="color:#52526C; font-size:16px; font-weight:500; opacity:0.8;">نام شرکت:</span>
+    
+                                <h4 style="font-weight:600; margin:12px 0 5px 0; font-size:18px; color:rgba(115,102,255,1);">{{ profile.company }}</h4>
+                            {% endif %}
+                            <span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">آدرس: {{ profile.address }}</span>
+    
+                            {% if profile.id_code %}<span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">کد ملی / شناسه ملی: {{ profile.id_code }}</span>{% endif %}
+    
+                            {% if profile.commercial_code %}<span style="display:block; line-height:1.7; color:#52526C; font-size:16px; opacity:0.8;">کد اقتصادی: {{ profile.commercial_code }}</span> {% endif %}
+                            </div>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <span style="display:block;background: rgba(82, 82, 108, 0.3);height: 1px;width: 100%;margin-bottom:20px;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width: 100%;border-spacing:0;">
+                            <thead>
+                            <tr style="background: #7366FF;">
+                                <th style="padding: 18px 15px;text-align: center">
+                                <span style="color: #fff; font-size: 18px; font-weight: 600;">مشخصات کالا</span>
+                                </th>
+                                <th style="padding: 18px 15px;text-align: center;border-inline: 3px solid #fff;">
+                                <span style="color: #fff; font-size: 18px; font-weight: 600;">تعداد</span>
+                                </th>
+                                <th style="padding: 18px 15px;text-align: center;border-right: 3px solid #fff;">
+                                <span style="color: #fff; font-size: 18px; font-weight: 600;">مبلغ واحد</span>
+                                </th>
+                                <th style="padding: 18px 15px;text-align: center">
+                                <span style="color: #fff; font-size: 18px; font-weight: 600;">مبلغ کل</span>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <!-- مشخصات کالا -->
+                                <td style="padding: 18px; text-align: right;">
+                                <h5 style="font-size: 18px; margin-bottom: 6px; color:#000;">{{ data.name }}</h5>
+                                {% comment %} <span style="color: #777; font-size: 14px;">نوع سفارش: {{ data.board_type }}</span> {% endcomment %}
+                                </td>
+    
+                                <!-- تعداد -->
+                                <td style="padding: 18px; text-align: center;">
+                                <span style="font-size: 18px; color:#555;">{{ data.qty }}</span>
+                                </td>
+    
+                                <!-- مبلغ واحد -->
+                                <td style="padding: 18px; text-align: center;">
+                                <span style="font-size: 18px; color:#555;">{{data.price_unit|format_price}}</span>
+                                </td>
+    
+                                <!-- مبلغ کل -->
+                                <td style="padding: 18px; text-align: center; font-weight:600;">
+                                <span style="font-size: 18px; color:#444;">{{data.price|format_price}}</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <table style="width:100%;">
+                            <tbody>
+                            <tr style="display:flex; justify-content: space-between; margin:28px 0; align-items: center; direction: ltr;">
+                                
+    
+                                <!-- مبلغ کل -->
+                                <td style="text-align:left;">
+                                <span style="color: #52526C;font-size: 16px; opacity: 0.8; font-weight: 600;">مبلغ کل فاکتور</span>
+    
+                                <h4 style="font-weight:600; margin: 12px 0 5px 0; font-size: 26px;color:#7366FF;">{{data.price|format_price}}</h4>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <span style="display:block;background: rgba(82, 82, 108, 0.3);height: 1px;width: 100%;margin-bottom:24px;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        {% comment %} <span style="display:flex; justify-content:end; gap:15px;">
+                            <a href="javascript:void(0)" onclick="event.preventDefault(); window.print();" style="background: rgba(115, 102, 255, 1); color:#fff; border-radius:10px; padding:18px 27px; font-size:16px; font-weight:600; outline:0; border:0; text-decoration:none; display:flex; align-items:center; gap:8px;">
+                            <i class="fa fa-print"></i>
+                            چاپ
+                            </a>
+                        </span>
+     {% endcomment %}
+                        <br />
+                        <br />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-  </div>
+    <div class="no-print">
+    <button onclick="window.print()">چاپ</button>
+</div>
+</page>
 {% endblock %}

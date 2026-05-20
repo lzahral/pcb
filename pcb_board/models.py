@@ -16,6 +16,7 @@ class Board (models.Model):
     STATE_CHOICES = [
         ('pending', 'در حال بررسی'),
         ('pending_payment', 'در انتظار پرداخت'),
+        ('pending_receipt', 'در انتظار تایید '),
         ('preparing', 'در پروسه تولید'),
         ('shipping', 'در حال ارسال'),
         ('completed', 'پایان یافته'),
@@ -224,8 +225,11 @@ class Board (models.Model):
     electrical_test = models.CharField(
         max_length=20, choices=TEST_CHOICES, default='random',verbose_name='تست الکتریکال')
     description = models.TextField(verbose_name="توضیحات", blank=True, null=True)
-
+        
     price = models.PositiveIntegerField(verbose_name="قیمت", null=True, blank=True)
+    payment_receipt = models.FileField(upload_to='uploads/receipts/', null=True, blank=True)
+    file = models.FileField(upload_to='uploads/pcb_file/', null=True, blank=True)
+    file_name = models.CharField(max_length=30, null=True, blank=True)
     state = models.CharField(
         max_length=30, choices=STATE_CHOICES, default='pending',blank=True)
     user = models.ForeignKey(Profile, on_delete=models.SET_NULL, related_name="orders",null=True, blank=True)
@@ -248,7 +252,17 @@ class Board (models.Model):
             "text": hex_color,
             "bg": hex_to_rgba(hex_color, 0.1)
         }
+    
+
+    def price_unit(self):
+        return self.price/int(self.qty)
+        
 
     def __str__(self):
         return f'{self.name} - '
-    
+
+
+    def save(self, *args, **kwargs):
+        if not self.file_name and self.file:
+            self.file_name = self.file.name
+        super().save(*args, **kwargs)

@@ -10,6 +10,16 @@
         .dropdown-toggle{
             width: 160px;
         }
+        .attachment-card {
+            position: relative;
+            padding: 12px 20px;
+            background-color: #f1f3f5;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
     </style>
 {% endblock %}
 
@@ -19,22 +29,25 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-    <div class="container candidate-wrapper ">
+    <div class="container candidate-wrapper pt-3">
         <div class="card px-4">
             <div class="card-header">
                 <div class='header-top'>
-                    <h5>
+                    <h5 class=''>
                         {{board.name}}
-                        <span class="badge"
+                        <span class="badge mx-2"
                             style="background-color: {{ board.state_colors.bg }}; color: {{ board.state_colors.text}};">
                             {{board.get_state_display}}
                         </span>
                     </h5>
                     
-                    {% comment %} {% if not board.price %} {% endcomment %}
-                        <div class="card-header-right-icon"><button class="link-only btn btn-secondary txt-light"  data-bs-toggle="modal" onclick='set_type(0)' data-bs-target="#priceModal{{ board.id }}">تعیین قیمت</button></div>            </div>
-                    {% comment %} {% endif %} {% endcomment %}
+                    {% if not board.price %}
+                        <div class="card-header-right-icon"><button class="link-only btn btn-secondary txt-light"  data-bs-toggle="modal" onclick='set_type(0)' data-bs-target="#priceModal{{ board.id }}">تعیین قیمت</button></div>
+                    {% else %}
+                        <div class="card-header-right-icon "><p class='mt-2'>(ثبت سفارش: {{board.created_at|get_date}})</p></div>            
+                    {% endif %}
                 </div>
+            </div>
             
             <div class="card-body candidates-box px-0 row">
             
@@ -140,33 +153,28 @@
                     تست الکتریکال:
                     {{board.get_electrical_test_display}}
                 </p>
-            
-                <p class="col-12">
-                    توضیحات:
-                    <div>
-                        {{board.description}}
+                
+                {% if board.description %}
+                    <p class="col-12">
+                        توضیحات:
+                        <div>
+                            {{board.description}}
+                        </div>
+                    </p>
+                {% endif %}
+                <span class="col-1 ">
+                    <div class="attachment-card project-box">
+                        <span id='no-persian'>{{ board.file_name }}</span>
+                         <a href="{% url 'board_download' board.pk %}">
+                                            <i class="fa-solid fa-download f-light"></i>
+                                       </a>
+
                     </div>
-                </p>
-            
-                <p class="col-4">
+                </span>
+                {% comment %} <p class="col-4">
                     قیمت:
-                    ۸۰۰۰۰۰۰
-                </p>
-            
-                <p class="col-3">
-                    state:
-                    completed
-                </p>
-            
-                <p class="col-3">
-                    user:
-                    حسین رضایی
-                </p>
-            
-                <p class="col-3">
-                    تاریخ ایجاد:
-                    ۱۳ مه ۲۰۲۶، ساعت ۹:۳۹
-                </p>
+                    {{board.price|format_price}}
+                </p> {% endcomment %}
             
           </div>
 

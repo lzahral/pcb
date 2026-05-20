@@ -63,13 +63,13 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-    <div class=" container">
+    <div class=" container mt-3">
         <div class="card height-equal" style="min-height: 1063.2px">
         {{form.errors}}
             <div class="card-header">
                 <h5>PCB</h5>
             </div>
-            <form method="POST" class="row px-3  enctype='multipart/form-data'" >
+            <form method="POST" class="row px-3"  enctype='multipart/form-data' >
                 {% csrf_token %}
                 <div class="card-body custom-input">
                     <div class="row">
@@ -229,13 +229,13 @@
 
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="100" name="dimension_x">
+                                        type="number" placeholder="طول" name="dimension_x" required>
 
                                     <span class="dimension-multiply">*</span>
 
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="100" name="dimension_y">
+                                        type="number" placeholder="عرض" name="dimension_y" required>
 
                                     <select class="form-select form-select-sm dimension-unit" name="dimension_unit">
                                         <option value="mm" checked>میلی‌متر</option>
@@ -261,11 +261,11 @@
                                     class="col-sm-9 d-flex align-items-center gap-2 dimension-group">
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="2" name="grid_x">
+                                        type="number" placeholder="سطر" name="grid_x">
                                     <span class="dimension-multiply">*</span>
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
-                                        type="number" placeholder="2" name="grid_y">
+                                        type="number" placeholder="ستون" name="grid_y">
                                 </div>
                             </div>
 
@@ -613,6 +613,12 @@
                                 </div>
                             </div>
                             <div class="my-3 row">
+                                <label class="col-sm-3">فایل pcb</label>
+                                <div class="col-sm-9">
+                                    {{form.file|add_class:'form-control'}}
+                                </div>
+                            </div>
+                            <div class="my-3 row">
                                 <label class="col-sm-3">توضیحات</label>
                                 <div class="col-sm-9">
                                     {{form.description|add_class:'form-control'}}
@@ -653,8 +659,7 @@
                 </div>
                 <div class="card-footer text-end">
                     <div class="col-sm-9 offset-sm-3">
-                        <button class="btn btn-primary me-3" type="submit">Submit</button><input
-                            class="btn btn-light" type="reset" value="Cancel" />
+                        <button class="btn btn-primary me-3" type="submit">ثبت</button>
                     </div>
                 </div>
             </form>
