@@ -86590,3 +86590,20 @@ input[name="flex_substrate"]:checked+.substrate-card {
     color:#6c757d;
     font-size:14px;
 }
+
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #invoice-area, #invoice-area * {
+        visibility: visible;
+    }
+    #invoice-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+}
+
