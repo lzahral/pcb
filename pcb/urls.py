@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("pcb/", include("pcb_board.urls")),
+    path("3D-print/", include("print_3D.urls")),
     path("", include("dashboard.urls")),
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),

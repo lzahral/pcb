@@ -54,6 +54,7 @@ class BoardDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['fields'] = self.object._meta.fields
         return context
+    
 def download_board(request, pk):
     board = get_object_or_404(Board, pk=pk)
 

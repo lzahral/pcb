@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load filters %}
+
+{% block head %}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        .test{
+            width: 150px !important;
+        }
+    </style>
+{% endblock head %}
+{% block content %}
+    <div class='container rounded-lg bg-muted p-5' >
+        <div>
+         
+          <div id="myTabContent">
+ 
+            <div class="rounded-lg" id="card" role="tabpanel" aria-labelledby="cards-tab">
+                <table class='table min-w-full border-separate border-spacing-y-4 space-y-6 text-sm'>
+                    <thead class="bg-background dark:bg-zinc-800">
+                        <th>مدل</th>
+                        <th>مشخصات</th>
+                        <th>تعداد</th>
+                        <th>تاریخ</th>
+                        <th>قیمت</th>
+                        <th>وضعیت</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr class="bg-background dark:bg-zinc-800 text-center">
+                             
+                                <td class="p-3 whitespace-nowrap test">    
+                                    {% if order.image %}<img class='mx-auto avatar avatar-xl brround' src='{{order.image.url}}' />{% endif %}
+                                    {% comment %} <canvas id="stlCanvas{{ order.id }}" width="150" height="150" ></canvas> {% endcomment %}
+                                </td>
+                                <td class="p-3 whitespace-nowrap">{{order.material}}</td>
+                                <td class="p-3 whitespace-nowrap">{{order.quantity}}</td>
+                                <td class="p-3 whitespace-nowrap">{{order.get_date}}</td>
+                                <td class="p-3 whitespace-nowrap">
+                                    {% if order.price %}{{order.price|format_price}}{% else %} - {% endif %} 
+                                </td>
+                                <td class="p-3 whitespace-nowrap">
+                                    {% if order.order %}
+                                        <span class="btn-gray py-1 px-4">  تکمیل شده  </span>
+                                    {%  elif order.in_cart %}
+                                        <span class="btn-primary py-1 px-4">  در سبد خرید  </span>
+                                    {% elif order.price %}
+                                        <span class="btn-primary py-1 px-4">  تایید شده  </span>
+                                    {% else %}  
+                                        <span class="btn-yellow py-1 px-4"> درحال بررسی</span>
+                                    {% endif %}
+                                </td>
+                                <td class="p-3 whitespace-nowrap">                                        
+                                    {% if order.price and not order.order and not order.in_cart %}
+                                        <button  onclick="location.href='{% url "add-service" order.id %}'" class="mb-1 btn-primary ml-1 w-24 py-2 text-sm">پرداخت</button>
+                                    {% endif %}
+                                    {% if not order.order %}
+                                    <button onclick="set_id({{ order.id }}, 'print3D')" data-modal-target="delete-order" data-modal-toggle="delete-order" class="btn-red ml-1 w-24 py-2 text-sm">
+                                        <span>
+                                            <use xlink:href="#address-add"></use>
+                                            </svg>
+                                        </span>
+                                        <span>لغو سفارش</span>
+                                    </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+          </div>
+        </div>
+    </div>
+     <div id="delete-order" tabindex="-1" class="main-scroll fixed left-0 right-0 top-0 z-50 h-[calc(100%-1rem)] max-h-full w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 justify-center items-center hidden" aria-hidden="true">
+            <div class="relative max-h-full w-full max-w-2xl">
+            <div class="divide-y overflow-hidden rounded-lg bg-muted shadow ring-1 ring-gray-100 dark:ring-white/5">
+                <div class="px-4 py-5 sm:px-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="md:text-lg">لغو سفارش </h3>
+
+                    <button class=" " data-modal-hide="delete-order" type="button">
+                    <svg class="h-5 w-5">
+                        <use xlink:href="#close"></use>
+                    </svg>
+                    <span class="sr-only">Close menu</span>
+                    </button>
+                </div>
+                </div>
+                <div class="space-y-6 px-4 py-5 sm:p-6">
+                <div >
+                    <form id="addressForm" action='#' >
+                        {% csrf_token %}
+                        <!-- Receiver name -->
+                        <div>
+                            <h6>آیا مطمئن هستید که می‌خواهید این سفارش را لغو کنید؟</h6>
+                        </div>
+                        <br>
+                    </form>
+                    <div class="flex justify-end">
+                        <button onclick='delete_item()'  class="btn-red ml-1 w-24 py-2 text-sm">
+                            <span> لغو سفارش </span>
+                        </button>
+                        {% comment %} <div></div>
+                        <button  class="btn-primary w-full px-4 py-2 md:w-auto">
+                            <span> بستن </span>
+                        </button> {% endcomment %}
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+    <script>
+
+        var item_id = null  
+        var item_type = null
+        function set_id(id, type){
+            item_id= id
+            item_type = type
+        }
+
+        function delete_item() {
+        const url = "{% url 'delete-print-order' 0 1 %}".replace('1', item_type).replace('0', item_id );
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('input[name=csrfmiddlewaretoken]').value,
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            location.reload();
+        })
+        .catch(error => {
+            console.log('Error:', error);
+            alert('خطا در حذف .');
+            console.log(error)
+        }); 
+        }
+    </script>
+{% endblock scripts %}

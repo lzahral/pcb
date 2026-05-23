@@ -81,3 +81,11 @@ def jalali(value):
     return jdatetime.datetime.fromgregorian(
         datetime=value
     ).strftime("%Y/%m/%d - %H:%M")
+
+
+# @register.filter
+# def format_price(value):
+#     if value is None:
+#         return ""
+#     value
+#     return f"{value:,.0f}    "

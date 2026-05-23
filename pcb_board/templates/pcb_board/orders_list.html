@@ -52,12 +52,18 @@
                     {% for item in data %}
                         <tr>
                             <td></td>                         
-                            <td id='no-persian' class='hide'>-{{ item.created_at|date:'Ymd'  }}</td>
+                            <td id='no-persian' class='hide'>-{{ item.created_at|date:'YmdHis'  }}</td>
                             <td class="align-middle">
                                 {{item.name}}                             
-                                {% comment %} {% if item.description %}
-                                <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="توضیحات" data-offset="-20px -20px" data-bs-content="{{item.description}}"><i class="fa-solid fa-info"></i></button>
-                                {% endif %} {% endcomment %}
+                                {% if item.description %}
+                                    <button
+                                        class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0"
+                                        type="button" data-bs-trigger="hover"
+                                        data-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom" title="توضیحات"
+                                        data-offset="-20px -20px" data-bs-content="{{item.description}}"><i
+                                            class="fa-solid fa-info"></i></button>
+                                {% endif %}
                             </td>
                             <td class="align-middle">{{item.created_at|locale_date}}</td>
                             <td class="align-middle">

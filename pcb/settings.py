@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'accounts',
     'dashboard',
     'pcb_board',
+    'colorfield',
+    'print_3D',
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',

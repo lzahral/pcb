@@ -10,6 +10,10 @@
         .dropdown-toggle{
             width: 160px;
         }
+                .btn-pill{
+            padding: 2px 8px 1px 8px !important;
+            font-size: 13px !important;     
+        }
     </style>
 {% endblock %}
 
@@ -44,9 +48,15 @@
                             <td id='no-persian' class='hide'>-{{ item.created_at|date:'Ymd'  }}</td>
                             <td class="align-middle">
                                 {{item.user}}                             
-                                {% comment %} {% if item.description %}
-                                <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="توضیحات" data-offset="-20px -20px" data-bs-content="{{item.description}}"><i class="fa-solid fa-info"></i></button>
-                                {% endif %} {% endcomment %}
+                                <button class= " example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" 
+                                    data-name="{{ item.user }}"
+                                    data-phone="{{ item.user.phone_number }}"
+                                    data-address="{{ item.user.address }}"
+                                    data-code="{{ item.user.postal_code }}" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#infoModal">
+                                        <i class="fa-solid fa-info"></i>
+                                </button>
                             </td>
                             <td class="align-middle">{{item.created_at|locale_date}}</td>
                             <td class="align-middle">
@@ -122,6 +132,28 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <form method="post" id="receiptForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title">اطلاعات کاربر</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+        </div>
+        <div class="modal-body">
+            <p id='name'></p>
+            <p id='phone'></p>
+            <p id='code'></p>
+            <p id='address'></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 {%endblock%}
 {% block scripts %}
@@ -149,6 +181,45 @@ modal.addEventListener('show.bs.modal', function(event) {
     }
 
 });
+</script>
+<script>
+   document.addEventListener("DOMContentLoaded", function(){
+
+    const modal = document.getElementById('infoModal');
+    const priceModal = document.getElementById('priceModal');
+    const name = document.getElementById('name');
+    const code = document.getElementById('code');
+    const phone = document.getElementById('phone');
+    const address = document.getElementById('address');
+    const id = document.getElementById('order_id');
+
+    modal.addEventListener('show.bs.modal', function(event) {
+
+        const button = event.relatedTarget;
+
+        const user_name = button.getAttribute('data-name');
+        const user_code = button.getAttribute('data-code');
+        const user_phone = button.getAttribute('data-phone');
+        const user_address = button.getAttribute('data-address');
+
+        name.innerHTML = user_name; 
+        phone.innerHTML = `شماره تلفن: ${user_phone}`; 
+        code.innerHTML = `کدپستی: ${user_code}`; 
+        address.innerHTML = `آدرس: ${user_address}`; 
+
+
+    });
+    priceModal.addEventListener('show.bs.modal', function(event) {
+
+        const button = event.relatedTarget;
+
+        const order_id = button.getAttribute('data-id');
+
+        id.value = order_id; 
+    });
+
+});
+
 </script>
 {% endblock scripts %}
 

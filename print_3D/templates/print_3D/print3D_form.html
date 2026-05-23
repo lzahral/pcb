@@ -1,0 +1,501 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block styles %}
+    {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script> {% endcomment %}
+    <style>
+        body {
+            margin: 0;
+            background-color: white; /* پس‌زمینه سفید */
+            color: black;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+        #fileList {
+            width: 200px;
+            height: 100%;
+            overflow-y: auto; /* امکان اسکرول در لیست فایل */
+            background: #f0f0f0;
+            border-right: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #stlCanvas {
+            flex-grow: 1;
+            display: block;
+            background-color: white; /* سفید کردن پس‌زمینه کانواس */
+        }
+
+        #uploadLabel {
+            display: block;
+            margin: 10px 0;
+            padding: 8px 12px;
+            background-color: #10b77f;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #uploadLabel:hover {
+            background-color: #10b77f;
+        }
+        #fileList ul {
+            list-style: none;
+            padding: 0;
+        }
+        #fileList ul li {
+            padding: 8px;
+            margin-bottom: 4px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        #fileList ul li:hover {
+            background: #e0e0e0;
+        }
+        .test{
+            width: 400px;
+            height: 400px;
+        }
+        .dimension-unit{
+            min-width: 200px !important;
+        }
+
+        .btn-pill{
+            padding: 2px 6px 1px 6px !important;
+            font-size: 10px !important;     
+        }
+        .card-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.item-card{
+    cursor:pointer;
+}
+
+.item-card input{
+    display:none;   /* مخفی کردن رادیوباتن */
+}
+.name{
+    padding-right: 0rem !important;
+    padding-left: 23px !important;
+}
+.card-content{
+    align-items:center;
+    justify-content:center;
+    font-weight:500;
+    font-size:14px;
+    display: inline-flex;
+    gap: 1px;
+    padding: 8px 14px;
+    min-width: 50px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+.infill-content{
+    align-items:center;
+    justify-content:center;
+    font-weight:500;
+    font-size:14px;
+    display: inline-flex;
+    gap: 1px;
+    padding: 8px 14px;
+    min-width: 60px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+/* hover */
+.item-card:hover .card-content{
+    border-color:#6366f1;
+    background:#f8f9ff;
+}
+.item-card:has(input:disabled),
+.item-card:has(input:disabled) * {
+    cursor: not-allowed !important;
+}
+.item-card input:checked + .card-content{
+    border-color:#6366f1;
+    {% comment %} font-weight: bold; {% endcomment %}
+    {% comment %} background:#eef2ff; {% endcomment %}
+    {% comment %} color:#4338ca; {% endcomment %}
+    {% comment %} box-shadow:0 0 0 2px rgba(180, 180, 180, 0.15); {% endcomment %}
+}
+    .item-card:has(input:disabled) {
+        opacity: 0.25;
+        cursor: not-allowed !important;
+        {% comment %} color: rgba(180, 180, 180, 0.61); {% endcomment %}
+        {% comment %} filter: grayscale(100%); {% endcomment %}
+        {% comment %} background-color: #7297bb !important;  {% endcomment %}
+    }
+.hidden{
+    display: none !important;
+}
+    </style>
+{% endblock styles %}
+
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="ثبت سفارش" %}
+{% endblock breadcrumb %}
+
+
+{% block content %}
+    <div class=" container mt-3">
+        <div class="card height-equal" >
+        {{form.errors}}
+            <div class="card-header">
+                <h5>پرینت سه‌بعدی</h5>
+            </div>
+            <form method="POST" class="row px-3"  enctype='multipart/form-data' >
+                {% csrf_token %}
+                <div class="card-body custom-input">
+                    <div class="row">
+                        <div class="col">
+                            <div class="my-3 row align-items-center">
+                                <label class="col-sm-3">متریال</label>
+                                <div class="col-sm-9 card-options">
+                                    <div class="col-12" >
+                                        <label class="item-card material-option" data-type="ABS">
+                                            <input type="radio" name="type" value="ABS" checked>
+                                            <span class="card-content">
+                                                ABS
+                                            </span>
+                                        </label>
+                                        <label class="item-card material-option" data-type="PLA">
+                                            <input type="radio" name="type" value="PLA">
+                                            <span class="card-content">
+                                                PLA
+                                            </span>
+                                        </label>
+                                        <label class="item-card material-option" data-type="PETG">
+                                            <input type="radio" name="type" value="PETG">
+                                            <span class="card-content">
+                                                PETG
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row align-items-center">
+                                <label class="col-sm-3">
+                                    رنگ
+                                </label>
+                                
+                                <div class="col-sm-9 card-options color-group" id="group-ABS" >
+                                    <div class="col-12" >
+                                        {% for m in materials %}
+                                            {% if m.type == 'ABS' %}
+                                                <label class="item-card material-option" data-type="{{ m.type }}">
+                                                    <input 
+                                                        type="radio"
+                                                        name="material"
+                                                        value="{{ m.id }}"
+                                                        {% if not m.is_available %}disabled{% endif %} 
+                                                    >
+                                                    
+                                                    <span class="card-content">
+                                                        <span class="pcbcolor-dot green me-2" style='background:{{m.color_hex}};'></span> {{ m.color }}
+                                                    </span>
+                                                    
+                                                </label>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class=" col-sm-9 card-options hidden color-group" id="group-PLA" >
+                                    <div class="col-12" >
+                                        {% for m in materials %}
+                                            {% if m.type == 'PLA' %}
+                                                <label class=" item-card material-option" data-type="{{ m.type }}">
+                                                    <input 
+                                                        type="radio"
+                                                        name="material"
+                                                        value="{{ m.id }}"
+                                                        {% if not m.is_available %}disabled{% endif %} 
+                                                    >
+                                                    <span class="card-content">
+                                                        <span class="pcbcolor-dot green me-2" style='background:{{m.color_hex}};'></span> {{ m.color }}
+                                                    </span>
+                                                </label>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-sm-9 card-options hidden color-group" id="group-PETG" >
+                                    <div class="col-12" >
+                                        {% for m in materials %}
+                                            {% if m.type == 'PETG' %}
+                                                <label class="item-card material-option" data-type="{{ m.type }}">
+                                                    <input 
+                                                        type="radio"
+                                                        name="material"
+                                                        value="{{ m.id }}"
+                                                        {%if not m.is_available %}disabled{% endif %} 
+                                                    >
+                                                    <span class="card-content">
+                                                        <span class="pcbcolor-dot green me-2" style='background:{{m.color_hex}};'></span> {{ m.color }}
+                                                    </span>
+                                                </label>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3 row align-items-center">
+                                <label class="col-sm-3">
+                                    تراکم
+                                </label>
+                               <div class="col-sm-9 card-options">
+                                    {% for value, label in form.infill.field.choices %}
+                                        {% if value %}
+                                            <label class="item-card">
+                                                <input 
+                                                    type="radio"
+                                                    name="{{ form.infill.name }}"
+                                                    value="{{ value }}"
+                                                    {% if form.infill.value == value %}checked{% endif %}
+                                                >
+                                                <span class="card-content">
+                                                    {{ label }}
+                                                </span>
+                                            </label>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+
+                            <div class="mb-3 row">
+                                <label class="col-sm-3">تعداد </label>
+                                <div class="col-sm-9 col-lg-2">
+                                    {{form.qty|add_class:'form-control'}}
+                                </div>
+                            </div>
+                            <div class="my-3 row">
+                                <label class="col-sm-3">فایل</label>
+                                <div class="col-sm-9">
+                                    {{form.file|add_class:'form-control'}}
+                                </div>
+                            </div>
+                           
+                            <div class="my-3 row">
+                                <label class="col-sm-3">توضیحات</label>
+                                <div class="col-sm-9">
+                                    {{form.description|add_class:'form-control'}}
+                                </div>
+                            </div>
+                           
+                            <!-- ===== JavaScript ===== -->
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const pcbRadios = document.querySelectorAll('input[name="pcb_color"]');
+                                    const silkWhite = document.getElementById('silk-white');
+                                    const silkBlack = document.getElementById('silk-black');
+
+                                    pcbRadios.forEach(radio => {
+                                        radio.addEventListener('change', () => {
+                                            const color = radio.value;
+                                            if (color === 'black') setSilkscreen('white');
+                                            else if (color === 'white') setSilkscreen('black');
+                                            else setSilkscreen('white');
+                                        });
+                                    });
+
+                                    function setSilkscreen(color) {
+                                        if (color === 'white') {
+                                            silkWhite.checked = true;
+                                            silkWhite.nextElementSibling.classList.add('active');
+                                            silkBlack.nextElementSibling.classList.remove('active');
+                                        } else if (color === 'black') {
+                                            silkBlack.checked = true;
+                                            silkBlack.nextElementSibling.classList.add('active');
+                                            silkWhite.nextElementSibling.classList.remove('active');
+                                        }
+                                    }
+                                });
+                            </script>                           
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <div class="col-sm-9 offset-sm-3">
+                        <button class="btn btn-primary me-3" type="submit">ثبت</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        const fileInput = document.getElementById('id_file');
+        const densityField = document.querySelector('[name="infill"]'); // فرض کنید "density" نام فیلد تراکم است
+        const file = fileInput.files[0];
+        const infill_error = document.getElementById('infill-error');
+        console.log()
+        const file_error = document.getElementById('file-error');
+
+        if (densityField) {
+            const density = parseInt(densityField.value, 10);
+            if (isNaN(density) || density < 1 || density > 100) {
+                infill_error.innerHTML = 'لطفاً عددی بین 1 تا 100 برای تراکم وارد کنید!';
+                console.log('hi')
+                e.preventDefault(); // جلوگیری از ارسال فرم
+                return;
+            }
+            else{
+                infill_error.innerHTML = ''
+            }
+        }
+
+        {% comment %} if (!file.name.endsWith('.stl')) {
+            file_error.innerHTML ='لطفاً یک فایل STL معتبر انتخاب کنید!';
+            e.preventDefault();
+            return;
+        }
+
+        else if (file.size === 0) {
+            file_error.innerHTML ='این فیلد لازم است.';
+            e.preventDefault(); 
+            return;
+
+        }else{
+            file_error.innerHTML = ''
+        } {% endcomment %}
+    });
+</script>
+
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // نسبت عرض به ارتفاع 1 برای 300x300
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('stlCanvas'), antialias: true });
+        const pixelRatio = window.devicePixelRatio;
+
+        renderer.setClearColor(0xffffff); // پس‌زمینه سفید
+        renderer.setSize(400, 400); // تنظیم ابعاد کانواس
+
+       
+        {% comment %} camera.position.set(0, 0, 100); {% endcomment %}
+
+        // Lights
+        const light = new THREE.DirectionalLight(0xcccccc, 1);
+        light.position.set(1, 1, 1).normalize();
+        scene.add(light);
+        const ambientLight = new THREE.AmbientLight(0x404040);
+        scene.add(ambientLight);
+
+        // Orbit Controls for interaction
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        // File Input and STL Loading
+        const fileInput = document.getElementById('id_file');
+        {% comment %} const fileNamesList = document.getElementById('fileNames'); {% endcomment %}
+
+        fileInput.addEventListener('change', event => {
+            const files = event.target.files;
+
+            // Populate File List
+            //fileNamesList.innerHTML = '';
+            Array.from(files).forEach((file, index) => {
+                const li = document.createElement('li');
+                li.textContent = file.name;
+                li.dataset.index = index;
+                li.addEventListener('click', () => loadSTLFile(file));
+                //fileNamesList.appendChild(li);
+            });
+
+            // Load the first file automatically
+            if (files.length > 0) {
+                loadSTLFile(files[0]);
+            }
+        });
+
+        function loadSTLFile(file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const contents = e.target.result;
+
+                // Clear previous models
+                while (scene.children.length > 2) { // Keep lights
+                    scene.remove(scene.children[scene.children.length - 1]);
+                }
+
+                // Load STL file
+                const loader = new THREE.STLLoader();
+                const geometry = loader.parse(contents);
+
+                // Create mesh and add to scene
+                const material = new THREE.MeshPhongMaterial({ color: 0x10b77f });
+                const mesh = new THREE.Mesh(geometry, material);
+                scene.add(mesh);
+
+                // Adjust camera
+                const boundingBox = new THREE.Box3().setFromObject(mesh);
+                const center = boundingBox.getCenter(new THREE.Vector3());
+                const size = boundingBox.getSize(new THREE.Vector3());
+                const maxDimension = Math.max(size.x, size.y, size.z);
+                camera.position.set(center.x, center.y, maxDimension * 1.5);
+                controls.target.copy(center);
+                controls.update();
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update(); // Update controls on every frame
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+<script>
+const typeRadios = document.querySelectorAll('input[name="type"]');
+const colorGroups = document.querySelectorAll('.color-group');
+
+function updateMaterialVisibility() {
+    colorGroups.forEach(group => {
+        group.classList.add("hidden");
+    });
+    const selected = document.querySelector('input[name="type"]:checked');
+    
+    if (selected) {
+        const targetGroup = document.getElementById("group-" + selected.value);
+            const inputs = targetGroup.querySelectorAll('input[type="radio"]');
+            console.log(inputs)
+            const firstAvailable = Array.from(inputs).find(input => !input.disabled);
+            if (firstAvailable) {
+                firstAvailable.checked = true;
+            }
+        if (targetGroup) {
+            targetGroup.classList.remove("hidden");
+        }
+    }
+}
+
+typeRadios.forEach(radio => {
+    radio.addEventListener('change', updateMaterialVisibility);
+});
+
+updateMaterialVisibility();
+
+</script>
+
+{% endblock scripts %}

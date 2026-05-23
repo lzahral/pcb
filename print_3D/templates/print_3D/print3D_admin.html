@@ -1,0 +1,312 @@
+{% extends 'base.html' %} {% load static %} {% load widget_tweaks %}
+{% load filters %}
+
+{% block styles %}
+    <style>
+        .btn-pill{
+            padding: 2px 8px 1px 8px !important;
+            font-size: 13px !important;     
+        }
+        .upload-box {
+            cursor: pointer;
+            border: 2px dashed #6c757d;
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.2s;
+        }
+        .upload-box:hover {
+            background-color: #f8f9fa;
+            border-color: #495057;
+        }
+        .test{
+            font-size: 36px !important;
+        }
+    </style>
+{% endblock %}
+
+
+{% block breadcrumb %}
+{% include "components/page_title.html" with title="لیست سفارشات" %}
+{% endblock breadcrumb %}
+
+{% block content %}
+
+    <div class="container candidate-wrapper pt-3">
+        <div class="card">
+          <div class="card-body candidates-box px-0">
+            <div class="table-responsive custom-scrollbar">
+              <table class="table text-center" id="candidates-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class='hide'></th>
+                        <th class="text-center">سفارش دهنده</th>
+                        {% comment %} <th class="text-center"></th> {% endcomment %}
+                        <th class="text-center">مشخصات</th>
+                        <th class="text-center">تعداد</th>
+                        <th class="text-center">تراکم</th>
+                        <th class="text-center">تاریخ</th>
+                        <th class="text-center">وضعیت</th>
+                        <th class="text-center">قیمت</th>
+                        <th class="text-center">فایل سفارش</th>
+                        <th class="text-center"></th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in orders %}
+                        <tr>
+                            <td></td>                         
+                            <td id='no-persian' class='hide'>-{{ item.created_at|date:'YmdHis'  }}</td>
+                            
+                            <td class="align-middle">
+                                {{item.user}}                             
+                                
+                                <button class= " example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" 
+                                        data-name="{{ item.user }}"
+                                        data-phone="{{ item.user.phone_number }}"
+                                        data-address="{{ item.user.address }}"
+                                        data-code="{{ item.user.postal_code }}" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#infoModal">
+                                            <i class="fa-solid fa-info"></i>
+                                    </button>
+                            </td>
+                            {% comment %} <td class="align-middle test"><img class="rounded test img" {% if item.image %}src='{{item.image.url}}' {% else %}src="{% static 'assets/images/part.png'%}"{% endif %} /></td> {% endcomment %}
+                            <td class="align-middle">
+                                {{item.material}}
+                                {% if item.description %}
+                                    <button
+                                        class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0"
+                                        type="button" data-bs-trigger="hover"
+                                        data-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom" title="توضیحات"
+                                        data-offset="-20px -20px" data-bs-content="{{item.description}}"><i
+                                            class="fa-solid fa-info"></i></button>
+                                {% endif %}
+                            </td>
+                             
+                            <td class="align-middle">{{item.qty}}</td>
+                            <td class="align-middle">{{item.infill}}</td>
+                            <td class="align-middle">{{item.created_at|get_date}}</td>
+                            <td class="align-middle">
+                                <span class="badge"
+                                    style="background-color: {{ item.state_colors.bg }}; color: {{ item.state_colors.text}};">
+                                    {{item.get_state_display}}
+                                </span>
+                            </td>
+                            <td class="align-middle">
+                                {% if item.price %}{{item.price|format_price}}{% else %} 
+                                <button class= "btn mx-auto btn-primary" 
+                                        data-id="{{ item.id }}"
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#priceModal">
+                                            تعیین قیمت
+                                    </button> 
+                                {% endif %}
+                            </td>
+                            <td class="align-middle "><button class= "btn btn-icon mx-auto btn-primary btn-icon"  onclick="location.href='{{ item.file.url }}'" download=""><i class="fa fa-download"></i></button></td>                        
+                            <td class="align-middle ">
+                                {% if item.state == 'pending_receipt' %}
+                                    <button class= "btn mx-auto btn-primary" 
+                                        data-order-id="{{ item.id }}"
+                                        data-image="{{ item.payment_receipt.url }}"
+                                        data-url="{% url 'upload_receipt' item.id %}" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#uploadReceiptModal">
+                                            رسید پرداخت
+                                    </button>
+                                  {% elif item.state == 'preparing' or item.state == 'shipping' or item.state == 'completed' %}
+                                    <button type="button"
+                                            class="btn  mx-auto btn-primary"
+                                            onclick="window.location.href='{% url 'invoice_print_detail' item.id %}'">
+                                            فاکتور
+                                    </button>
+                                  {% else %}
+                                {% endif %}
+                            </td>
+                            <td>
+                                  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    تغییر وضعیت
+                                  </button>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'change_print_state' item.id 'pending' %}">در حال بررسی</a>
+                                    <a class="dropdown-item" href="{% url 'change_print_state' item.id 'preparing' %}">در پروسه تولید</a>
+                                    <a class="dropdown-item" href="{% url 'change_print_state' item.id 'shipping' %}">در حال ارسال</a>
+                                    <a class="dropdown-item" href="{% url 'change_print_state' item.id 'completed' %}">پایان‌ یافته</a>
+                                  </div>
+                                </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+<div class="modal fade" id="priceModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    قیمت گذاری محصول
+                </h5>
+            </div>
+
+            <div class="modal-body">
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <input
+                        type="number"
+                        name="price"
+                        class="form-control"
+                        placeholder="قیمت"
+                        required
+                    >
+                    
+                    <input
+                        id='order_id'
+                        name="id"
+                        class="form-control hidden"
+                        placeholder="id"
+                        required
+                    >
+                    <div dir='ltr'>
+                        <button type="submit" class="btn btn-primary mt-3">
+                            ثبت قیمت
+                        </button>  
+                    </div>
+                    
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="infoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <form method="post" id="receiptForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title">اطلاعات کاربر</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+        </div>
+        <div class="modal-body">
+            <p id='name'></p>
+            <p id='phone'></p>
+            <p id='code'></p>
+            <p id='address'></p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="uploadReceiptModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <form method="post" id="receiptForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title"> رسید پرداخت</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+        </div>
+        <div class="modal-body text-center">
+            <img id="orderImage"
+                class="img-fluid rounded mb-3 d-none"
+                style="max-height:250px;">
+            
+        </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                </div>
+      </form>
+    </div>
+  </div>
+</div>
+{%endblock%}
+
+{% block scripts %}
+<script>
+    const modal = document.getElementById('uploadReceiptModal');
+const orderImage = document.getElementById('orderImage');
+
+modal.addEventListener('show.bs.modal', function(event) {
+
+    const button = event.relatedTarget;
+
+    projectURL = button.getAttribute('data-url');
+
+    const imageURL = button.getAttribute('data-image');
+
+    if (imageURL) {
+
+        orderImage.src = imageURL;
+        orderImage.classList.remove('d-none');
+
+    } else {
+
+        orderImage.src = '';
+        orderImage.classList.add('d-none');
+    }
+
+});
+</script>
+<script>
+   document.addEventListener("DOMContentLoaded", function(){
+
+    const modal = document.getElementById('infoModal');
+    const priceModal = document.getElementById('priceModal');
+    const name = document.getElementById('name');
+    const code = document.getElementById('code');
+    const phone = document.getElementById('phone');
+    const address = document.getElementById('address');
+    const id = document.getElementById('order_id');
+
+    modal.addEventListener('show.bs.modal', function(event) {
+
+        const button = event.relatedTarget;
+
+        const user_name = button.getAttribute('data-name');
+        const user_code = button.getAttribute('data-code');
+        const user_phone = button.getAttribute('data-phone');
+        const user_address = button.getAttribute('data-address');
+
+        name.innerHTML = user_name; 
+        phone.innerHTML = `شماره تلفن: ${user_phone}`; 
+        code.innerHTML = `کدپستی: ${user_code}`; 
+        address.innerHTML = `آدرس: ${user_address}`; 
+
+
+    });
+    priceModal.addEventListener('show.bs.modal', function(event) {
+
+        const button = event.relatedTarget;
+
+        const order_id = button.getAttribute('data-id');
+
+        id.value = order_id; 
+    });
+
+});
+
+</script>
+{% endblock scripts %}
