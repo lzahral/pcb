@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 {% load static %}
+{% load filters %}
+
 {% block styles %}
     {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/STLLoader.js"></script>
@@ -101,6 +103,8 @@
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+        z-index: 10;
+
 }
 .infill-content{
     align-items:center;
@@ -117,6 +121,51 @@
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+}
+/* کانتینر اصلی کارت جهت موقعیت‌دهی مطلق به قیمت */
+.positional-card {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 24px !important; /* ایجاد فضای کافی در پایین برای قرارگیری قیمت */
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* استایل قیمت چسبیده به پایین */
+.positional-card .card-price-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 30px;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom-left-radius: 7px;  /* هماهنگی با انحنای گوشه‌های کارت */
+    border-bottom-right-radius: 7px;
+    pointer-events: none; /* غیرفعال کردن کلیک مستقیم روی بخش قیمت */
+    transition: background-color 0.2s;
+}
+
+
+/* استایل کارت در صورتی که غیرفعال (ناموجود) باشد */
+.positional-card input[disabled] ~ .card-content,
+.positional-card input[disabled] ~ .card-price-badge {
+    opacity: 0.5;
+    background-color: white !important;
+    color: black !important;
+}
+
+/* اگر کارت انتخاب (Checked) شد، استایل دور آن با رنگ پرایمری بولد شود */
+.positional-card input:checked + .card-content {
+    /* استایل‌های مربوط به کلیک شدن متناسب با کلاس‌های تم شما */
 }
 
 /* hover */
@@ -194,13 +243,13 @@
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     رنگ
+                                    
                                 </label>
-                                
-                                <div class="col-sm-9 card-options color-group" id="group-ABS" >
-                                    <div class="col-12" >
+                                <div class="col-sm-9 card-options color-group" id="group-ABS">
+                                    <div class="col-12">
                                         {% for m in materials %}
                                             {% if m.type == 'ABS' %}
-                                                <label class="item-card material-option" data-type="{{ m.type }}">
+                                                <label class="item-card material-option positional-card" data-type="{{ m.type }}">
                                                     <input 
                                                         type="radio"
                                                         name="material"
@@ -208,54 +257,77 @@
                                                         {% if not m.is_available %}disabled{% endif %} 
                                                     >
                                                     
+                                                    <!-- بخش محتوای اصلی کارت شامل نام رنگ و دایره رنگی -->
                                                     <span class="card-content">
-                                                        <span class="pcbcolor-dot green me-2" style='background:{{m.color_hex}};'></span> {{ m.color }}
+                                                        <span class="pcbcolor-dot green me-2" style="background:{{ m.color_hex }};"></span> 
+                                                        {{ m.color }}
                                                     </span>
                                                     
+                                                    <!-- بخش قیمت چسبیده به پایین کارت -->
+                                                    <span class="card-price-badge bg-primary text-white">
+                                                        {{ m.price_per_gram|format_price }}
+                                                    </span>
                                                 </label>
                                             {% endif %}
                                         {% endfor %}
                                     </div>
                                 </div>
-                                <div class=" col-sm-9 card-options hidden color-group" id="group-PLA" >
-                                    <div class="col-12" >
+                                <div class="col-sm-9 card-options color-group" id="group-PLA">
+                                    <div class="col-12">
                                         {% for m in materials %}
                                             {% if m.type == 'PLA' %}
-                                                <label class=" item-card material-option" data-type="{{ m.type }}">
+                                                <label class="item-card material-option positional-card" data-type="{{ m.type }}">
                                                     <input 
                                                         type="radio"
                                                         name="material"
                                                         value="{{ m.id }}"
                                                         {% if not m.is_available %}disabled{% endif %} 
                                                     >
+                                                    
+                                                    <!-- بخش محتوای اصلی کارت شامل نام رنگ و دایره رنگی -->
                                                     <span class="card-content">
-                                                        <span class="pcbcolor-dot green me-2" style='background:{{m.color_hex}};'></span> {{ m.color }}
+                                                        <span class="pcbcolor-dot green me-2" style="background:{{ m.color_hex }};"></span> 
+                                                        {{ m.color }}
+                                                    </span>
+                                                    
+                                                    <!-- بخش قیمت چسبیده به پایین کارت -->
+                                                    <span class="card-price-badge bg-primary text-white">
+                                                        {{ m.price_per_gram|format_price }}
                                                     </span>
                                                 </label>
                                             {% endif %}
                                         {% endfor %}
                                     </div>
                                 </div>
-                                <div class="col-sm-9 card-options hidden color-group" id="group-PETG" >
-                                    <div class="col-12" >
+                                <div class="col-sm-9 card-options color-group" id="group-PETG">
+                                    <div class="col-12">
                                         {% for m in materials %}
                                             {% if m.type == 'PETG' %}
-                                                <label class="item-card material-option" data-type="{{ m.type }}">
+                                                <label class="item-card material-option positional-card" data-type="{{ m.type }}">
                                                     <input 
                                                         type="radio"
                                                         name="material"
                                                         value="{{ m.id }}"
-                                                        {%if not m.is_available %}disabled{% endif %} 
+                                                        {% if not m.is_available %}disabled{% endif %} 
                                                     >
+                                                    
+                                                    <!-- بخش محتوای اصلی کارت شامل نام رنگ و دایره رنگی -->
                                                     <span class="card-content">
-                                                        <span class="pcbcolor-dot green me-2" style='background:{{m.color_hex}};'></span> {{ m.color }}
+                                                        <span class="pcbcolor-dot green me-2" style="background:{{ m.color_hex }};"></span> 
+                                                        {{ m.color }}
+                                                    </span>
+                                                    
+                                                    <!-- بخش قیمت چسبیده به پایین کارت -->
+                                                    <span class="card-price-badge bg-primary text-white">
+                                                        {{ m.price_per_gram|format_price }}
                                                     </span>
                                                 </label>
                                             {% endif %}
                                         {% endfor %}
-                                    </div>
+                                    </div>                                   
                                 </div>
                             </div>
+                            
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     تراکم

@@ -29,8 +29,8 @@
         <div class="col-lg-6 d-lg-block d-none">
           <div class="home-image text-end d-md-block d-none">
             <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/home/1.png' %}" alt="mobile" />
-            <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card" />
-            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}" alt="card" />
+            {% comment %} <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card" />
+            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}" alt="card" /> {% endcomment %}
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
     <div class="container">
       <div class="title-style-4 row g-4">
         <div class="col-md-6">
-          <h2><span class="txt-success"></span> راهکارهای<span class="txt-success">تخصصی</span> ما</h2>
+          <h2><span class="txt-success"></span> راهکارهای<span class="txt-primary">تخصصی</span> ما</h2>
           <img src="{% static 'assets/landing/images/nft/line.webp' %}" alt="line" class="img-fluid" />
         </div>
       </div>
@@ -246,7 +246,7 @@
   <!-- About section end -->
 
   <!-- why choose us section start -->
-  <section class="choose-style-2">
+  {% comment %} <section class="choose-style-2">
     <div class="container custom-container">
       <div class="row justify-content-lg-between justify-content-center gy-4">
         <div class="col-lg-6 col-md-8">
@@ -296,7 +296,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 
   <!-- Brand section start -->
   <section class="brand-style-1">

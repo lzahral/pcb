@@ -7,6 +7,7 @@ from datetime import timedelta
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models import Sum
 from colorfield.fields import ColorField
+from decimal import Decimal
 
 
 class Order(models.Model):
@@ -94,10 +95,27 @@ class Print3DMaterial (models.Model):
     color = models.CharField(max_length=12, verbose_name='رنگ')
     is_available = models.BooleanField(default=True)
     color_hex = ColorField(default='#FF0000', verbose_name='رنگ')
+    display_order = models.PositiveIntegerField(default=0, verbose_name='ترتیب نمایش')
+    price_per_kg = models.DecimalField(
+        max_digits=10,
+        decimal_places=0,
+        default=0,
+        verbose_name='قیمت هر کیلوگرم'
+    )
+
+
+
+    @property
+    def price_per_gram(self):
+        return self.price_per_kg / Decimal('1000')
+    
 
     def __str__(self):
-        return f'{self.type} - {self.color}'
-
+        return f' {self.display_order} - {self.type} - {self.color}'
+    class Meta:
+        verbose_name = 'متریال چاپ سه‌بعدی'
+        verbose_name_plural = 'متریال‌های چاپ سه‌بعدی'
+        ordering = ['-is_available', '-display_order', 'id']
 
 class Print3D(models.Model):
     TYPE_CHOICES = [

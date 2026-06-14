@@ -55,6 +55,14 @@
     {% comment %} color:#4338ca; {% endcomment %}
     {% comment %} box-shadow:0 0 0 2px rgba(99,102,241,0.15); {% endcomment %}
 }
+.unit{
+    font-size: 14.5px;
+}
+.dimension-input::placeholder {
+    color: #909dad;
+    opacity: 0.6;   
+    font-size: 0.8rem;
+}
     </style>
 {% endblock %}
 
@@ -69,21 +77,17 @@
             <div class="card-header">
                 <h5>PCB</h5>
             </div>
-            <form method="POST" class="row px-3"  enctype='multipart/form-data' >
+            <form method="POST" class="row px-3"  id="part-form" enctype='multipart/form-data' >
                 {% csrf_token %}
+                
+
                 <div class="card-body custom-input">
                     <div class="row">
                         <div class="col">
                             <div class="mb-3 row align-items-center" >
                                 <label class="col-sm-3">
                                     نوع برد
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 ">
                                     <div class="pcb-options">
@@ -139,13 +143,7 @@
                             <div id="substrate-wrapper" class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     نوع بستر
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.substrate_type.field.choices %}
@@ -194,13 +192,7 @@
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     کاربرد
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.product_type.field.choices %}
@@ -236,13 +228,14 @@
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
                                         type="number" placeholder="عرض" name="dimension_y" required>
-
-                                    <select class="form-select form-select-sm dimension-unit" name="dimension_unit">
+                                    <span class='unit'>میلی‌متر</span>
+                                    <select class="hide form-select form-select-sm dimension-unit" name="dimension_unit">
                                         <option value="mm" checked>میلی‌متر</option>
                                         <option value="inch">اینچ</option>
                                     </select>
-
                                 </div>
+                                <p class="txt-danger col-sm-3"></p>
+                                <p id="form-error" class="txt-danger col-sm-9 unit pt-1"></p>
                             </div>
 
                             <div class="mb-3 row">
@@ -277,13 +270,7 @@
                             <div class="my-3 row align-items-center">
                                 <label class="col-sm-3">
                                     ضخامت
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.PCB_thickness.field.choices %}
@@ -393,13 +380,7 @@
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     پوشش نهایی
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.surface_finish.field.choices %}
@@ -423,13 +404,7 @@
                             <div id="gold_thickness" class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     ضخامت طلا
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.gold_thickness.field.choices %}
@@ -455,13 +430,7 @@
                             <div class="my-3 row align-items-center">
                                 <label class="col-sm-3">
                                     ضخامت مس
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.outer_copper_weight.field.choices %}
@@ -484,13 +453,7 @@
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     پوشش ویا
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.via_covering.field.choices %}
@@ -512,16 +475,10 @@
                             {% comment %} <div class="card-header">
                                 <h5>جزئیات فنی</h5>
                             </div> {% endcomment %}      
-                            <div class="mb-3 row align-items-center">
+                            <div class="mb-3 row align-items-center pt-3">
                                 <label class="col-sm-3">
                                     Min via
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.min_via.field.choices %}
@@ -544,13 +501,7 @@
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     Board Outline Tolerance
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.board_outline_tolerance.field.choices %}
@@ -575,13 +526,7 @@
                             <div class="mb-3 row align-items-center">
                                 <label class="col-sm-3">
                                     تست الکتریکال
-                                    <button
-                                        class="example-popover btn btn-pill  btn-outline-info btn-xs mb-0 mx-1"
-                                        type="button" data-bs-trigger="hover"
-                                        data-container="body" data-bs-toggle="popover"
-                                        data-bs-placement="bottom" title="توضیحات"
-                                        data-offset="-20px -20px" data-bs-content="تست"><i
-                                            class="fa-solid fa-info"></i></button>
+                                    
                                 </label>
                                 <div class="col-sm-9 card-options">
                                     {% for value, label in form.electrical_test.field.choices %}
@@ -615,7 +560,7 @@
                             <div class="my-3 row">
                                 <label class="col-sm-3">فایل pcb</label>
                                 <div class="col-sm-9">
-                                    {{form.file|add_class:'form-control'}}
+                                    <input type="file" name="file" class="form-control" id="id_file" accept=".zip,.gbr,.gerber,.pcbdoc">
                                 </div>
                             </div>
                             <div class="my-3 row">
@@ -666,3 +611,60 @@
         </div>
     </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("part-form");
+    const errorBox = document.getElementById("form-error");
+
+    form.addEventListener("submit", function (e) {
+
+        const dx = parseFloat(document.querySelector('[name="dimension_x"]').value) || 0;
+        const dy = parseFloat(document.querySelector('[name="dimension_y"]').value) || 0;
+        const gx = parseFloat(document.querySelector('[name="grid_x"]').value) || 1;
+        const gy = parseFloat(document.querySelector('[name="grid_y"]').value) || 1;
+        console.log(gx)
+        console.log(gy)
+        console.log(dy)
+        console.log(dx)
+        const total_x = dx * gx ;
+        const total_y = dy * gy;
+        const MAX_X = 400;
+        const MAX_Y = 300; 
+
+        if (total_x > MAX_X || total_y > MAX_Y ) {
+            e.preventDefault(); 
+
+            errorBox.textContent = "ابعاد برد باید حداکثر  ۴۰۰ * ۳۰۰  میلی‌متر باشد.";
+            errorBox.classList.remove("d-none");
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+            errorBox.classList.add("d-none");
+        }
+
+    });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const gridX = document.querySelector('[name="grid_x"]');
+    const gridY = document.querySelector('[name="grid_y"]');
+
+    gridX.addEventListener("input", function () {
+        if (gridX.value !== "" && gridY.value === "") {
+            gridY.value = 1;
+        }
+    });
+
+    gridY.addEventListener("input", function () {
+        if (gridY.value !== "" && gridX.value === "") {
+            gridX.value = 1;
+        }
+    });
+});
+</script>
+{% endblock scripts %}

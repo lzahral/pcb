@@ -27,7 +27,7 @@
 
     <link rel="icon" href="{% static 'assets/favicon/favicon.ico' %}">
     <title>
-      BLACKBOX
+      PCBHUB
     </title>
     <!-- Swiper css -->
     <link rel="stylesheet" type="text/css" href="{% static 'assets/landing/css/vendors/swiper/swiper.min.css' %}" />
@@ -90,6 +90,9 @@
     {% endblock %}
 
     <style>
+      .header-shadow{
+        box-shadow: 0 0 40px rgb(65 83 145 / 5%);
+      }
            .navbar-collapse {
         background-color: white !important; }
       .logOut {
@@ -162,7 +165,7 @@
         padding-right: 5px;
       }
       .img-logo{
-        width: 140px !important;
+        width: 85px !important;
       }
     </style>
   </head>
@@ -185,10 +188,12 @@
     </div>
     <main>
       <!-- Header start -->
-      <header class="header-absolute bg-white">
+      <header class="header-absolute bg-white header-shadow">
         <nav class="navbar navbar-expand-lg bg-light">
           <div class="custom-container container">
-           <img class='img-logo' src="{% static 'assets/images/logo/logo.png' %}" alt="logo" /></a>
+            <a href="{% url 'index' %}" >
+              <img class='img-logo'  src="{% static 'assets/images/logo/logo.png' %}" alt="logo" /></a>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -212,8 +217,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'index_2' %}">سفارش PCB</a>
                 </li>
+               
                 <li class="nav-item">
                   <a class="nav-link" href="{% url '3D-form' %}">پرینت سه‌بعدی</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index_2' %}">راهنمای فنی</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'about_us' %}">درباره ما</a>
@@ -259,13 +268,13 @@
         </nav>
       </header>
       <!-- Header start -->
-      <div class="mt-5 pt-5">
-        {% block breadcrumb %}
-
-        {% endblock %}
-        {% block content %}
-
-        {% endblock %}
+      <div class="mt-5 pt-{% if request.resolver_match.url_name == 'index' %}4{% else %}5{% endif %}">
+        <div class='pt-4'> 
+          {% block breadcrumb %}
+          {% endblock %}
+          {% block content %}
+          {% endblock %}
+        </div>
       </div>
       {% comment %} <!-- Home section start -->
       <section class="home-style-1 home-style-2">
@@ -908,7 +917,7 @@
             <div class="row gx-xl-5 gy-md-5 gy-4 gx-4">
               <div class="col-xl-4">
                 <div class="footer-contact">
-                   <a class="navbar-brand m-0" href="{% url 'index' %}"><img class='img-logo' src="{% static 'assets/images/logo/logo.png' %}" alt="logo"/></a>
+                   <a class="navbar-brand m-0" href="{% url 'index' %}"><h1>PCBHUB</h1> </a>
                   <p>ما با تکیه بر تجربه فنی، تجهیزات دقیق و کنترل کیفیت مرحله‌به‌مرحله، خدمات طراحی و چاپ بردهای PCB را برای پروژه‌های صنعتی، تجاری و تحقیقاتی ارائه می‌دهیم؛ از نمونه‌سازی سریع تا تولید انبوه.</p>
                   {% comment %} <ul>
                     <li>
@@ -1037,7 +1046,7 @@
                         </div>
                         <div>
                           <h6>ایمیل:</h6>
-                          <p>info@bordino.com</p>
+                          <p>info@PCBHUB.com</p>
                         </div>
                       </div>
                     </li>
@@ -1051,7 +1060,7 @@
           <div class="sub-footer">
             <div class="row align-items-center">
               <div class="col-md-6">
-                <p>© کلیه حقوق این وب سایت متعلق به مجموعه بردینو می‌باشد.</p>
+                <p>© کلیه حقوق این وب سایت متعلق به مجموعه PCBHUB می‌باشد.</p>
               </div>
               <!--                 <div class="col-md-6">
                             <ul class="footer-links sub-footer-links">
