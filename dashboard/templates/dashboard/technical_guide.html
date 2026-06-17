@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container-fluid container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <h3 class="text-center mb-4">راهنمای فنی سفارش PCB</h3>
+            <div class="alert alert-light-primary p-4 ounded-4">
+              <p class="mb-3 text-justify" style="line-height: 1.8;">تولیدکنندگان PCB با توجه به سطح فناوری و کیفیت تجهیزات، قابلیت‌های متفاوتی را ارائه می‌دهند. انتخاب مواد مناسب، دقت در ابعاد، حداقل عرض ترک و فاصله بین ترک‌ها، تعداد لایه‌ها و نوع پوشش سطحی از جمله فاکتورهای کلیدی در تعیین کیفیت و عملکرد نهایی یک برد مدار چاپی محسوب می‌شوند.</p>
+
+              <p class="fw-bold mb-3">بردهای مدار چاپی در انواع مختلف فراهم شده است که هرکدام ویژگی‌های خاص خود را دارند:</p>
+
+              <div class="ms-4">
+                <div class="d-flex align-items-start mb-2">
+                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
+                  <p class="mb-0 text-justify">
+                    <strong>FR-۴:</strong> متداول‌ترین نوع PCB با هسته فایبرگلاس که استحکام مکانیکی بالا و مقاومت الکتریکی مناسبی دارد.
+                  </p>
+                </div>
+                <div class="d-flex align-items-start mb-2">
+                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
+                  <p class="mb-0 text-justify">
+                    <strong>Aluminum:</strong> بردهای دارای لایه‌ی هادی آلومینیومی که برای کاربردهای دفع حرارت بالا (مثل LED) استفاده می‌شوند.
+                  </p>
+                </div>
+                <div class="d-flex align-items-start mb-2">
+                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
+                  <p class="mb-0 text-justify">
+                    <strong>Rogers:</strong> بردهای مبتنی بر مواد سرامیکی، مناسب برای کاربردهای فرکانس بالا و ارتباطات بی‌سیم.
+                  </p>
+                </div>
+                <div class="d-flex align-items-start">
+                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
+                  <p class="mb-0 text-justify">
+                    <strong>FPC:</strong> بردهای انعطاف‌پذیر که امکان طراحی در فضاهای محدود و با شکل‌های غیرمعمول را فراهم می‌کنند.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover text-center align-middle table-custom-padding">
+                <thead class="bg-primary text-white">
+                  <tr>
+                    <th class="bg-light-success" style="width: 10%;">ویژگی‌ها</th>
+                    <th style="width: 20%;">FR-4</th>
+                    <th style="width: 20%;">Aluminum</th>
+                    <th style="width: 20%;">Rogers</th>
+                    <th style="width: 20%;">FPC</th>
+                    <th class="bg-light-success" style="width: 10%;">تصویر</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-dark">تعداد لایه‌ها</td>
+                    <td>1 تا 6 لایه</td>
+                    <td>1 لایه</td>
+                    <td>1 تا 6 لایه</td>
+                    <td>1 تا 6 لایه</td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/layers.png' %}" alt="layers" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">کوچکترین ابعاد مدار چاپی</td>
+                    <td>0.6cm x 0.6cm</td>
+                    <td>0.8cm x 0.8cm</td>
+                    <td>0.6cm x 0.6cm</td>
+                    <td>0.6cm x 0.6cm</td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/mini_pcb_size.png' %}" alt="mini-pcb-size" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">بزرگترین ابعاد مدار چاپی</td>
+                    <td>60cm x 50cm</td>
+                    <td>60cm x 60cm</td>
+                    <td>60cm x 45cm</td>
+                    <td>40cm x 25cm</td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/max_pcb_size.png' %}" alt="max-pcb-size" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">ضخامت برد</td>
+                    <td>0.4mm - 2mm</td>
+                    <td>0.8mm - 1.6mm</td>
+                    <td>0.51mm - 1.52mm</td>
+                    <td>0.07mm - 0.25mm</td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/board_thickness.png' %}" alt="max-pcb-size" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">کمترین ضخامت مسیر برای ضخامت مس 1OZ</td>
+                    <td>5mil (0.127mm)</td>
+                    <td>5mil (0.127mm)</td>
+                    <td>5mil (0.127mm)</td>
+                    <td>5mil (0.127mm)</td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/mini_line.png' %}" alt="min-space" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">کمترین فاصله خطوط برای ضخامت مس 1OZ</td>
+                    <td>
+                      5mil <br /> (0.127mm)
+                    </td>
+                    <td>
+                      5mil <br /> (0.127mm)
+                    </td>
+                    <td>
+                      5mil <br /> (0.127mm)
+                    </td>
+                    <td>
+                      5mil <br /> (0.127mm)
+                    </td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/min_spacing.png' %}" alt="mini-line" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">ضخامت مس لایه خارجی</td>
+                    <td>
+                      1OZ / 2OZ <br /> (35um / 70um)
+                    </td>
+                    <td>
+                      1OZ <br /> (35um)
+                    </td>
+                    <td>
+                      1OZ <br /> (35um)
+                    </td>
+                    <td>
+                      1/3OZ ~ 1OZ <br /> (12um - 35um)
+                    </td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/outer_layer.png' %}" alt="outer-layer" style="width: 110px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">ضخامت مس لایه داخلی</td>
+                    <td>
+                      0.5OZ / 1OZ
+                      <br />
+                      ( 17um / 35um )
+                    </td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>
+                      1/3OZ ~ 1OZ
+                      <br />
+                      ( 12um ~ 35um )
+                    </td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/inner_layer.png ' %}" alt="inner-layer" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">اندازه سوراخ</td>
+                    <td>0.2mm - 6.3mm</td>
+                    <td>0.7mm - 6.3mm</td>
+                    <td>Min: 0.3mm</td>
+                    <td>Min: 0.2mm</td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/drill_sizes.png' %}" alt="drill-size" style="width: 110px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">کوچکترین اندازه قطر داخلی و خارجی وایا</td>
+                    <td>
+                      قطر داخلی 0.2 میلی متر
+                      <br />
+                      قطر خارجی 0.45 میلی متر
+                    </td>
+                    <td>-</td>
+                    <td>
+                      قطر داخلی 0.3 میلی متر
+                      <br />
+                      قطر خارجی 0.5 میلی متر
+                    </td>
+                    <td>
+                      قطر داخلی 0.2 میلی متر
+                      <br />
+                      قطر خارجی 0.45 میلی متر
+                    </td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/min_via.png' %}" alt="min-via" style="width: 130px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">کوچکترین اندازه حلقه وایا</td>
+                    <td>
+                      4mil
+                      <br />
+                      ( 0.1016mm )
+                    </td>
+                    <td>-</td>
+                    <td>
+                      5mil
+                      <br />
+                      ( 0.1016mm )
+                    </td>
+                    <td>
+                      4mil
+                      <br />
+                      ( 0.1016mm )
+                    </td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/mini_ring.png' %}" alt="mini-ring" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">کمترین عرض و ارتفاع کاراکتر</td>
+                    <td>
+                      Min Width 6mil (0.153mm)
+                      <br />
+                      Min height 40mil (1.016mm)
+                    </td>
+                    <td>
+                      Min Width 6mil (0.153mm)
+                      <br />
+                      Min height 40mil (1.016mm)
+                    </td>
+                    <td>
+                      Min Width 6mil (0.153mm)
+                      <br />
+                      Min height 40mil (1.016mm)
+                    </td>
+                    <td>
+                      Min Width 6mil (0.153mm)
+                      <br />
+                      Min height 40mil (1.016mm)
+                    </td>
+                    <td>
+                      <img src="{% static 'assets/css/images/tech-icons/min_character.png' %}" alt="min-character" style="width: 100px; height: 90px; object-fit: contain;" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">کمترین قطر نیم سوراخ</td>
+                    <td>0.6mm</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>0.4mm</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">پوشش نهایی</td>
+                    <td>
+                      HASL with lead <br />
+                      HASL lead free <br />
+                      ENIG (1U",2U")
+                    </td>
+                    <td>
+                      HASL with lead <br /> HASL lead free
+                    </td>
+                    <td>ENIG (1U",2U")</td>
+                    <td>ENIG (1U",2U")</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">رنگ پوشش برد</td>
+                    <td>Green ,Red, Yellow, Blue, Purple, White, Black</td>
+                    <td>White, Black</td>
+                    <td>Green</td>
+                    <td>Yellow, White, Black</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">رنگ مارکاژ</td>
+                    <td>White, Black (Only for White Solder Mask)</td>
+                    <td>White, Black (Only for White Solder Mask)</td>
+                    <td>ٌWhite</td>
+                    <td>White, Black (Only for White Solder Mask)</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td class="text-dark">حداقل قطر برش داخلی</td>
+                    <td>1mm</td>
+                    <td>2mm</td>
+                    <td>1mm</td>
+                    <td>-</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

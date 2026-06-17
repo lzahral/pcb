@@ -13,4 +13,5 @@ def about_us(request):
 def contact_us(request):
     return render(request, "dashboard/contact_us.html")
 
-
+def technical_guide(request):
+    return render(request, "dashboard/technical_guide.html")

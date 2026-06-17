@@ -192,8 +192,7 @@
         <nav class="navbar navbar-expand-lg bg-light">
           <div class="custom-container container">
             <a href="{% url 'index' %}" >
-              <img class='img-logo'  src="{% static 'assets/images/logo/logo.png' %}" alt="logo" /></a>
-            </a>
+              <img class="img-logo"  src="{% static 'assets/images/logo/logo.png' %}" alt="logo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -222,7 +221,7 @@
                   <a class="nav-link" href="{% url '3D-form' %}">پرینت سه‌بعدی</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'index_2' %}">راهنمای فنی</a>
+                  <a class="nav-link" href="{% url 'technical-guide' %}">راهنمای فنی</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'about_us' %}">درباره ما</a>
@@ -244,7 +243,7 @@
                     <a class="dropdown-item text-end" href="{% url 'profile_edit' %}"><i class="fa fa-edit ms-2"></i> ویرایش</a>
                   </li>
                   <li>
-                    <a class="dropdown-item text-end" href="{% url 'orders_list' %}"><i class="fa fa-shopping-basket ms-2"></i> سفارشات pcb</a>
+                    <a class="dropdown-item text-end" href="{% url 'orders_list' %}"><i class="fa fa-shopping-basket ms-2"></i> سفارشات PCB</a>
                   </li>
                   <li>
                     <a class="dropdown-item text-end" href="{% url '3D-orders' %}"><i class="fa fa-shopping-basket ms-2"></i> سفارشات پرینت</a>
@@ -269,7 +268,7 @@
       </header>
       <!-- Header start -->
       <div class="mt-5 pt-{% if request.resolver_match.url_name == 'index' %}4{% else %}5{% endif %}">
-        <div class='pt-4'> 
+        <div class="pt-4"> 
           {% block breadcrumb %}
           {% endblock %}
           {% block content %}

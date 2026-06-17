@@ -86467,83 +86467,84 @@ input[name="flex_substrate"]:checked+.substrate-card {
   right: 0 !important;
 }
 
-.contact-section{
-    margin-top:40px;
-}
-
-.contact-box{
-    display:flex;
-    align-items:flex-start;
-    gap:15px;
-    padding:18px 20px;
-    margin-bottom:18px;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.05);
-    align-items:center;
-    justify-content:space-between;
-}
-
-.contact-icon{
-    width:42px;
-    height:42px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f5f6fa;
-    border-radius:8px;
-    font-size:18px;
-    color:#7366ff;
-}
-
-.contact-content h5{
-    font-size:15px;
-    font-weight:600;
-    margin-bottom:6px;
-}
-
-.contact-content p{
-    margin:0;
-    color:#6c757d;
-    font-size:14px;
-}
-
-.contact-column {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 20px;
-    height: 100%;
+.contact-section {
+  margin-top: 40px;
 }
 
 .contact-box {
-    display: flex;
-    flex-direction: row-reverse; /* کلیدی */
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  justify-content: space-between;
 }
 
-.contact-box{
-    direction: rtl !important;
-    text-align: right !important;
+.contact-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6fa;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #7366ff;
+}
+
+.contact-content h5 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.contact-content p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.contact-column {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  height: 100%;
+}
+
+.contact-box {
+  display: flex;
+  flex-direction: row-reverse;
+  /* کلیدی */
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-box {
+  direction: rtl !important;
+  text-align: right !important;
 }
 
 
-.about-box{
-    display:flex;
-    align-items:flex-start;
-    gap:15px;
-    padding:18px 20px;
-    margin-bottom:18px;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.05);
-    align-items:center;
-    justify-content:space-between;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.about-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .big-card .card-body {
@@ -86618,4 +86619,131 @@ input[name="flex_substrate"]:checked+.substrate-card {
 footer *::before,
 footer *::after {
   background: none !important;
+}
+
+
+
+.table thead th {
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.table tbody td {
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.font-success {
+  color: #51bb25 !important;
+}
+
+.table i {
+  opacity: 0.8;
+}
+
+.table-responsive {
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  border: 1px solid #dee2e6 !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.table-custom-padding {
+  border: none !important;
+  margin-bottom: 0 !important;
+}
+
+.table-custom-padding tbody td,
+.table-custom-padding thead th {
+  padding: 22px 15px !important;
+  vertical-align: middle !important;
+  border-color: #f0f0f0 !important;
+}
+
+.table-custom-padding td:first-child {
+  font-weight: bold !important;
+  background-color: #fcfcfc !important;
+}
+
+.table-custom-padding thead th {
+  border: none !important;
+}
+
+.table-responsive {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e6edef;
+}
+
+.table thead th {
+  background-color: #7366ff !important;
+  color: #fff !important;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none !important;
+}
+
+.table tbody td:last-child {
+  background-color: #f8f9fd;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(115, 102, 255, 0.05);
+  transition: 0.3s;
+}
+
+.table img {
+  transition: transform 0.3s;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.table tr:hover img {
+  transform: scale(1.1);
+}
+
+.alert-light-primary {
+  border-radius: 15px !important;
+  border: 1px solid rgba(115, 102, 255, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.alert-light-primary i {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+/* تنظیمات پایه برای لینک‌های هدر */
+.nav-link {
+  color: #2b2b2b !important;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  /* انیمیشن نرم */
+  position: relative;
+}
+
+/* افکت هاور: تغییر رنگ و کمی جابجایی */
+.nav-link:hover {
+  color: #7366ff !important;
+  transform: translateY(-2px);
+}
+
+/* یک زیرخط جذاب هنگام هاور */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #7366ff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
