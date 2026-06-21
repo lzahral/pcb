@@ -15,3 +15,6 @@ def contact_us(request):
 
 def technical_guide(request):
     return render(request, "dashboard/technical_guide.html")
+
+def instructional_videos(request):
+    return render(request, "dashboard/instructional_videos.html")

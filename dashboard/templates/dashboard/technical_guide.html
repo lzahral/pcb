@@ -1,45 +1,325 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block styles %}
+  <style>
+    .btn-pill {
+      padding: 2px 8px 1px 8px !important;
+      font-size: 13px !important;
+    }
+    
+    .upload-box {
+      cursor: pointer;
+      border: 2px dashed #6c757d;
+      border-radius: 8px;
+      padding: 30px;
+      transition: all 0.2s;
+    }
+    
+    .upload-box:hover {
+      background-color: #f8f9fa;
+      border-color: #495057;
+    }
+    
+    .test {
+      font-size: 36px !important;
+    }
+    
+    .alert-light-primary {
+      background-color: rgba(115, 102, 255, 0.1);
+      color: #030303;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
   <div class="container-fluid container">
     <div class="row">
       <div class="col-sm-12">
-        <div class="card">
-          <div class="card-header pb-0">
-            <h3 class="text-center mb-4">راهنمای فنی سفارش PCB</h3>
-            <div class="alert alert-light-primary p-4 ounded-4">
-              <p class="mb-3 text-justify" style="line-height: 1.8;">تولیدکنندگان PCB با توجه به سطح فناوری و کیفیت تجهیزات، قابلیت‌های متفاوتی را ارائه می‌دهند. انتخاب مواد مناسب، دقت در ابعاد، حداقل عرض ترک و فاصله بین ترک‌ها، تعداد لایه‌ها و نوع پوشش سطحی از جمله فاکتورهای کلیدی در تعیین کیفیت و عملکرد نهایی یک برد مدار چاپی محسوب می‌شوند.</p>
+        <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+          <div class="card-header bg-white border-bottom-0 pb-0">
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">نکات فنی و راهنمای ثبت سفارش PCB</h3>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-center align-items-center w-100 mb-4">
+              <img src="{% static 'assets\css\images\tech-icons\pcb_hint.png' %}" class="img-fluid" style="max-width: 85%; height: auto;" alt="نکات ثبت سفارش" />
+            </div>
+            <div class="row align-items-start">
+              <div class="col-lg-5 col-md-12 order-lg-1 order-2 text-center">
+                <div class="p-3 bg-light rounded-4 mb-4">
+                  <img src="{% static 'assets/css/images/tech-icons/pcb_cap.png' %}" class="img-fluid rounded-3" alt="نکات ثبت سفارش" style="max-height: 450px;" />
+                </div>
+                <div class="mt-3">
+                  <img src="{% static 'assets/css/images/tech-icons/pcb_serial.jpg' %}" class="img-fluid shadow-sm rounded-3 border" alt="نمونه چاپ سریال" />
+                  <p class="text-muted small mt-2 italic">نمونه سریال چاپ شده روی مدار چاپی سطح یک</p>
+                </div>
+              </div>
 
-              <p class="fw-bold mb-3">بردهای مدار چاپی در انواع مختلف فراهم شده است که هرکدام ویژگی‌های خاص خود را دارند:</p>
+              <div class="col-lg-7 col-md-12 order-lg-2 order-1 mb-4 mb-lg-0" style="text-align: justify; line-height: 1.8;">
+                <div class="ps-lg-4">
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">PCBHUB خدمات تولید PCB را ارائه می‌دهد که متناسب با نیازهای فنی و پیچیدگی طراحی برد، امکانات متفاوتی را فراهم می‌کند.</p>
+                  </div>
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-success mt-2 me-3"></div>
+                    <p class="mb-0">
+                      برای هر نوع متریال، حداقل اندازه‌های ترک‌ها (Trace Width)، فاصله بین مسیرها (Trace Clearance) و اندازه سوراخ‌ها (Hole Size) مشخص شده است. رعایت این نکات در <a href="#technical-capabilities" class="text-primary fw-bold">توانایی فنی تولید</a> الزامی است.
+                    </p>
+                  </div>
 
-              <div class="ms-4">
-                <div class="d-flex align-items-start mb-2">
-                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
-                  <p class="mb-0 text-justify">
-                    <strong>FR-۴:</strong> متداول‌ترین نوع PCB با هسته فایبرگلاس که استحکام مکانیکی بالا و مقاومت الکتریکی مناسبی دارد.
-                  </p>
-                </div>
-                <div class="d-flex align-items-start mb-2">
-                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
-                  <p class="mb-0 text-justify">
-                    <strong>Aluminum:</strong> بردهای دارای لایه‌ی هادی آلومینیومی که برای کاربردهای دفع حرارت بالا (مثل LED) استفاده می‌شوند.
-                  </p>
-                </div>
-                <div class="d-flex align-items-start mb-2">
-                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
-                  <p class="mb-0 text-justify">
-                    <strong>Rogers:</strong> بردهای مبتنی بر مواد سرامیکی، مناسب برای کاربردهای فرکانس بالا و ارتباطات بی‌سیم.
-                  </p>
-                </div>
-                <div class="d-flex align-items-start">
-                  <i class="fa fa-caret-left mt-1 me-2 text-primary"></i>
-                  <p class="mb-0 text-justify">
-                    <strong>FPC:</strong> بردهای انعطاف‌پذیر که امکان طراحی در فضاهای محدود و با شکل‌های غیرمعمول را فراهم می‌کنند.
-                  </p>
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-warning mt-2 me-3"></div>
+                    <p class="mb-0 text-danger">
+                      برای محاسبه دقیق هزینه تولید، ضروری است که ابعاد PCB با <strong>دقت ۲ رقم اعشار</strong> بر حسب سانتی‌متر (مثلاً ۱۰.۰۱ سانتی‌متر) ثبت شود.
+                    </p>
+                  </div>
+
+                  <div class="alert alert-light-primary border-0 rounded-3 p-3 mb-3">
+                    <i class="fa fa-info-circle me-2"></i>
+                    در صورتی که طراحی برد دارای ملاحظات خاصی است، حتماً در بخش توضیحات سفارش ذکر شود. برخی طراحی‌های پیچیده نیازمند بررسی تیم فنی پیش از تایید نهایی هستند.
+                  </div>
+                  <div class="d-flex align-items-start">
+                    <div class="badge-dot bg-secondary mt-2 me-3"></div>
+                    <p class="mb-0">
+                      <strong>توجه:</strong> سازندگان شماره سریال را در قسمتی از برد چاپ می‌کنند. در صورت نیاز به حذف این شماره، باید از سرویس‌های سطح بالاتر استفاده نمایید.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- File -->
+  <div class="container-fluid container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+          <div class="card-header bg-white border-bottom-0 pb-0">
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">فایل</h3>
+          </div>
+          <div class="card-body">
+            <div class="row align-items-start">
+              <div class="col-lg-5 col-md-12 order-lg-1 order-2 text-center">
+                <div class="mt-3">
+                  <img src="{% static 'assets/css/images/tech-icons/gerber.jpg' %}" class="img-fluid shadow-sm rounded-3 border" alt="گربر" />
+                </div>
+              </div>
+
+              <div class="col-lg-7 col-md-12 order-lg-2 order-1 mb-4 mb-lg-0" style="text-align: justify; line-height: 1.8;">
+                <div class="ps-lg-4">
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">کاربران می‌توانند فایل طراحی برد مدار چاپی خود را در یکی از دو فرمت فایل سورس PCB یا فایل گربر (Gerber) ارسال کنند. فایل‌های سورس شامل تمامی اطلاعات طراحی هستند، در حالی که فایل‌های گربر تنها نقشه‌ی لایه‌های مدار را در بر می‌گیرند و فاقد اطلاعاتی مانند لیست قطعات (BOM)، نام نت‌ها (Nets) و سایر جزئیات اضافی هستند.</p>
+                  </div>
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="bg-success mt-2 me-3"></div>
+                    <p class="mb-0">در صورتی که کاربران قصد ارسال فایل گربر را داشته باشند، رعایت برخی نکات فنی ضروری است تا فرآیند تولید بدون مشکل انجام شود:</p>
+                  </div>
+
+                  <div class="alert alert-light-primary border-0 rounded-3 p-3 mb-3">
+                    <i class="fa fa-info-circle me-2"></i>
+                    فایل‌های ارسالی باید دارای پسوند .TXT باشند یا نام آن‌ها با حرف G آغاز شود. پسوندهای رایج برای فایل‌های گربر شامل GTL، GBL، GKO، GBX، G1، G2 و موارد مشابه هستند. فایل های *.CAM به تنهایی شامل فایل های تولید PCB نمی باشند.
+                    <br /> <br />
+                    <i class="fa fa-info-circle me-2"></i>
+                    PCB هایی که با استفاده از نرم‌افزار پروتئوس (Proteus) طراحی شده باشد، باید خروجی آن حتماً به‌صورت گربر تهیه شوند. در این نرم‌افزار، پسوند فایل‌های گربر پس از خروجی گرفتن،اغلب .GBR است کاربران می‌توانند از
+                    <a href="#viedeos" class="text-primary fw-bold">فیلم‌های آموزشی</a> موجود برای یادگیری نحوه‌ی تولید این فایل‌ها استفاده کنند.
+                    <br /> <br />
+                    <i class="fa fa-info-circle me-2"></i>
+                    جهت تولید PCB، ارسال فایل NC Drill الزامی است. این فایل که اغلب دارای پسوند .TXT است، اطلاعات دقیق مربوط به سوراخ‌کاری را شامل می‌شود.
+                    <br /> <br />
+                    <i class="fa fa-info-circle me-2"></i>
+                    در مواردی که کاربران فایل طراحی خود را با فرمت PcbDoc (فایل پروژه آلتیوم) ارسال می‌کنند، ممکن است پس از تولید، متون نوشته‌شده در لایه‌های مختلف به‌هم‌ریخته نمایش داده شوند. در چنین شرایطی، PCBHUB مسئولیتی در قبال تغییرات ناخواسته در متن‌های چاپ‌شده روی PCB نخواهد داشت. برای جلوگیری از این مشکل، توصیه می‌شود که فایل‌های PCB، به‌صورت خروجی گربر تهیه و ارسال شوند تا از بروز خطا در فرآیند تولید جلوگیری شود.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panelize -->
+  <div class="container-fluid container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+          <div class="card-header bg-white border-bottom-0 pb-0">
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">پنلایز</h3>
+          </div>
+          <div class="card-body px-4 px-md-5">
+            <div class="text-center mb-5">
+              <img src="{% static 'assets/css/images/tech-icons/panelize.jpg' %}" class="img-fluid rounded-3" style="max-width: 80%; height: auto;" alt="پنلایز" />
+            </div>
+
+            <div style="direction: rtl; text-align: justify; line-height: 2;">
+              <p class="mb-4">
+                تمام فایل‌های ارسالی باید به صورت جداگانه ثبت شوند. فرآیند تولید PCB به‌صورت عمومی انجام می‌شود و بردهای مختلف در کنار یکدیگر پنلایز خواهند شد.
+                <br />
+                چنانچه بردهای ارسالی از قبل توسط کاربر پنلایز شده باشند، چند نکته حائز اهمیت است:
+              </p>
+
+              <div class="alert alert-light-primary border-0 rounded-4 p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i class="fa fa-info-circle me-2"></i>
+                  <span>به دلیل نیاز به پنلایز مجدد در فرآیند تولید، هزینه‌ی اضافی دریافت خواهد شد.</span>
+                </div>
+
+                <div class="d-flex align-items-start mb-3">
+                  <i class="fa fa-info-circle me-2"></i>
+                  <span>ممکن است چیدمان بردها تغییر کند تا با استانداردهای تولید هماهنگ شود. در صورتی که حفظ چیدمان اولیه‌ی پنل برای پروژه‌ی شما ضروری است، حتماً این موضوع را در بخش توضیحات سفارش ذکر کنید.</span>
+                </div>
+
+                <div class="d-flex align-items-start">
+                  <i class="fa fa-info-circle me-2"></i>
+                  <span>در مواردی که پنلایز کردن به‌منظور مونتاژ بردها انجام می‌شود، کاربران می‌توانند چیدمان بردها را به کارخانه‌ی تولیدکننده واگذار کنند.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cut -->
+  <div class="container-fluid container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+          <div class="card-header bg-white border-bottom-0 pb-0">
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">برش دور برد</h3>
+          </div>
+          <div class="card-body">
+            <div class="row align-items-start">
+              <div class="col-lg-5 col-md-12 order-lg-1 order-2 text-center">
+                <div class="mt-3">
+                  <img src="{% static 'assets/css/images/tech-icons/keepout_hint.gif' %}" class="img-fluid" alt="برش دور برد" />
+                </div>
+              </div>
+              <div class="col-lg-7 col-md-12 order-lg-2 order-1 mb-4 mb-lg-0" style="text-align: justify; line-height: 1.8;">
+                <div class="ps-lg-4">
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">فایل‌های ارسالی باید حاوی لایه‌ی برش دور برد (Keepout Layer) باشند و مسیر برش در این لایه باید به‌صورت یک خط بسته ترسیم شود. این لایه نقش مهمی در تعیین محدوده‌ی دقیق برش برد دارد و از بروز اشتباه در فرآیند تولید جلوگیری می‌کند. چنانچه فایل ارسالی فاقد خطوط برش باشد، به این معناست که محدوده‌ی برد برای تولیدکننده مشخص نیست و در نتیجه، فایل باید دوباره بارگذاری شود. این موضوع می‌تواند منجر به تأخیر در فرآیند تولید گردد.</p>
+                  </div>
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">در بسیاری از شرکت‌های تولیدکننده PCB در ایران، به این موضوع توجه کافی نمی‌شود و در اغلب موارد، تولیدکننده به‌صورت دستی حریم برش برد را مشخص می‌کند. این امر می‌تواند منجر به تغییرات ناخواسته در ابعاد و شکل برد شود. بنابراین، توصیه می‌شود که مشتریان با رسم دقیق خطوط برش در لایه Keepout، محدوده‌ی دقیق برش دور برد و همچنین برش‌های داخلی را تعیین کنند.شود.</p>
+                  </div>
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">در صورتی که طراحی شامل بخش‌های خالی (Cutout) باشد، این نواحی باید به‌وضوح در لایه Keepout مشخص شوند. Cutout به مناطقی از برد گفته می‌شود که نیاز به برش داخلی دارند، مانند حفره‌های بزرگ یا نواحی خالی که در طراحی لحاظ شده‌اند. مشخص نکردن این نواحی می‌تواند منجر به مشکلاتی در تولید و نیاز به اصلاح مجدد فایل شود.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stackup -->
+  <div class="container-fluid container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+          <div class="card-header bg-white border-bottom-0 pb-0">
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">استک آپ</h3>
+          </div>
+          <div class="card-body">
+            <div class="row align-items-start">
+              <div class="col-lg-5 col-md-12 order-lg-1 order-2 text-center">
+                <div class="mt-3">
+                  <img src="{% static 'assets/css/images/tech-icons/default_stackup.png' %}" class="img-fluid" alt="استک آپ" />
+                </div>
+              </div>
+
+              <div class="col-lg-7 col-md-12 order-lg-2 order-1 mb-4 mb-lg-0" style="text-align: justify; line-height: 1.8;">
+                <div class="ps-lg-4">
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">ضخامت لایه های نشان داده در استک‌آپ به صورت تقریبی می باشد.</p>
+                  </div>
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">لایه های نشان داده با متریال موجود در کارخانه تولید خواهند شد.</p>
+                  </div>
+                  <div class="d-flex align-items-start mb-3">
+                    <div class="badge-dot bg-primary mt-2 me-3"></div>
+                    <p class="mb-0">در صورتی که استک‌آپ موردنظر با استک‌آپ پیش‌فرض تفاوت داشته باشد، امکان تولید آن در سطح پایین وجود نخواهد داشت و سفارش باید در سطوح بالاتر بررسی شود.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Via&Pad -->
+  <div class="container-fluid container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+          <div class="card-header bg-white border-bottom-0 pb-0">
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">وایاها و پدها</h3>
+          </div>
+          <div class="card-body px-4 px-md-5">
+            <div class="text-center mb-5">
+              <img src="{% static 'assets/css/images/tech-icons/plated.jpg' %}" class="img-fluid rounded-3" style="max-width: 80%; height: auto;" alt="وایا و پد" />
+            </div>
+
+            <div style="direction: rtl; text-align: justify; line-height: 2;">
+              <p class="mb-4">فرآیند پوشاندن وایاها در تولید بردهای مدار چاپی (PCB) به روش‌های مختلفی انجام می‌شود که بسته به نیاز طراحی و عملکرد مورد انتظار برد، می‌توان یکی از این روش‌ها را انتخاب کرد:</p>
+              <div class="alert alert-light-primary border-0 rounded-4 p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <strong>بدون پوشش:</strong> در این حالت، وایاها هیچ‌گونه پوششی دریافت نمی‌کنند و به‌صورت باز باقی می‌مانند.
+                </div>
+
+                <div class="mb-2">
+                  <strong style="display: inline;">پوشش با سولدر مسک (بدون نفوذ به سوراخ):</strong>
+                  <span style="display: inline;">سطح وایاها با سولدر مسک پوشانده می‌شود، اما ماده‌ی سولدر مسک به داخل سوراخ وایا نفوذ نمی‌کند و مسیر عبور جریان از طریق وایا همچنان باز خواهد ماند.</span>
+                </div>
+
+                <div class="mb-2">
+                  <strong style="display: inline;">پوشش با سولدر مسک (نفوذ به سوراخ):</strong>
+                  <span style="display: inline;">وایاها به‌طور کامل با سولدر مسک پر می‌شوند، به‌طوری‌که این ماده به داخل سوراخ نفوذ کرده و آن را مسدود می‌کند.</span>
+                </div>
+
+                <div class="mb-2">
+                  <strong style="display: inline;">پر کردن ویا با رزین و پوشاندن با سولدر مسک:</strong>
+                  <span style="display: inline;">سوراخ وایا ابتدا با رزین غیررسانا پر می‌شود و سپس سطح آن با یک لایه‌ی سولدر مسک پوشانده می‌شود.</span>
+                </div>
+
+                <div class="mb-2">
+                  <strong style="display: inline;">پر کردن ویا با رزین، متالیزه کردن سطح و پوشاندن با سولدر مسک:</strong> در این فرآیند، سوراخ ویا ابتدا با رزین پر شده، سپس سطح آن با لایه‌ای از مس متالیزه می‌شود و در نهایت با سولدر مسک پوشانده می‌شود.
+                </div>
+                <div class="mb">
+                  <strong style="display: inline;">پر کردن ویا با مواد رسانا، متالیزه کردن سطح و پوشاندن با سولدر مسک:</strong> در این روش، ویاها با مواد رسانای الکتریکی پر شده، سطح آن‌ها با لایه‌ای از مس متالیزه می‌شود و در نهایت، یک لایه سولدر مسک برای پوشش نهایی به کار می‌رود.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="container-fluid container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div id="technical-capabilities" class="card-header pb-0">
+            <h3 class="text-center mb-4">توانایی فنی تولید</h3>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -47,10 +327,22 @@
                 <thead class="bg-primary text-white">
                   <tr>
                     <th class="bg-light-success" style="width: 10%;">ویژگی‌ها</th>
-                    <th style="width: 20%;">FR-4</th>
-                    <th style="width: 20%;">Aluminum</th>
-                    <th style="width: 20%;">Rogers</th>
-                    <th style="width: 20%;">FPC</th>
+                    <th style="width: 20%;">
+                      <button class="example-popover btn btn-pill btn-outline-info btn-xs-tight mb-0 me-2" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="متداول‌ترین نوع PCB با هسته فایبرگلاس که استحکام مکانیکی بالا و مقاومت الکتریکی مناسبی دارد." data-offset="-20px -20px" data-bs-content="{{ item.description }}"><i class="fa-solid fa-info info-icon-custom"></i></button>
+                      FR-4
+                    </th>
+                    <th style="width: 20%;">
+                      <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="بردهای دارای لایه‌ی هادی آلومینیومی که برای کاربردهای دفع حرارت بالا (مثل LED) استفاده می‌شوند." data-offset="-20px -20px" data-bs-content="{{ item.description }}"><i class="fa-solid fa-info info-icon-custom"></i></button>
+                      Aluminum
+                    </th>
+                    <th style="width: 20%;">
+                      <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="بردهای مبتنی بر مواد سرامیکی، مناسب برای کاربردهای فرکانس بالا و ارتباطات بی‌سیم." data-offset="-20px -20px" data-bs-content="{{ item.description }}"><i class="fa-solid fa-info info-icon-custom"></i></button>
+                      Rogers
+                    </th>
+                    <th style="width: 20%;">
+                      <button class="example-popover btn btn-pill btn-outline-info btn-xs mb-0 me-0" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="بردهای انعطاف‌پذیر که امکان طراحی در فضاهای محدود و با شکل‌های غیرمعمول را فراهم می‌کنند." data-offset="-20px -20px" data-bs-content="{{ item.description }}"><i class="fa-solid fa-info info-icon-custom"></i></button>
+                      FPC
+                    </th>
                     <th class="bg-light-success" style="width: 10%;">تصویر</th>
                   </tr>
                 </thead>
