@@ -71,13 +71,14 @@
 {% endblock breadcrumb %}
 
 {% block content %}
+
     <div class=" container mt-3">
         <div class="card height-equal" style="min-height: 1063.2px">
         {{form.errors}}
             <div class="card-header">
                 <h5>PCB</h5>
             </div>
-            <form method="POST" class="row px-3"  id="part-form" enctype='multipart/form-data' >
+            <form method="POST" class="row px-3"  id="part-form" enctype="multipart/form-data" >
                 {% csrf_token %}
                 
 
@@ -228,7 +229,7 @@
                                     <input
                                         class="form-control form-control-sm digits dimension-input"
                                         type="number" placeholder="عرض" name="dimension_y" required>
-                                    <span class='unit'>میلی‌متر</span>
+                                    <span class="unit">میلی‌متر</span>
                                     <select class="hide form-select form-select-sm dimension-unit" name="dimension_unit">
                                         <option value="mm" checked>میلی‌متر</option>
                                         <option value="inch">اینچ</option>

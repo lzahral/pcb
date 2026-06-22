@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block breadcrumb %}
+  {% include 'components/page_title.html' with title='راهنمای فنی' %}
+{% endblock %}
+
 {% block styles %}
   <style>
     .btn-pill {
@@ -29,11 +33,12 @@
       background-color: rgba(115, 102, 255, 0.1);
       color: #030303;
     }
+    
   </style>
 {% endblock %}
 
 {% block content %}
-  <div class="container-fluid container">
+  <div class="container-fluid container mt-3">
     <div class="row">
       <div class="col-sm-12">
         <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
@@ -95,7 +100,7 @@
   </div>
 
   <!-- File -->
-  <div class="container-fluid container">
+  <div class="container-fluid container mt-3">
     <div class="row">
       <div class="col-sm-12">
         <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
@@ -145,7 +150,7 @@
   </div>
 
   <!-- Panelize -->
-  <div class="container-fluid container">
+  <div class="container-fluid container mt-3">
     <div class="row">
       <div class="col-sm-12">
         <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
@@ -188,7 +193,7 @@
   </div>
 
   <!-- Cut -->
-  <div class="container-fluid container">
+  <div class="container-fluid container mt-3">
     <div class="row">
       <div class="col-sm-12">
         <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
@@ -226,7 +231,7 @@
   </div>
 
   <!-- Stackup -->
-  <div class="container-fluid container">
+  <div class="container-fluid container mt-3">
     <div class="row">
       <div class="col-sm-12">
         <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
@@ -265,7 +270,7 @@
   </div>
 
   <!-- Via&Pad -->
-  <div class="container-fluid container">
+  <div class="container-fluid container mt-3">
     <div class="row">
       <div class="col-sm-12">
         <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
@@ -280,8 +285,8 @@
             <div style="direction: rtl; text-align: justify; line-height: 2;">
               <p class="mb-4">فرآیند پوشاندن وایاها در تولید بردهای مدار چاپی (PCB) به روش‌های مختلفی انجام می‌شود که بسته به نیاز طراحی و عملکرد مورد انتظار برد، می‌توان یکی از این روش‌ها را انتخاب کرد:</p>
               <div class="alert alert-light-primary border-0 rounded-4 p-4">
-                <div class="d-flex align-items-start mb-3">
-                  <strong>بدون پوشش:</strong> در این حالت، وایاها هیچ‌گونه پوششی دریافت نمی‌کنند و به‌صورت باز باقی می‌مانند.
+                <div class="mb-2">
+                  <strong style="display: inline;">بدون پوشش:</strong> در این حالت، وایاها هیچ‌گونه پوششی دریافت نمی‌کنند و به‌صورت باز باقی می‌مانند.
                 </div>
 
                 <div class="mb-2">
@@ -314,12 +319,12 @@
   </div>
 
   <!-- Table -->
-  <div class="container-fluid container">
+  <div class="container-fluid container mt-3">
     <div class="row">
       <div class="col-sm-12">
         <div class="card">
           <div id="technical-capabilities" class="card-header pb-0">
-            <h3 class="text-center mb-4">توانایی فنی تولید</h3>
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">توانایی فنی تولید</h3>
           </div>
           <div class="card-body">
             <div class="table-responsive">
