@@ -33,7 +33,13 @@
       background-color: rgba(115, 102, 255, 0.1);
       color: #030303;
     }
-    
+    .transition-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .transition-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
   </style>
 {% endblock %}
 
@@ -132,7 +138,7 @@
                     <br /> <br />
                     <i class="fa fa-info-circle me-2"></i>
                     PCB هایی که با استفاده از نرم‌افزار پروتئوس (Proteus) طراحی شده باشد، باید خروجی آن حتماً به‌صورت گربر تهیه شوند. در این نرم‌افزار، پسوند فایل‌های گربر پس از خروجی گرفتن،اغلب .GBR است کاربران می‌توانند از
-                    <a href="#viedeos" class="text-primary fw-bold">فیلم‌های آموزشی</a> موجود برای یادگیری نحوه‌ی تولید این فایل‌ها استفاده کنند.
+                    <a href="#videos" class="text-primary fw-bold">فیلم‌های آموزشی</a> موجود برای یادگیری نحوه‌ی تولید این فایل‌ها استفاده کنند.
                     <br /> <br />
                     <i class="fa fa-info-circle me-2"></i>
                     جهت تولید PCB، ارسال فایل NC Drill الزامی است. این فایل که اغلب دارای پسوند .TXT است، اطلاعات دقیق مربوط به سوراخ‌کاری را شامل می‌شود.
@@ -585,6 +591,105 @@
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructural Videos -->
+  <div class="container-fluid container mt-3">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+          <div id="videos" class="card-header bg-white border-bottom-0 pb-0">
+            <h3 class="text-center mb-4 fw-bold" style="color: #7366ff;">فیلم‌های آموزشی</h3>
+          </div>
+          <div class="card-body">
+            <div class="container-fluid container mt-3">
+              <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="card h-100 shadow-sm border-0 transition-hover">
+                    <div class="modal-body p-0">
+                      <div class="ratio ratio-16x9">
+                        <iframe src="https://www.aparat.com/video/video/embed/videohash/n77ny9z/vt/frame" allowFullScreen="true"></iframe>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">آموزش ساخت فایل گربر با نرم‌افزار Eagle</h5>
+                      <p class="card-text text-muted small">نرم افزار ایگل Eagle یکی از محبوب ترین نرم افزار های طراحی مدار چاپی است. از آنجا که فایل های نرم افزار ایگل به صورت مستقیم قابل تولید برای شرکت های سازنده PCB نیست لذا درخواست می شود که فایل گربر برای طراحی انجام شده توسط نرم افزار ایگل تولید گردد که در این آموزش به آن پرداخته شده است.</p>
+                    </div>
+
+                    {% comment %} <div class="card-footer bg-transparent border-0 pt-0 pb-3">
+                      <a href="#" class="btn btn-outline-primary btn-sm w-100">دانلود فایل تنظیمات Eagle</a>
+                    </div> {% endcomment %}
+                  </div>
+                </div>
+
+                <!-- کارت دوم -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="card h-100 shadow-sm border-0 transition-hover">
+                    <div class="modal-body p-0">
+                      <div class="ratio ratio-16x9">
+                        <iframe src="https://www.aparat.com/video/video/embed/videohash/c62g11d/vt/frame" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">آموزش ساخت فایل گربر با نرم‌افزار Altium</h5>
+                      <p class="card-text text-muted small">نرم افزار آلتیوم دیزاینر یکی از محبوب ترین نرم افزار های طراحی مدار چاپی است که ابزار های بسیاری را برای یک طراحی کامل و جامع ارائه نموده است. به طوریکه در ایران بیشتر طراحان و مهندسان از این نرم افزار استفاده می کنند. در این آموزش به نحوه ایجاد فایل گربر توسط این نرم افزار پرداخته شده تا طرح نهایی راحت تر توسط سازندگان مدار چاپی قابل استفاده باشد.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- کارت سوم -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="card h-100 shadow-sm border-0 transition-hover">
+                    <div class="modal-body p-0">
+                      <div class="ratio ratio-16x9">
+                        <iframe src="https://www.aparat.com/video/video/embed/videohash/R8zjn/vt/frame" allowFullScreen="true"></iframe>
+                      </div>
+                    </div>
+
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">آموزش ساخت فایل گربر با نرم‌افزار Proteus</h5>
+                      <p class="card-text text-muted small">معمولا برای تولید مدار چاپی، کارخانه های سازنده از یک فرمت مشترک به نام گربر استفاده می کنند. نرم افزار پروتئوس نیز به عنوان یکی از نرم افزارهای طراحی PCB ، توانایی تولید چنین فایلهایی را دارد که در این آموزش به آن پرداخته شده است.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- کارت چهارم -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="card h-100 shadow-sm border-0 transition-hover">
+                    <div class="modal-body p-0">
+                      <div class="ratio ratio-16x9">
+                        <iframe src="https://www.aparat.com/video/video/embed/videohash/r46w3uk/vt/frame" allowFullScreen="true"></iframe>
+                      </div>
+                    </div>
+
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">آموزش ساخت فایل گربر با نرم‌افزار Allegro</h5>
+                      <p class="card-text text-muted small">نرم افزار الگرو یکی از ابزارهای استاندارد طراحی مدارات چاپی در صنعت است. به این دلیل که فایل طراحی شده توسط سازندگان قابل استفاده باشد معمولا به فرمت مشترکی بین تمام نرم افزارها نیاز است در این آموزش به ساخت فایل گربر با این نرم افزار محبوب پرداخته شده است.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- کارت پنجم -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="card h-100 shadow-sm border-0 transition-hover">
+                    <div class="modal-body p-0">
+                      <div class="ratio ratio-16x9">
+                        <iframe src="https://www.aparat.com/video/video/embed/videohash/PrfFQ/vt/frame" allowFullScreen="true"></iframe>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">آموزش ساخت فایل NC Drill با نرم‌افزار Allegro</h5>
+                      <p class="card-text text-muted small">یکی از فایل های لازم برای تولید یک مدار چاپی فایل NC Drill است که مربوط به سوراخکاری برد است. در این آموزش به تهیه این فایل در نرم افزار آلگرو پرداخته شده است. این آموزش برای تکمیل آموزش پیشین تولید گربر می باشد.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
           </div>
         </div>
       </div>
