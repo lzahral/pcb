@@ -12,12 +12,92 @@
 {% endblock %}
 {% block content %}
   <!-- Home section start -->
-  <section class="home-style-1 home-style-2">
+  <section class="hero-card mt-5">
+    <div class="hero-content">
+      <div class="badge">⚡ کیفیت بالا، تحویل سریع</div>
+
+      <h1>تولید <span>PCB</span> و پرینت سه بعدی</h1>
+
+      <p>از طراحی تا تولید و تحویل، همه چیز را به PCBHUB بسپارید.</p>
+
+      <div class="features">
+        <div class="feature-box">
+          <i class="fa-solid fa-shield"></i>
+          <h4>کیفیت تضمینی</h4>
+          <span>استانداردهای بین‌المللی</span>
+        </div>
+
+        <div class="feature-box">
+          <i class="fa-solid fa-tag"></i>
+          <h4>قیمت رقابتی</h4>
+          <span>بهترین قیمت بازار</span>
+        </div>
+
+        <div class="feature-box">
+          <i class="fa-solid fa-truck"></i>
+          <h4>تحویل سریع</h4>
+          <span>کمترین زمان</span>
+        </div>
+
+        <div class="feature-box">
+          <i class="fa-solid fa-headset"></i>
+          <h4>پشتیبانی 24/7</h4>
+          <span>همیشه همراه شما</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">سفارش PCB</a>
+
+        <a href="#" class="btn-outline">سفارش پرینت سه بعدی</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="hero-glow"></div>
+
+      <img src="{% static 'assets/css/images/pcb_landing.png' %}" class="pcb-main" alt="PCB" />
+
+      <img src="{% static 'assets/css/images/3d_printer.png' %}" class="printer-side" alt="3D Printer" />
+
+      <div class="floating-service">
+        <i class="fa-solid fa-cube"></i>
+        <span>پرینت سه بعدی</span>
+      </div>
+    </div>
+
+    <div class="bottom-stats">
+      <div>
+        <img src="{% static 'assets/css/images/users.png' %}" />
+        <h4>5000+ مشتری</h4>
+        <span>رضایت مشتریان</span>
+      </div>
+
+      <div>
+        <img src="{% static 'assets/css/images/quality.png' %}" />
+        <h4>ضمانت کیفیت</h4>
+        <span>تضمین محصولات</span>
+      </div>
+
+      <div>
+        <img src="{% static 'assets/css/images/credit.png' %}" />
+        <h4>پرداخت امن</h4>
+        <span>آنلاین و مطمئن</span>
+      </div>
+
+      <div>
+        <img src="{% static 'assets/css/images/send.png' %}" />
+        <h4>ارسال سراسری</h4>
+        <span>تحویل سریع</span>
+      </div>
+    </div>
+  </section>
+  <!--           <section class="home-style-1 home-style-2">
     <div class="custom-container container">
       <div class="row">
         <div class="col-lg-6">
           <div class="home-content">
-            <h1>تولید انواع مدار چاپی <span>پیشرفته</span>در <b>کمترین زمان</b></h1>
+            <h1>تولید انواع مدار چاپی <span>پیشرفته</span> در <b>کمترین زمان</b></h1>
             <ul class="card-list">
               <li>طراحی بدون محدودیت</li> <br />
               <li>تولید زمان‌بندی شده</li> <br />
@@ -28,31 +108,38 @@
         </div>
         <div class="col-lg-6 d-lg-block d-none">
           <div class="home-image text-end d-md-block d-none">
-            <img class="img-fluid" src="{% static 'assets/landing/images/app-landing/home/1.png' %}" alt="mobile" />
+            <img class="img-fluid" src="{% static 'assets/css/images/pcb_landing.png' %}" alt="mobile" />
             {% comment %} <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card" />
             <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}" alt="card" /> {% endcomment %}
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section>           -->
   <!-- Home section end -->
 
   <!-- Customer review section start -->
-  <section class="customer-review-style-1">
+  <!--    <section class="customer-review-style-1">
     <div class="container-fluid container mt-3">
       <div class="bg-blur-color"></div>
       <div class="container">
         <div class="title-style-4 row g-4">
           <div class="col-md-6">
             <h2 class="page-header-title">
-              <span class="txt-success">راهکارهای</span>
-              <span class="txt-primary">تخصصی</span> ما
+              <span>پرینت سه بعدی تخصصی</span>
+              {% comment %} <span class="txt-primary">تخصصی</span> ما{% endcomment %}
             </h2>
-            <img src="{% static 'assets/landing/images/shape/1.webp' %}" alt="line" class="img-fluid" />
+            {% comment %} <img src="{% static 'assets/landing/images/shape/1.webp' %}" alt="line" class="img-fluid" /> {% endcomment %}
           </div>
         </div>
-        <div class="row g-4">
+        <div class="col-lg-6 d-lg-block d-none">
+          <div class="home-image text-end d-md-block d-none">
+            <img class="img-fluid" src="{% static 'assets/css/images/3d_printer.png' %}" alt="mobile" />
+            {% comment %} <img class="img-fluid left-image" src="{% static 'assets/landing/images/app-landing/home/2.webp' %}" alt="card" />
+            <img class="img-fluid right-image" src="{% static 'assets/landing/images/app-landing/home/3.webp' %}" alt="card" /> {% endcomment %}
+          </div>
+        </div>
+        {% comment %} <div class="row g-4">
           <div class="col-xl-3 col-md-6 h-100">
             <div class="collection-wrapper aos-animate" data-aos="zoom-in">
               <img src="{% static 'assets/landing/images/nft/cart/1.webp' %}" alt="wallet" class="img-fluid" />
@@ -115,7 +202,7 @@
               <ul class="card-list">
                 <li>سخت افزار</li>
                 <li>سیستم عامل</li>
-                <li>بردهای PCB</li>
+                <li>بردهای</li>
                 <li>قطعات</li>
                 <br />
                 <br />
@@ -127,14 +214,14 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
       </div>
     </div>
-  </section>
+  </section>    -->
   <!-- Customer review section end -->
 
   <!-- Feature section start -->
-  <!--      <section class="feature-style-2" id="features">
+  <!--                     <section class="feature-style-2" id="features">
             <div class="container custom-container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -211,11 +298,11 @@
                     </div>
                 </div>
             </div>
-        </section>      -->
+        </section>                     -->
   <!-- Feature section end -->
 
   <!-- About section start -->
-  <!--      <section class="about-style-2" id="about-us">
+  <!--                     <section class="about-style-2" id="about-us">
             <div class="container custom-container">
                 <div class="row justify-content-lg-between justify-content-center gy-md-5 gy-3">
                     <div class="col-lg-6">
@@ -247,7 +334,7 @@
                     </div>
                 </div>
             </div>
-        </section>      -->
+        </section>                     -->
   <!-- About section end -->
 
   <!-- why choose us section start -->
@@ -314,7 +401,7 @@
   <!-- Brand section end -->
 
   <!-- Track section start -->
-  <!--      <section class="service-style-2 track-style-2">
+  <!--                     <section class="service-style-2 track-style-2">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -347,11 +434,11 @@
                     </div>
                 </div>
             </div>
-        </section>      -->
+        </section>                     -->
   <!-- Track section end -->
 
   <!-- Plan section start -->
-  <!--      <section class="plan-style-2 section-b-space" id="plan">
+  <!--                     <section class="plan-style-2 section-b-space" id="plan">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -542,11 +629,11 @@
                     </div>
                 </div>
             </div>
-        </section>      -->
+        </section>                     -->
   <!-- Plan section end -->
 
   <!-- Review section start -->
-  <!--      <section class="review-style-1 review-style-2 section-b-space review">
+  <!--                     <section class="review-style-1 review-style-2 section-b-space review">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -647,6 +734,6 @@
                     </div>
                 </div>
             </div>
-        </section>      -->
+        </section>                     -->
   <!-- Review section end -->
 {% endblock %}
