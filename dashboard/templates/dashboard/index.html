@@ -19,7 +19,6 @@
       <h1>تولید <span>PCB</span> و پرینت سه بعدی</h1>
 
       <p>از طراحی تا تولید و تحویل، همه چیز را به PCBHUB بسپارید.</p>
-
       <div class="features">
         <div class="feature-box">
           <i class="fa-solid fa-shield"></i>
@@ -47,22 +46,24 @@
       </div>
 
       <div class="hero-buttons">
-        <a href="#" class="btn-primary">سفارش PCB</a>
+        <a href="{% url 'index_2' %}" class="btn-primary">سفارش PCB</a>
 
-        <a href="#" class="btn-outline">سفارش پرینت سه بعدی</a>
+        <a href="{% url '3D-form' %}" class="btn-outline">سفارش پرینت سه بعدی</a>
       </div>
     </div>
 
-    <div class="hero-image">
-      <div class="hero-glow"></div>
+    <div class="row align-items-center">
+      <div class="hero-image">
+        <div class="hero-glow"></div>
 
-      <img src="{% static 'assets/css/images/pcb_landing.png' %}" class="pcb-main" alt="PCB" />
+        <img src="{% static 'assets/css/images/landing.png' %}" class="pcb-main" alt="PCB" />
 
-      <img src="{% static 'assets/css/images/3d_printer.png' %}" class="printer-side" alt="3D Printer" />
+        {% comment %} <img src="{% static 'assets/css/images/3d_printer.png' %}" class="printer-side" alt="3D Printer" /> {% endcomment %}
 
-      <div class="floating-service">
-        <i class="fa-solid fa-cube"></i>
-        <span>پرینت سه بعدی</span>
+        {% comment %} <div class="floating-service">
+          <i class="fa-solid fa-cube"></i>
+          <span>پرینت سه بعدی</span>
+        </div> {% endcomment %}
       </div>
     </div>
 
@@ -92,7 +93,7 @@
       </div>
     </div>
   </section>
-  <!--           <section class="home-style-1 home-style-2">
+  <!--            <section class="home-style-1 home-style-2">
     <div class="custom-container container">
       <div class="row">
         <div class="col-lg-6">
@@ -115,11 +116,11 @@
         </div>
       </div>
     </div>
-  </section>           -->
+  </section>            -->
   <!-- Home section end -->
 
   <!-- Customer review section start -->
-  <!--    <section class="customer-review-style-1">
+  <!--     <section class="customer-review-style-1">
     <div class="container-fluid container mt-3">
       <div class="bg-blur-color"></div>
       <div class="container">
@@ -217,11 +218,11 @@
         </div> {% endcomment %}
       </div>
     </div>
-  </section>    -->
+  </section>     -->
   <!-- Customer review section end -->
 
   <!-- Feature section start -->
-  <!--                     <section class="feature-style-2" id="features">
+  <!--                      <section class="feature-style-2" id="features">
             <div class="container custom-container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -298,11 +299,11 @@
                     </div>
                 </div>
             </div>
-        </section>                     -->
+        </section>                      -->
   <!-- Feature section end -->
 
   <!-- About section start -->
-  <!--                     <section class="about-style-2" id="about-us">
+  <!--                      <section class="about-style-2" id="about-us">
             <div class="container custom-container">
                 <div class="row justify-content-lg-between justify-content-center gy-md-5 gy-3">
                     <div class="col-lg-6">
@@ -334,7 +335,7 @@
                     </div>
                 </div>
             </div>
-        </section>                     -->
+        </section>                      -->
   <!-- About section end -->
 
   <!-- why choose us section start -->
@@ -401,7 +402,7 @@
   <!-- Brand section end -->
 
   <!-- Track section start -->
-  <!--                     <section class="service-style-2 track-style-2">
+  <!--                      <section class="service-style-2 track-style-2">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -434,11 +435,11 @@
                     </div>
                 </div>
             </div>
-        </section>                     -->
+        </section>                      -->
   <!-- Track section end -->
 
   <!-- Plan section start -->
-  <!--                     <section class="plan-style-2 section-b-space" id="plan">
+  <!--                      <section class="plan-style-2 section-b-space" id="plan">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -629,11 +630,11 @@
                     </div>
                 </div>
             </div>
-        </section>                     -->
+        </section>                      -->
   <!-- Plan section end -->
 
   <!-- Review section start -->
-  <!--                     <section class="review-style-1 review-style-2 section-b-space review">
+  <!--                      <section class="review-style-1 review-style-2 section-b-space review">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -734,6 +735,6 @@
                     </div>
                 </div>
             </div>
-        </section>                     -->
+        </section>                      -->
   <!-- Review section end -->
 {% endblock %}

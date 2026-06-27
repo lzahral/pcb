@@ -86846,7 +86846,7 @@ footer *::after {
 }
 
 
-.hero-content h1 span {
+.hero-content h2 span {
 
   color: #6c63ff;
 }
@@ -86978,26 +86978,33 @@ footer *::after {
 /* Image */
 
 .hero-image {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    padding: 0 !important;
+    overflow: visible !important; 
 }
 
-.pcb-main {
-  width: 70%;
-  z-index: 2;
+.hero-image img.img-fluid {
+    /* حذف عرض‌های درصدی گیج‌کننده و استفاده از مقیاس ثابت */
+    width: 650px !important; /* اندازه فیزیکی عکس را اینجا به پیکسل دیکته کنید */
+    max-width: none !important;
+    height: auto !important;
+    
+    /* استفاده از موقعیت‌دهی مطلق برای خروج از محدودیت ستون (Column) */
+    position: absolute; 
+    left: -50px; /* عکس را به سمت چپ هل می‌دهد تا از محدودیت ستون عبور کند */
+    
+    /* ترکیب افکت‌ها در یک خط */
+    transform: scale(1.25) translateY(-10px); 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    filter: drop-shadow(0 25px 35px rgba(108, 99, 255, 0.2));
+    z-index: 10;
 }
 
-.printer-small {
-  width: 35%;
-  position: absolute;
-  left: 0;
-  bottom: 30px;
-}
-
-/* هاله بنفش پشت تصویر */
 
 .glow-circle {
   position: absolute;
@@ -87018,22 +87025,6 @@ footer *::after {
   z-index: 1;
 }
 
-/* تصویر پرینتر */
-
-.printer-image {
-  width: 90%;
-  max-width: 650px;
-
-  position: relative;
-
-  z-index: 2;
-
-  animation: floatPrinter 6s ease-in-out infinite;
-
-  filter:
-    drop-shadow(0 25px 40px rgba(0, 0, 0, .15));
-}
-
 .pcb {
 
   width: 90%;
@@ -87043,29 +87034,6 @@ footer *::after {
   position: relative;
 
   z-index: 2;
-}
-
-.floating-card {
-
-  position: absolute;
-
-  background: white;
-
-  padding: 20px;
-
-  border-radius: 20px;
-
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, .08);
-
-  z-index: 3;
-}
-
-.floating-card strong {
-
-  display: block;
-
-  margin-bottom: 6px;
 }
 
 .top {
@@ -87139,7 +87107,6 @@ footer *::after {
   filter: brightness(1.1);
 }
 
-/* ۲. دکمه اوت‌لاین (سفارش پرینت سه بعدی) */
 .hero-buttons .btn-outline {
   background: transparent !important;
   border: 2px solid #6c63ff !important;
@@ -87153,7 +87120,6 @@ footer *::after {
   align-items: center;
   justify-content: center;
   margin-right: 15px;
-  /* فاصله بین دو دکمه */
   transition: all 0.3s ease;
 }
 
