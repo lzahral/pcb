@@ -28,8 +28,13 @@ SECRET_KEY = 'django-insecure-s%z_3skzi#s3avc3myzz+204*9$bsx+-$9xe)4g2echat&j-zh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ["*","pcbhub.ir", "www.pcbhub.ir"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://pcbhub.ir",
+    "http://www.pcbhub.ir",
+    "https://pcbhub.ir",
+    "https://www.pcbhub.ir",
+]
 
 # Application definition
 
