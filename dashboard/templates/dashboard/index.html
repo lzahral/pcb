@@ -8,6 +8,18 @@
       padding: 2px 6px 1px 6px !important;
       font-size: 10px !important;
     }
+    .testtt {
+width: 822.5px !important; 
+    max-width: none !important;
+    height: auto !important;
+    
+    position: absolute; 
+    left: -20px;
+    top: -200px;
+    
+    z-index: 10;
+}
+
   </style>
 {% endblock %}
 {% block content %}
@@ -53,10 +65,10 @@
     </div>
 
     <div class="row align-items-center">
-      <div class="hero-image">
+      <div class="testtt">
         <div class="hero-glow"></div>
 
-        <img src="{% static 'assets/css/images/landing.png' %}" class="pcb-main" alt="PCB" />
+        <img src="{% static 'assets/images/landing.png' %}" class="testtt" alt="PCB" />
 
         {% comment %} <img src="{% static 'assets/css/images/3d_printer.png' %}" class="printer-side" alt="3D Printer" /> {% endcomment %}
 
